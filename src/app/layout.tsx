@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter_Tight } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 
 import { AnnouncementBar } from "@/components/shell/AnnouncementBar";
 import { CookieBar } from "@/components/shell/CookieBar";
@@ -63,6 +64,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         {children}
 
         {consent === null ? <CookieBar /> : null}
+
+        {/* Analytics is opt-in, not opt-out. The privacy policy says analytics can be
+            declined without losing any functionality, and the cookie bar says declining
+            costs no function — so the script only loads for a stored "Accept all". No
+            choice yet, or "Essential only", means it never reaches the browser. Consent is
+            resolved server-side above, so this never flashes on and off. */}
+        {consent === "all" ? <Analytics /> : null}
       </body>
     </html>
   );

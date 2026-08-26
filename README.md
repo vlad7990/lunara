@@ -80,6 +80,11 @@ iterates over. Adding a third product is a record plus a page, not a component c
   exception. No shadows on content; elevation is for the cookie bar only.
 - **One accent per product.** Crave Balance plum, Cycle Ritual burgundy. A product section
   sets `--accent` once and everything inside reads it, so accents never mix.
+- **Analytics is opt-in, not opt-out.** `<Analytics>` renders in the root layout only for a
+  stored consent of `all`. No choice yet, or "Essential only", and the script never reaches
+  the browser. The privacy policy says analytics can be declined without losing any
+  functionality and the cookie bar says declining costs no function — an unconditional
+  `<Analytics>` would make both untrue. Consent is resolved server-side, so it never flashes.
 
 ## State
 
