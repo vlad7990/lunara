@@ -156,7 +156,18 @@ keep it in step with `tokens.css`.
 6. **Contrast.** The gold and muted micro-labels sit between 2.9:1 and 4.0:1 against their
    backgrounds, under the 4.5:1 WCAG AA wants at those sizes. Published as a known gap on
    `/accessibility` rather than silently changed.
-7. **Article bodies** for pieces 01–03, which are marked published but have no markdown in
-   `content/articles/`.
-8. **Cycle Ritual commerce.** It has a catalogue record and a product page, but no SKU,
+7. **Cycle Ritual commerce.** It has a catalogue record and a product page, but no SKU,
    price or Supplement Facts panel yet, so it does not appear in `/shop`.
+8. **The doses themselves.** `product.dosesAreFinal` is `false` and stays that way until the
+   numbers are confirmed. Note that the **product infographics disagree with
+   `content/product.json`**: the images show myo-inositol as 2,000–4,000 mg, D-chiro as
+   50–100 mg and saffron as pending raw-material selection, where `product.json` publishes
+   fixed values of 3,000 mg, 75 mg and 28 mg.
+
+   The change log dates both sides — myo-inositol was fixed at 3,000 mg on 2026-02-28 "down
+   from a 4,000 mg option", and saffron was set at 28 mg on 2026-03-12 — so `product.json`
+   reads as the later decision and the infographics as the thinking it replaced. That has
+   **not** been confirmed, and nothing has been changed either way. `product.json` remains
+   the single source the site renders from. Resolve this before `dosesAreFinal` is flipped,
+   because flipping it removes the caveat from the dose strip, the Supplement Facts draft,
+   the open-formula articles and the welcome email at once.

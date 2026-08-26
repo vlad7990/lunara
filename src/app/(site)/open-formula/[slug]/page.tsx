@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { FdaDisclaimer } from "@/components/compliance";
+import { DoseDisclaimer, FdaDisclaimer } from "@/components/compliance";
 import { getArticleBody, seriesPosition } from "@/lib/articles";
 import { articles, getArticle } from "@/lib/content";
 import { resolveSiteMode } from "@/lib/mode";
@@ -63,11 +63,16 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           <div className={styles.article__grid}>
             <div className={styles.article__body}>
               {body ? (
-                <div
-                  className={styles.prose}
-                  // Markdown authored in `content/articles/` by the editorial team.
-                  dangerouslySetInnerHTML={{ __html: body.html }}
-                />
+                <>
+                  <div
+                    className={styles.prose}
+                    // Markdown authored in `content/articles/` by the editorial team.
+                    dangerouslySetInnerHTML={{ __html: body.html }}
+                  />
+                  {/* These pieces argue from the doses, so they quote them. While the doses
+                      are targets the caveat has to travel with them. */}
+                  <DoseDisclaimer />
+                </>
               ) : (
                 <div className={styles.pending}>
                   <p className={styles.pending__title}>{article.dek}</p>

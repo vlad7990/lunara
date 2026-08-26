@@ -14,7 +14,12 @@
       "title": "Why it's a stick pack, not a capsule",
       "dek": "Three grams of inositol is nine capsules. Nobody takes nine capsules.",
       "week": 5,
-      "published": true
+      "published": true,
+      "decision": {
+        "considered": "Capsule format, six to nine capsules per daily serving",
+        "rejected": "Daily capsule count at an honest inositol dose · a format that reduces the dose by making it tedious",
+        "revisitIf": "We ship a formula whose full daily dose fits into three capsules"
+      }
     },
     {
       "number": "03",
@@ -22,7 +27,12 @@
       "title": "The fiber decision",
       "dek": "We wanted it in. The texture, and the honesty about dose, kept it out.",
       "week": 6,
-      "published": true
+      "published": true,
+      "decision": {
+        "considered": "Inulin or a viscous fiber, 1–5 g per serving",
+        "rejected": "An honest dose does not fit a 5 g serving · viscosity changes the drink · a token gram would be a marketing dose",
+        "revisitIf": "We make a format where serving size is not the binding constraint"
+      }
     },
     {
       "number": "04",
