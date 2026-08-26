@@ -4,7 +4,8 @@ import Link from "next/link";
 import { BatchLookup } from "@/components/coa/BatchLookup";
 import { IconDocumentCheck, IconSpark } from "@/components/Icon";
 import { ProductSection } from "@/components/product/ProductSection";
-import { catalogue, site } from "@/lib/content";
+import { FoundingProgress } from "@/components/waitlist/FoundingProgress";
+import { articles, catalogue, changeLog, formatLotDate, site } from "@/lib/content";
 import { resolveSiteMode } from "@/lib/mode";
 
 import styles from "./home.module.css";
@@ -46,6 +47,14 @@ export default async function HomePage() {
   const mode = await resolveSiteMode();
   // The hero shows the range, so it reads the same catalogue the sections below do.
   const [lead, second] = catalogue;
+
+  // Only published pieces exist as pages. Newest first, so the home page never has to be
+  // edited when the next piece goes up. Deliberately not featured-first: pulling 04 to the
+  // front of 01 and 02 reads as a broken sort rather than as an editor's choice.
+  const publishedArticles = articles.filter((a) => a.published);
+  const featuredArticles = [...publishedArticles]
+    .sort((a, b) => Number(b.number) - Number(a.number))
+    .slice(0, 3);
 
   return (
     <>
@@ -141,6 +150,77 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* ---------------------------------------------------- open formula reads
+          The band above links to the series without showing any of it. These are the
+          decisions themselves, so the reader can judge the reasoning rather than the
+          claim that reasoning exists. */}
+      <section className={`lu-container ${styles.reads}`} aria-labelledby="reads-title">
+        <div className={styles.reads__head}>
+          <h2 id="reads-title" className={styles.reads__title}>
+            The decisions, written down
+          </h2>
+          <Link href="/open-formula" className={styles.reads__all}>
+            All {publishedArticles.length} pieces
+          </Link>
+        </div>
+
+        <ul className={styles.reads__grid}>
+          {featuredArticles.map((piece) => (
+            <li key={piece.slug} className={styles.read}>
+              <Link href={`/open-formula/${piece.slug}`} className={styles.read__link}>
+                <span className={styles.read__number}>{piece.number}</span>
+                <h3 className={styles.read__title}>{piece.title}</h3>
+                <p className={styles.read__dek}>{piece.dek}</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* ------------------------------------------------------- the change log
+          The band above promises a dated change log. This is it, immediately after,
+          because a promise a reader has to take on trust is the thing this brand is
+          arguing against. */}
+      <section className={`lu-container ${styles.log}`} aria-labelledby="log-title">
+        <div className={styles.log__head}>
+          <p className="lu-label lu-label--wide">The change log</p>
+          <h2 id="log-title" className={styles.log__title}>
+            Every dose that moved, with the date it moved.
+          </h2>
+          <p className={styles.log__lede}>
+            Formulation decisions are published when they are made, not summarised after
+            launch. This is the whole log, including the entry that made a dose smaller.
+          </p>
+        </div>
+
+        <ol className={styles.log__list}>
+          {changeLog.map((entry) => {
+            const piece = entry.relatedArticle
+              ? articles.find((a) => a.slug === entry.relatedArticle && a.published)
+              : undefined;
+
+            return (
+              <li key={entry.date} className={styles.log__entry}>
+                <time dateTime={entry.date} className={styles.log__date}>
+                  {formatLotDate(entry.date)}
+                </time>
+                <p className={styles.log__summary}>
+                  {entry.summary}
+                  {piece ? (
+                    <>
+                      {" "}
+                      <Link href={`/open-formula/${piece.slug}`} className={styles.log__link}>
+                        Read the reasoning
+                      </Link>
+                    </>
+                  ) : null}
+                </p>
+              </li>
+            );
+          })}
+        </ol>
+      </section>
+
       {/* ------------------------------------------------------ proof and ask */}
       <div className={`lu-container ${styles.close}`}>
         <section className={styles.coa} aria-labelledby="coa-title">
@@ -170,6 +250,11 @@ export default async function HomePage() {
               ? "Free US shipping over $50, and a sixty-day return on an opened jar."
               : "The Founding 500 get 30% off and 48 hours before general access. Nothing is charged now."}
           </p>
+
+          {/* The count is the reason to act now, so it shows the count rather than
+              describing it. Store mode has nothing to count. */}
+          {mode === "store" ? null : <FoundingProgress className={styles.join__progress} />}
+
           <Link
             href={mode === "store" ? "/shop" : "/join"}
             className={`lu-btn ${styles.join__cta}`}

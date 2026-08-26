@@ -302,3 +302,183 @@
     gap: 16px;
   }
 }
+
+/* ------------------------------------------------------- open formula reads */
+
+/*
+ * A row of decisions, each one a link. Deliberately not the four-column promise grid
+ * above it and not the two-card close below it: three sections in a row sharing a layout
+ * family is what makes a page read as templated.
+ */
+.reads {
+  padding-top: var(--lu-section);
+}
+
+.reads__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--lu-hairline);
+}
+
+.reads__title {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: clamp(26px, 3vw, 34px);
+  line-height: 1.1;
+  color: var(--lu-ink);
+}
+
+.reads__all {
+  font-size: var(--lu-fs-legal);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--lu-gold-deep);
+  flex: none;
+}
+
+.reads__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Hairlines between, not cards around: these are entries in a series, not products. */
+.read + .read {
+  border-left: 1px solid var(--lu-hairline);
+}
+
+.read__link {
+  display: block;
+  height: 100%;
+  padding: 26px 26px 30px;
+  color: inherit;
+}
+
+.read__link:hover .read__title {
+  color: var(--lu-plum);
+}
+
+.read__number {
+  display: block;
+  font-family: var(--lu-font-display);
+  font-size: 15px;
+  color: var(--lu-gold-deep);
+  margin-bottom: 12px;
+}
+
+.read__title {
+  font-size: var(--lu-fs-body-lg);
+  line-height: 1.35;
+  color: var(--lu-ink);
+  margin-bottom: 8px;
+}
+
+.read__dek {
+  font-size: var(--lu-fs-sm);
+  line-height: 1.6;
+  color: var(--lu-muted);
+}
+
+/* The first card aligns to the container edge; the rest are inset off their hairline. */
+.read:first-child .read__link {
+  padding-left: 0;
+}
+
+/* ------------------------------------------------------------- change log */
+
+/*
+ * An editorial column, narrow and dated. The one place on the page where the layout is a
+ * single measure of text, because a log is read down rather than across.
+ */
+.log {
+  padding-top: var(--lu-section);
+}
+
+.log__head {
+  max-width: 62ch;
+  margin-bottom: 30px;
+}
+
+.log__title {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: clamp(26px, 3vw, 34px);
+  line-height: 1.12;
+  color: var(--lu-ink);
+  margin: 10px 0 12px;
+}
+
+.log__lede {
+  font-size: var(--lu-fs-sm);
+  line-height: 1.7;
+  color: var(--lu-body-2);
+}
+
+.log__list {
+  max-width: 74ch;
+  border-top: 1px solid var(--lu-hairline);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.log__entry {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 24px;
+  align-items: baseline;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--lu-hairline);
+}
+
+/* Dates are figures, so they are set in the display serif like every other number. */
+.log__date {
+  font-family: var(--lu-font-display);
+  font-size: 17px;
+  color: var(--lu-gold-deep);
+}
+
+.log__summary {
+  font-size: var(--lu-fs-sm);
+  line-height: 1.7;
+  color: var(--lu-body-2);
+}
+
+.log__link {
+  font-weight: 600;
+  color: var(--lu-plum);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.join__progress {
+  margin-top: 4px;
+}
+
+@media (max-width: 900px) {
+  .reads__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .read + .read {
+    border-left: none;
+    border-top: 1px solid var(--lu-hairline);
+  }
+
+  .read__link {
+    padding: 22px 0 24px;
+  }
+
+  .log__entry {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
