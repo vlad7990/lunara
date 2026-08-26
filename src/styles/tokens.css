@@ -28,7 +28,7 @@
 
   /* --- Gold stack --- */
   --lu-gold:            #C9A75C;  /* on dark surfaces, foil, wordmark on plum */
-  --lu-gold-deep:       #A6813C;  /* links, eyebrow labels, wordmark on light */
+  --lu-gold-deep:       #7D612D;  /* links, eyebrow labels, wordmark on light */
   --lu-gold-wash:       #F3E9D6;  /* table headers, chips */
   --lu-gold-border:     #E0CFA8;  /* emphasised card borders */
   --lu-gold-tint:       #FDF7EA;  /* selected card fill */
@@ -61,8 +61,8 @@
   --lu-body:            #3C352F;  /* long-form body */
   --lu-body-2:          #554C43;  /* secondary body */
   --lu-muted:           #6D6157;  /* nav, captions */
-  --lu-muted-2:         #8A7B69;  /* legal, meta */
-  --lu-placeholder:     #A6957C;  /* input placeholder, drop-in slot labels */
+  --lu-muted-2:         #706456;  /* legal, meta */
+  --lu-placeholder:     #72644E;  /* input placeholder, drop-in slot labels */
 
   /* --- Text on plum --- */
   --lu-cream:           #FBF3E4;
@@ -89,7 +89,7 @@
   --lu-warn-border:     #E8CFC0;
   --lu-warn-text:       #A25A44;
   --lu-warn-body:       #6D5A50;
-  --lu-draft:           #B0846A;  /* "Draft · pending counsel review" flag */
+  --lu-draft:           #855D46;  /* "Draft · pending counsel review" flag */
 
   /* --- Lab result semantics (COA tables only) --- */
   --lu-pass:            #4C7A5E;

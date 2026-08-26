@@ -14,7 +14,7 @@ export const email = {
   plumMid: "#4A2233",
 
   gold: "#C9A75C",
-  goldDeep: "#A6813C",
+  goldDeep: "#7D612D",
   goldWash: "#F3E9D6",
   goldBorder: "#E0CFA8",
   goldTint: "#FDF7EA",
@@ -33,7 +33,7 @@ export const email = {
   body: "#3C352F",
   body2: "#554C43",
   muted: "#6D6157",
-  muted2: "#8A7B69",
+  muted2: "#706456",
 
   cream: "#FBF3E4",
   cream2: "#F3E4CB",

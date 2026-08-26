@@ -153,12 +153,9 @@ keep it in step with `tokens.css`.
 4. **Photography.** Every unshot frame is a `<DropInSlot>` holding its final aspect ratio.
 5. **Payments.** Store mode has a working bag and a gated checkout; no processor is wired.
    Also **a sending domain** — without one nobody on the list can be emailed.
-6. **Contrast.** The gold and muted micro-labels sit between 2.9:1 and 4.0:1 against their
-   backgrounds, under the 4.5:1 WCAG AA wants at those sizes. Published as a known gap on
-   `/accessibility` rather than silently changed.
-7. **Cycle Ritual commerce.** It has a catalogue record and a product page, but no SKU,
+6. **Cycle Ritual commerce.** It has a catalogue record and a product page, but no SKU,
    price or Supplement Facts panel yet, so it does not appear in `/shop`.
-8. **The doses themselves.** `product.dosesAreFinal` is `false` and stays that way until the
+7. **The doses themselves.** `product.dosesAreFinal` is `false` and stays that way until the
    numbers are confirmed. Note that the **product infographics disagree with
    `content/product.json`**: the images show myo-inositol as 2,000–4,000 mg, D-chiro as
    50–100 mg and saffron as pending raw-material selection, where `product.json` publishes

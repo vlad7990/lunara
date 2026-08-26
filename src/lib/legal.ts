@@ -113,7 +113,8 @@ export const policies: Policy[] = [
       "In short: we target WCAG 2.2 AA. We publish the gaps we know about rather than claiming full conformance.",
     paragraphs: [
       "All content is keyboard navigable, form fields are labelled, and dose tables are marked up as tables rather than as images — the numbers are the product, so they must be readable by a screen reader.",
-      "Known gaps as of this update: the uppercase micro-labels and the gold link colour sit between 2.9:1 and 4.0:1 against their backgrounds, below the 4.5:1 that WCAG AA asks for at those sizes; the certificate-of-analysis PDFs are not yet tagged for screen readers; and the ingredient icons carry decorative alt text where a longer description would help. All three are scheduled.",
+      "Text contrast was a published gap here until this update, and it is now closed. The gold link and micro-label colour, the muted legal and meta colour, the input placeholder and the draft flag all sat between 2.3:1 and 4.0:1 against the cream surfaces they appear on. All four have been darkened and now meet at least 4.5:1 on every background the site uses, including the gold dose figures on the product pages.",
+      "Known gaps as of this update: the certificate-of-analysis PDFs are not yet tagged for screen readers, and the ingredient icons carry decorative alt text where a longer description would help. Both are scheduled.",
       "If anything on this site blocks you, email {email} and we will fix it and tell you when it is fixed.",
     ],
   },
