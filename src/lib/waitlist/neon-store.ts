@@ -33,6 +33,7 @@ interface Row {
   created_at: string | Date;
   confirmed_referrals: number;
   founding: boolean;
+  unsubscribed_at: string | Date | null;
   /** Present on every read: how many entries exist at or before this one. */
   rank?: number;
 }
@@ -54,6 +55,7 @@ function toEntry(row: Row): WaitlistEntry {
     createdAt: new Date(row.created_at).toISOString(),
     confirmedReferrals: row.confirmed_referrals,
     founding: row.founding,
+    unsubscribedAt: row.unsubscribed_at ? new Date(row.unsubscribed_at).toISOString() : null,
   };
 }
 
@@ -81,6 +83,17 @@ export function createNeonWaitlistStore(connectionString: string): WaitlistStore
          WHERE lower(e.email) = ${normalise(email)}
       `) as Row[];
       return rows[0] ? toEntry(rows[0]) : null;
+    },
+
+    async unsubscribe(email) {
+      // Idempotent, and silent on an unknown address: confirming which addresses we hold
+      // to anyone who can type one would leak the list.
+      await sql`
+        UPDATE waitlist_entry
+           SET unsubscribed_at = now()
+         WHERE lower(email) = ${normalise(email)}
+           AND unsubscribed_at IS NULL
+      `;
     },
 
     async signup(email, referredBy): Promise<SignupResult> {

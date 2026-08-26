@@ -13,6 +13,8 @@ export interface WaitlistEntry {
   confirmedReferrals: number;
   /** True once inside the first 500, or once promoted by referrals. */
   founding: boolean;
+  /** Set when they opt out. The entry and its place survive; the email stops. */
+  unsubscribedAt?: string | null;
 }
 
 export interface SignupResult {
@@ -26,4 +28,6 @@ export interface WaitlistStore {
   count(): Promise<number>;
   signup(email: string, referredBy?: string): Promise<SignupResult>;
   findByEmail(email: string): Promise<WaitlistEntry | null>;
+  /** Idempotent: unsubscribing twice is not an error, and an unknown address is not either. */
+  unsubscribe(email: string): Promise<void>;
 }

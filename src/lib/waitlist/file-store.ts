@@ -62,6 +62,17 @@ export const fileWaitlistStore: WaitlistStore = {
     return (await readAll()).find((entry) => entry.email === wanted) ?? null;
   },
 
+  async unsubscribe(email) {
+    return withLock(async () => {
+      const entries = await readAll();
+      const entry = entries.find((candidate) => candidate.email === normalise(email));
+      // Silent on an unknown address: confirming which addresses we hold would leak the list.
+      if (!entry || entry.unsubscribedAt) return;
+      entry.unsubscribedAt = new Date().toISOString();
+      await writeAll(entries);
+    });
+  },
+
   async signup(email, referredBy): Promise<SignupResult> {
     return withLock(async () => {
       const entries = await readAll();
@@ -78,6 +89,7 @@ export const fileWaitlistStore: WaitlistStore = {
         createdAt: new Date().toISOString(),
         confirmedReferrals: 0,
         founding: position <= site.waitlist.foundingTotal,
+        unsubscribedAt: null,
       };
 
       entries.push(entry);

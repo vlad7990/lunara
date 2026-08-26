@@ -14,6 +14,11 @@ CREATE TABLE IF NOT EXISTS waitlist_entry (
   founding            BOOLEAN      NOT NULL DEFAULT FALSE
 );
 
+-- Unsubscribing keeps the row and its position — it stops the email, it does not erase the
+-- person. Deletion is a separate request, handled under the privacy policy.
+ALTER TABLE waitlist_entry
+  ADD COLUMN IF NOT EXISTS unsubscribed_at TIMESTAMPTZ;
+
 -- One place per address. Signing up twice returns the original position.
 CREATE UNIQUE INDEX IF NOT EXISTS waitlist_entry_email_key
   ON waitlist_entry (lower(email));

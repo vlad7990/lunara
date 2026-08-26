@@ -89,9 +89,50 @@ src/
 The waitlist is one of three writes on the site. `src/lib/waitlist/index.ts` picks a store:
 
 - **Neon Postgres** whenever `DATABASE_URL` is set — which is any Vercel deployment, since
-  the Marketplace integration provides it. Apply `src/lib/waitlist/schema.sql` once.
+  the Marketplace integration provides it. Apply `src/lib/waitlist/schema.sql` once; it is
+  idempotent, so re-running it is how migrations land.
 - **A local JSON file** under `.data/` otherwise. Fine for `next dev`; it writes to disk, so
   it cannot run on a read-only serverless filesystem.
+
+## Email
+
+Built and ready; **no provider is wired**. Resend can only send from a domain we own, and
+`lunara.co` is not on the account.
+
+`src/lib/email/index.ts` selects a mailer. Without `RESEND_API_KEY` and `EMAIL_FROM` it
+returns one that reports `configured: false` and sends nothing — and the signup confirmation
+reads that flag, so it does not promise an inbox it cannot deliver to. Set both and the
+Resend adapter takes over with no code change.
+
+To turn it on:
+
+```bash
+vercel integration add resend/resend-email --plan free \
+  -m domain=<a domain you own> -m region=us-east-1
+# add the SPF/DKIM records Resend returns, then:
+vercel env add EMAIL_FROM production        # e.g. LUNARA <hello@lunara.co>
+vercel env add NEXT_PUBLIC_SITE_URL production
+```
+
+| Variable | Purpose |
+|---|---|
+| `RESEND_API_KEY` | Set by the integration |
+| `EMAIL_FROM` | The From header, e.g. `LUNARA <hello@lunara.co>` |
+| `NEXT_PUBLIC_SITE_URL` | Absolute origin for links inside emails; falls back to the Vercel URL |
+
+The welcome email lives in `src/emails/welcome.ts` — table-based HTML with a plain-text
+alternative, doses read from `product.json` and the disclaimer from `compliance.json`, so it
+can never disagree with the site about a milligram. Read it at
+`/preview/email/welcome` (`?format=text`, `?founding=0`, `?place=501` for the other states);
+that route is dev-gated like `/preview/[mode]`.
+
+Unsubscribe is live already, because the email links to it: `/unsubscribe` for humans
+(a GET never unsubscribes anyone — mail scanners follow those links), and `/api/unsubscribe`
+for the RFC 8058 one-click POST that Gmail and Yahoo require of bulk senders.
+
+Colours in emails are inline literals in `src/emails/palette.ts` — email clients cannot
+resolve CSS custom properties. That file is the only place the token values are duplicated;
+keep it in step with `tokens.css`.
 
 ## Outstanding before launch
 
@@ -102,6 +143,7 @@ The waitlist is one of three writes on the site. `src/lib/waitlist/index.ts` pic
 3. **Approved-claims list** wired as the source for every product-page string.
 4. **Photography.** Every unshot frame is a `<DropInSlot>` holding its final aspect ratio.
 5. **Payments.** Store mode has a working bag and a gated checkout; no processor is wired.
+   Also **a sending domain** — without one nobody on the list can be emailed.
 6. **Contrast.** The gold and muted micro-labels sit between 2.9:1 and 4.0:1 against their
    backgrounds, under the 4.5:1 WCAG AA wants at those sizes. Published as a known gap on
    `/accessibility` rather than silently changed.
