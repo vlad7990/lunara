@@ -157,7 +157,22 @@
   font-weight: 400;
   font-size: 22px;
   color: var(--lu-ink);
+  /* Figures right-aligned in their own track, unit left-aligned in a fixed one, so a wider
+     unit ("mcg") cannot shove the digits out of the column the other rows share. */
+  display: grid;
+  grid-template-columns: 1fr 3.6ch;
+  align-items: baseline;
+}
+
+.doses__amount {
   text-align: right;
+}
+
+/* The separator is a real space inside the unit, so it has to survive collapsing. No
+   column-gap, or the row would carry two gaps' worth of space. */
+.doses__unit {
+  text-align: left;
+  white-space: pre;
 }
 
 .doses__list > :nth-last-child(-n + 2) {

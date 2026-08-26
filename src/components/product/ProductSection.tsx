@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { IconFlask } from "@/components/Icon";
-import type { CatalogueProduct, SiteMode } from "@/lib/content";
+import { splitDose, type CatalogueProduct, type SiteMode } from "@/lib/content";
 
 import styles from "./ProductSection.module.css";
 
@@ -68,12 +68,21 @@ export function ProductSection({
               What&rsquo;s in {product.servingSize.toLowerCase()}
             </p>
             <dl className={styles.doses__list}>
-              {product.keyDoses.map((dose) => (
-                <Fragment key={dose.name}>
-                  <dt className={styles.doses__name}>{dose.name}</dt>
-                  <dd className={styles.doses__value}>{dose.dose}</dd>
-                </Fragment>
-              ))}
+              {product.keyDoses.map((dose) => {
+                // Number and unit are separate cells so the digits keep their own column;
+                // right-aligning "200 mcg" as one run pushes its figures off the others.
+                const { amount, unit } = splitDose(dose.dose);
+                return (
+                  <Fragment key={dose.name}>
+                    <dt className={styles.doses__name}>{dose.name}</dt>
+                    <dd className={styles.doses__value}>
+                      <span className={styles.doses__amount}>{amount}</span>
+                      {/* Real space, not a grid gap, so the row still reads "200 mcg". */}
+                      {unit ? <span className={styles.doses__unit}>{` ${unit}`}</span> : null}
+                    </dd>
+                  </Fragment>
+                );
+              })}
             </dl>
           </div>
 

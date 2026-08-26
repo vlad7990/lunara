@@ -1,4 +1,4 @@
-import { supplementFacts } from "@/lib/content";
+import { splitDose, supplementFacts } from "@/lib/content";
 
 import styles from "./SupplementFacts.module.css";
 
@@ -55,7 +55,24 @@ export function SupplementFacts() {
             {supplementFacts.rows.map((row) => (
               <tr key={row.name}>
                 <th scope="row">{row.name}</th>
-                <td>{row.amount}</td>
+                {/* One cell still, so the panel keeps the column count a printed panel has.
+                    The split is inside it, to hold the figures in one column: "200 mcg"
+                    right-aligned as a single run sits its digits left of every "mg" row. */}
+                <td>
+                  {(() => {
+                    const { amount, unit } = splitDose(row.amount);
+                    return (
+                      <span className={styles.amount}>
+                        <span className={styles.amount__value}>{amount}</span>
+                        {/* The separating space is a real character, not a grid gap, so the
+                            cell still reads "200 mcg" to a screen reader. */}
+                        {unit ? (
+                          <span className={styles.amount__unit}>{` ${unit}`}</span>
+                        ) : null}
+                      </span>
+                    );
+                  })()}
+                </td>
                 <td>{row.dv}</td>
               </tr>
             ))}

@@ -274,6 +274,20 @@ export function formatDose(ingredient: Ingredient): string {
 }
 
 /**
+ * Splits a rendered dose into its number and its unit, so a dose column can put the digits
+ * in their own cell.
+ *
+ * A right-aligned "200 mcg" sits its digits further left than "200 mg", because `mcg` is the
+ * wider word — which breaks the digit column on exactly the row whose unit differs. Tabular
+ * figures cannot fix that; only giving the unit its own column can. The unit is never
+ * dropped: a dose without its unit is on the never-publish list.
+ */
+export function splitDose(value: string): { amount: string; unit: string | null } {
+  const match = value.match(/^(.*?)\s+([a-zA-Zµ]+)$/);
+  return match ? { amount: match[1], unit: match[2] } : { amount: value, unit: null };
+}
+
+/**
  * Prices are set in the display serif; they are never rounded away from their cents.
  * `exact` forces two decimals — used where prices sit in a column and have to line up.
  */

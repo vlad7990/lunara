@@ -103,3 +103,24 @@
   line-height: 1.55;
   color: var(--lu-muted-2);
 }
+
+/* The amount cell holds two tracks: figures right-aligned, unit left-aligned in a fixed
+   one. Without this a wider unit ("mcg") drags its digits out of the column every other
+   row shares, which is the one thing a panel of numbers cannot do. Semantics are
+   untouched: the cell still reads "200 mcg". */
+.amount {
+  display: inline-grid;
+  grid-template-columns: 1fr 3.4ch;
+  align-items: baseline;
+}
+
+.amount__value {
+  text-align: right;
+}
+
+/* The leading space lives in the text, so it must survive collapsing. No column-gap here:
+   that space is doing the separating, and doubling it would open a visible hole. */
+.amount__unit {
+  text-align: left;
+  white-space: pre;
+}
