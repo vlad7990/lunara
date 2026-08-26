@@ -11,7 +11,7 @@ import type { SignupResult, WaitlistEntry, WaitlistStore } from "./types";
 /**
  * Neon Postgres store.
  *
- * The database does the work the development file store had to fake by hand: positions come
+ * The database does the work the development file store had to fake by hand: ordering comes
  * from an identity column rather than a counted array, and the unique index on the email is
  * what makes a second signup return the original place instead of a new one.
  */
@@ -33,12 +33,23 @@ interface Row {
   created_at: string | Date;
   confirmed_referrals: number;
   founding: boolean;
+  /** Present on every read: how many entries exist at or before this one. */
+  rank?: number;
 }
+
+/**
+ * The place we show someone is their rank, not the raw identity value.
+ *
+ * Entries are never deleted, so a row's rank is as permanent as its identity — but the
+ * identity can run ahead of the count if Postgres ever discards a number, and "place 501"
+ * shown to the 480th person on the list would be a lie about their founding status.
+ */
+const RANK = "(SELECT count(*)::int FROM waitlist_entry x WHERE x.position <= e.position)";
 
 function toEntry(row: Row): WaitlistEntry {
   return {
     email: row.email,
-    position: row.position,
+    position: row.rank ?? row.position,
     referralCode: row.referral_code,
     createdAt: new Date(row.created_at).toISOString(),
     confirmedReferrals: row.confirmed_referrals,
@@ -65,7 +76,9 @@ export function createNeonWaitlistStore(connectionString: string): WaitlistStore
 
     async findByEmail(email) {
       const rows = (await sql`
-        SELECT * FROM waitlist_entry WHERE lower(email) = ${normalise(email)}
+        SELECT e.*, ${sql.unsafe(RANK)} AS rank
+          FROM waitlist_entry e
+         WHERE lower(e.email) = ${normalise(email)}
       `) as Row[];
       return rows[0] ? toEntry(rows[0]) : null;
     },
@@ -74,7 +87,20 @@ export function createNeonWaitlistStore(connectionString: string): WaitlistStore
       const address = normalise(email);
       const foundingTotal = site.waitlist.foundingTotal;
 
-      // ON CONFLICT DO NOTHING makes a repeat signup a no-op rather than a new place.
+      // Look first. An identity column advances even when ON CONFLICT DO NOTHING discards
+      // the row, so going straight to INSERT would burn a number on every repeat signup
+      // and push later places further and further above the real count.
+      const found = (await sql`
+        SELECT e.*, ${sql.unsafe(RANK)} AS rank
+          FROM waitlist_entry e
+         WHERE lower(e.email) = ${address}
+      `) as Row[];
+
+      if (found.length > 0) {
+        return { entry: toEntry(found[0]), created: false };
+      }
+
+      // ON CONFLICT still guards the race between the lookup above and this insert.
       const inserted = (await sql`
         INSERT INTO waitlist_entry (email, referral_code)
         VALUES (${address}, ${makeReferralCode()})
@@ -83,17 +109,28 @@ export function createNeonWaitlistStore(connectionString: string): WaitlistStore
       `) as Row[];
 
       if (inserted.length === 0) {
-        const existing = (await sql`
-          SELECT * FROM waitlist_entry WHERE lower(email) = ${address}
+        const raced = (await sql`
+          SELECT e.*, ${sql.unsafe(RANK)} AS rank
+            FROM waitlist_entry e
+           WHERE lower(e.email) = ${address}
         `) as Row[];
-        return { entry: toEntry(existing[0]), created: false };
+        return { entry: toEntry(raced[0]), created: false };
       }
 
       const row = inserted[0];
 
-      // The first N places are founding by definition; the flag is set once, from the
-      // position the sequence just handed out.
-      if (row.position <= foundingTotal && !row.founding) {
+      // "First 500 signups" means the first 500 people, so founding is decided by how many
+      // entries exist at or before this one — not by the raw identity value, which can run
+      // ahead of the count if a number is ever discarded.
+      const ranked = (await sql`
+        SELECT count(*)::int AS rank
+          FROM waitlist_entry
+         WHERE position <= ${row.position}
+      `) as { rank: number }[];
+      const rank = ranked[0]?.rank ?? row.position;
+      row.rank = rank;
+
+      if (rank <= foundingTotal && !row.founding) {
         await sql`UPDATE waitlist_entry SET founding = TRUE WHERE position = ${row.position}`;
         row.founding = true;
       }

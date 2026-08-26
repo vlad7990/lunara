@@ -48,3 +48,6 @@ next-env.d.ts
 
 # Playwright MCP scratch output
 .playwright-mcp/
+
+# Local Claude Code settings (per-developer)
+.claude/settings.local.json

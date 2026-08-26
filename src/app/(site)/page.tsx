@@ -22,9 +22,17 @@ import styles from "./home.module.css";
 
 import packPlum from "@public/assets/pack-plum.png";
 
-export default async function HomePage() {
-  const mode = await resolveSiteMode();
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ ref?: string }>;
+}) {
+  const [mode, { ref }] = await Promise.all([resolveSiteMode(), searchParams]);
   const isStore = mode === "store";
+
+  // A referral link is `/?ref=CODE`. Three confirmed referrals promote the referrer into
+  // the Founding 500 without changing anyone else's position.
+  const referredBy = ref?.trim().toUpperCase() || undefined;
 
   const jar = getFormat("CB-JAR-30");
   const sticks = getFormat("CB-STK-30");
@@ -96,7 +104,7 @@ export default async function HomePage() {
                 rejected, and why.
               </p>
 
-              <WaitlistForm id="join" />
+              <WaitlistForm id="join" referredBy={referredBy} />
               <FoundingProgress />
             </>
           )}

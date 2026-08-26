@@ -31,6 +31,7 @@ export function WaitlistForm({
   variant = "inline",
   onPlum = false,
   showMicrocopy = true,
+  referredBy,
   className,
 }: {
   id?: string;
@@ -38,6 +39,8 @@ export function WaitlistForm({
   variant?: "inline" | "stacked";
   onPlum?: boolean;
   showMicrocopy?: boolean;
+  /** The referrer's code, from a `?ref=` link. Three confirmed referrals promote them. */
+  referredBy?: string;
   className?: string;
 }) {
   const [state, formAction] = useActionState(joinWaitlist, initialWaitlistState);
@@ -57,6 +60,8 @@ export function WaitlistForm({
         .filter(Boolean)
         .join(" ")}
     >
+      {referredBy ? <input type="hidden" name="ref" value={referredBy} /> : null}
+
       <div className={styles.row}>
         <label htmlFor={fieldId} className="lu-sr-only">
           Email address
