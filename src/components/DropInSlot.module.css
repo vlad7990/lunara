@@ -1,8 +1,12 @@
 /**
- * A labelled slot for photography that has not been shot yet.
+ * A frame that has not been shot yet.
  *
- * It holds the final aspect ratio so the layout does not move when the frame arrives,
- * and it says out loud what belongs in it. Sharp corners, dashed hairline, no shadow.
+ * It holds the final aspect ratio so the layout does not move when the frame arrives, and
+ * says what belongs in it. Dashed hairline, no shadow, card radius like every other panel.
+ *
+ * The frame name is the quiet part and the status is the loud part, which is the reverse of
+ * how it used to read. A visitor does not need production shorthand; they need to know the
+ * picture is missing on purpose.
  */
 
 .slot {
@@ -14,15 +18,38 @@
   background: var(--lu-chalk-alt);
   border: 1px dashed var(--lu-gold-dashed);
   border-radius: var(--lu-radius-card);
-  color: var(--lu-placeholder);
-  font-size: var(--lu-fs-label);
-  line-height: 1.45;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-weight: 600;
   overflow: hidden;
 }
 
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  max-width: 24ch;
+}
+
+.mark {
+  color: var(--lu-gold-deep);
+  opacity: 0.85;
+  margin-bottom: 1px;
+}
+
+/* The structural micro-label, at the brand's size and tracking. */
+.label {
+  font-size: var(--lu-fs-label);
+  letter-spacing: var(--lu-track-label);
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--lu-gold-deep);
+}
+
+/* The frame name, in sentence case: it describes the shot, it is not a heading. */
 .caption {
-  max-width: 22ch;
+  font-size: var(--lu-fs-sm);
+  line-height: 1.5;
+  color: var(--lu-muted-2);
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
 }

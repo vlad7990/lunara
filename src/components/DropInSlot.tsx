@@ -1,11 +1,18 @@
+import { IconCalendar } from "@/components/Icon";
+
 import styles from "./DropInSlot.module.css";
 
 /**
- * Photography beyond the two supplied pack renders is a drop-in slot: the shoot is pending.
+ * A frame that has not been shot yet.
  *
- * Each slot reserves the final aspect ratio, so nothing shifts when the frame lands, and
- * names what belongs there. Swap a slot for an `<img>` when the file exists — the
- * surrounding layout does not change.
+ * The photography cannot exist before the product does, and this site does not fake the
+ * things it has not got. So the slot reserves the final aspect ratio, so nothing shifts when
+ * the frame lands, and says plainly what is going there and why it is not there yet.
+ *
+ * It used to read "DROP IN / stick macro" in the uppercase treatment the brand reserves for
+ * structural labels, which is production shorthand pointed at a visitor. The frame name is
+ * now sentence case and secondary, and the label above it says something a reader can
+ * actually use. Swap the slot for an `<img>` when the file exists; the layout does not move.
  */
 export function DropInSlot({
   caption,
@@ -14,7 +21,7 @@ export function DropInSlot({
   className,
   style,
 }: {
-  /** What belongs here, e.g. "stick pack carton". Rendered under "Drop in". */
+  /** What belongs here, e.g. "stick macro". Rendered as the frame name. */
   caption: string;
   /** Fixed pixel height, when the design specifies one. */
   height?: number;
@@ -28,12 +35,12 @@ export function DropInSlot({
       className={[styles.slot, className].filter(Boolean).join(" ")}
       style={{ height, aspectRatio, ...style }}
       role="img"
-      aria-label={`Placeholder for photography: ${caption}`}
+      aria-label={`Photography not shot yet: ${caption}. The product is not made yet.`}
     >
-      <span className={styles.caption} aria-hidden="true">
-        Drop in
-        <br />
-        {caption}
+      <span className={styles.inner} aria-hidden="true">
+        <IconCalendar size={15} strokeWidth={1.5} className={styles.mark} />
+        <span className={styles.label}>Not shot yet</span>
+        <span className={styles.caption}>{caption}</span>
       </span>
     </div>
   );
