@@ -35,7 +35,7 @@
   height: auto;
   padding: 16px 34px;
   letter-spacing: 0.18em;
-  border-radius: 0;
+  border-radius: var(--lu-radius-field);
 }
 
 .empty__secondary {
@@ -82,6 +82,8 @@
 /* ------------------------------------------------------------- line item */
 
 .line {
+  border-radius: var(--lu-radius-card);
+  overflow: hidden;
   border: 1px solid var(--lu-hairline);
   background: var(--lu-card);
 }
@@ -123,6 +125,7 @@
 }
 
 .planChip {
+  border-radius: var(--lu-radius-chip);
   display: inline-flex;
   align-self: flex-start;
   align-items: center;
@@ -146,6 +149,7 @@
 }
 
 .stepper {
+  border-radius: var(--lu-radius-chip);
   display: flex;
   align-items: center;
   border: 1px solid var(--lu-hairline-strong);
@@ -288,12 +292,13 @@
 
 .field__input {
   height: 50px;
-  border-radius: 0;
+  border-radius: var(--lu-radius-field);
   font-size: 15px;
 }
 
 /* The acknowledgement gate. The pay button is disabled until it is checked. */
 .ack {
+  border-radius: var(--lu-radius-card);
   padding: 20px 22px;
   background: var(--lu-warn-bg);
   border: 1px solid var(--lu-warn-border);
@@ -335,7 +340,7 @@
   height: 58px;
   width: 100%;
   letter-spacing: 0.2em;
-  border-radius: 0;
+  border-radius: var(--lu-radius-field);
 }
 
 .terms {
@@ -356,6 +361,7 @@
 }
 
 .summary__card {
+  border-radius: var(--lu-radius-card);
   border: 1px solid var(--lu-gold-border);
   background: var(--lu-card);
   padding: 26px 28px;
@@ -425,6 +431,7 @@
 }
 
 .sideCard {
+  border-radius: var(--lu-radius-card);
   border: 1px solid var(--lu-hairline);
   background: var(--lu-chalk);
   padding: 22px 24px;

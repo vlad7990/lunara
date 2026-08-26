@@ -38,6 +38,8 @@ src/
   app/
     layout.tsx           announcement bar → sticky nav → children → cookie bar
     (site)/              every page with the full footer
+      page.tsx           the brand home: hero, a section per product, proof, ask
+      join/              the waitlist conversion page, one job only
     (commerce)/          bag and checkout, condensed footer
     preview/[mode]/      staging-only mode switch
   components/
@@ -55,7 +57,11 @@ src/
     waitlist/            storage adapter — Neon Postgres, file store in dev
     legal.ts             the six policies (design copy, not counsel-reviewed)
   styles/tokens.css      every colour, size and spacing value on the site
+  emails/                the welcome email and its palette
 ```
+
+`content/products.json` is the catalogue: one record per product, and what the home page
+iterates over. Adding a third product is a record plus a page, not a component change.
 
 ## Rules the code enforces
 
@@ -69,8 +75,11 @@ src/
 - **Doses carry their unit and their target flag.** While `product.dosesAreFinal` is `false`,
   `<DoseDisclaimer>` renders wherever a dose appears. Flipping that boolean clears every
   "target dose" caveat sitewide.
-- **Sharp corners.** `border-radius: 0` except form fields and primary buttons (3px) and
-  pills (999px). No shadows on content; elevation is for the cookie bar only.
+- **One radius scale.** Cards 14px, chips 6px, fields and buttons 4px, pills full. Matched
+  to the printed collateral. The Supplement Facts panel is the one documented square
+  exception. No shadows on content; elevation is for the cookie bar only.
+- **One accent per product.** Crave Balance plum, Cycle Ritual burgundy. A product section
+  sets `--accent` once and everything inside reads it, so accents never mix.
 
 ## State
 
@@ -149,3 +158,5 @@ keep it in step with `tokens.css`.
    `/accessibility` rather than silently changed.
 7. **Article bodies** for pieces 01–03, which are marked published but have no markdown in
    `content/articles/`.
+8. **Cycle Ritual commerce.** It has a catalogue record and a product page, but no SKU,
+   price or Supplement Facts panel yet, so it does not appear in `/shop`.

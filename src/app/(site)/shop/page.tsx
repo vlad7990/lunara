@@ -41,14 +41,14 @@ const NOT_SOLD = [
       "Three grams of inositol will not fit in a gummy. Anything that did would be a token dose in a sweet.",
   },
   {
-    term: "No capsules",
+    term: "No format for its own sake",
     reason:
-      "The same dose is nine capsules a day. Nobody takes nine capsules a day for twelve weeks.",
+      "The dose decides the format, not the marketing. Three grams of inositol is nine capsules, so Crave Balance is a powder. Cycle Ritual's whole serving is 725 mg, so it is three capsules. Neither is a range extension.",
   },
   {
-    term: "No second formula",
+    term: "No flavour or strength variants",
     reason:
-      "A “night” or “hormone” variant would be marketing differentiation, not formulation. We would rather have one product we can publish in full.",
+      "One raspberry saffron, one capsule. A “night” or “extra strength” version of either would be differentiation invented in a meeting, not formulation.",
   },
   {
     term: "No merch or loyalty points",
@@ -103,7 +103,7 @@ export default async function ShopPage() {
   );
 
   const notifyCta = (
-    <Link href="/#join" className={`lu-btn ${styles.card__cta}`}>
+    <Link href="/join" className={`lu-btn ${styles.card__cta}`}>
       Notify me
     </Link>
   );
@@ -214,7 +214,7 @@ export default async function ShopPage() {
             className={`lu-btn lu-btn--gold ${styles.card__cta}`}
           />
         ) : (
-          <Link href="/#join" className={`lu-btn lu-btn--gold ${styles.card__cta}`}>
+          <Link href="/join" className={`lu-btn lu-btn--gold ${styles.card__cta}`}>
             Join the list
           </Link>
         )}
@@ -332,8 +332,8 @@ export default async function ShopPage() {
             What we don&rsquo;t sell, and why
           </h2>
           <p className={styles.dontSell__body}>
-            A four-item shop looks like a company that hasn&rsquo;t got going yet. It is actually
-            the harder choice: every additional SKU is a formula we would have to defend line by
+            A short shop looks like a company that hasn&rsquo;t got going yet. It is actually the
+            harder choice: every additional SKU is a formula we would have to defend line by
             line, and a page like this one we would have to write honestly.
           </p>
         </div>

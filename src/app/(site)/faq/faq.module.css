@@ -86,6 +86,7 @@
 }
 
 .sideCard {
+  border-radius: var(--lu-radius-card);
   padding: 24px 26px;
   background: var(--lu-card);
   border: 1px solid var(--lu-hairline);
@@ -107,6 +108,7 @@
 }
 
 .contact {
+  border-radius: var(--lu-radius-card);
   padding: 24px 26px;
   background: var(--lu-plum);
 }

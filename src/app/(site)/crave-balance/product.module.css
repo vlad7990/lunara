@@ -16,6 +16,8 @@
 }
 
 .gallery__hero {
+  border-radius: var(--lu-radius-card);
+  overflow: hidden;
   position: relative;
   width: 100%;
   height: 640px;
@@ -32,6 +34,8 @@
 }
 
 .gallery__thumb {
+  border-radius: var(--lu-radius-card);
+  overflow: hidden;
   position: relative;
   height: 116px;
   border: 1px solid var(--lu-hairline-strong);
@@ -89,6 +93,7 @@
 
 /* Waitlist: the "not on sale yet" panel and the notify form. */
 .notSale {
+  border-radius: var(--lu-radius-card);
   padding: 26px 28px;
   background: var(--lu-plum);
 }
@@ -129,6 +134,7 @@
 
 /* What we publish — four commitments in a 2×2 grid. */
 .publish {
+  border-radius: var(--lu-radius-card);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -188,6 +194,8 @@
 
 /* 1px gaps on a hairline background — no per-step borders. */
 .steps {
+  border-radius: var(--lu-radius-card);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 1px;
@@ -258,6 +266,8 @@
 }
 
 .rationale__grid {
+  border-radius: var(--lu-radius-card);
+  overflow: hidden;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
@@ -322,6 +332,7 @@
 }
 
 .coa__inner {
+  border-radius: var(--lu-radius-card);
   display: grid;
   grid-template-columns: 1fr 380px;
   gap: 44px;

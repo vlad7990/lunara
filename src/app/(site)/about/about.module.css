@@ -60,6 +60,8 @@
 
 /* 1px gold dividers, drawn as grid gaps on a gold-line background. */
 .promises__grid {
+  border-radius: var(--lu-radius-card);
+  overflow: hidden;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1px;
@@ -128,6 +130,7 @@
 }
 
 .pullQuote {
+  border-radius: 0 var(--lu-radius-card) var(--lu-radius-card) 0;
   padding: 26px 28px;
   background: var(--lu-card);
   border-left: 3px solid var(--lu-gold-deep);
@@ -146,6 +149,8 @@
 }
 
 .plan__grid {
+  border-radius: var(--lu-radius-card);
+  overflow: hidden;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1px;

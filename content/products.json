@@ -1,0 +1,89 @@
+{
+  "note": "The catalogue. Crave Balance's full detail stays in product.json, which the label, dose tables and Supplement Facts panel read from. This file is the shorter record every product needs in order to appear on the home page and in navigation.",
+  "products": [
+    {
+      "id": "crave-balance",
+      "slug": "crave-balance",
+      "name": "Crave Balance",
+      "subtitle": "Daily metabolic & craving support",
+      "accent": "plum",
+      "format": "Powder",
+      "unit": "150 g jar or 30 single-serve sticks",
+      "servings": 30,
+      "servingSize": "1 scoop (5 g)",
+      "image": "/assets/pack-plum.png",
+      "lede": "A 40:1 inositol base with L-theanine, chromium and standardized saffron extract. One scoop in water, once a day, with food.",
+      "whyThisFormat": "Three grams of inositol is nine capsules. Nobody takes nine capsules a day for twelve weeks, so it is a powder.",
+      "keyDoses": [
+        { "name": "Myo-inositol", "dose": "3,000 mg" },
+        { "name": "D-chiro-inositol", "dose": "75 mg" },
+        { "name": "L-theanine", "dose": "200 mg" },
+        { "name": "Chromium picolinate", "dose": "200 mcg" },
+        { "name": "Saffron extract", "dose": "28 mg" }
+      ],
+      "dosesAreFinal": false
+    },
+    {
+      "id": "cycle-ritual",
+      "slug": "cycle-ritual",
+      "name": "Cycle Ritual",
+      "subtitle": "Women's cycle support",
+      "accent": "wine",
+      "format": "Capsules",
+      "unit": "90 vegan capsules",
+      "servings": 30,
+      "servingSize": "3 capsules",
+      "image": "/assets/pack-cycle.png",
+      "lede": "Lady's mantle, magnesium bisglycinate, ginger and vitamin B6, for menstrual comfort and the days around it. Three capsules, once a day.",
+      "whyThisFormat": "The whole serving is 725 mg. That fits in three capsules, so there is no reason to make you drink it.",
+      "keyDoses": [
+        { "name": "Lady's mantle 5:1", "dose": "400 mg" },
+        { "name": "Magnesium bisglycinate", "dose": "120 mg" },
+        { "name": "Ginger extract", "dose": "200 mg" },
+        { "name": "Vitamin B6 (P-5-P)", "dose": "5 mg" }
+      ],
+      "ingredients": [
+        {
+          "name": "Lady's mantle 5:1",
+          "dose": 400,
+          "unit": "mg",
+          "qualifier": null,
+          "short": "Traditional cycle support",
+          "long": "A traditional botanical support for the menstrual cycle and menstrual comfort. Standardized at 5:1, dosed at 400 mg.",
+          "evidenceNote": "Traditional use. Clinical data are limited, and we say so rather than implying otherwise."
+        },
+        {
+          "name": "Magnesium bisglycinate",
+          "dose": 120,
+          "unit": "mg",
+          "qualifier": "elemental",
+          "short": "Muscle and nervous system",
+          "long": "120 mg of elemental magnesium, as the bisglycinate. Supports normal muscle and nervous-system function and contributes to relaxation. Bisglycinate because it is the form people tolerate."
+        },
+        {
+          "name": "Ginger extract",
+          "dose": 200,
+          "unit": "mg",
+          "qualifier": "5% gingerols",
+          "short": "Menstrual comfort and digestion",
+          "long": "Standardized to 5% gingerols. Studied for menstrual discomfort, and it supports digestion in the same days."
+        },
+        {
+          "name": "Vitamin B6 (P-5-P)",
+          "dose": 5,
+          "unit": "mg",
+          "qualifier": "as pyridoxal-5-phosphate",
+          "short": "Energy metabolism",
+          "long": "The active P-5-P form. Contributes to normal energy metabolism and to the synthesis of neurotransmitters, and supports the nervous system."
+        }
+      ],
+      "benefits": [
+        "Menstrual comfort",
+        "Relaxation and general wellbeing",
+        "Daily support through the cycle"
+      ],
+      "footnote": "Traditional use of lady's mantle; clinical data are limited.",
+      "dosesAreFinal": true
+    }
+  ]
+}

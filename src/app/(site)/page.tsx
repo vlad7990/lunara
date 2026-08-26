@@ -2,42 +2,48 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { BatchLookup } from "@/components/coa/BatchLookup";
-import { DropInSlot } from "@/components/DropInSlot";
 import { IconDocumentCheck, IconSpark } from "@/components/Icon";
-import { DoseStrip } from "@/components/product/DoseStrip";
-import { FoundingProgress } from "@/components/waitlist/FoundingProgress";
-import { WaitlistForm } from "@/components/waitlist/WaitlistForm";
-import {
-  articles,
-  commerce,
-  formatPrice,
-  getFormat,
-  lots,
-  product,
-  waitlistTiers,
-} from "@/lib/content";
+import { ProductSection } from "@/components/product/ProductSection";
+import { catalogue, site } from "@/lib/content";
 import { resolveSiteMode } from "@/lib/mode";
 
 import styles from "./home.module.css";
 
-import packPlum from "@public/assets/pack-plum.png";
+/**
+ * The brand home.
+ *
+ * Its job is the range and the reason to trust it. The waitlist conversion page lives at
+ * `/join`, where the only decision on offer is whether to sign up.
+ */
 
-export default async function HomePage({
-  searchParams,
-}: {
-  searchParams: Promise<{ ref?: string }>;
-}) {
-  const [mode, { ref }] = await Promise.all([resolveSiteMode(), searchParams]);
-  const isStore = mode === "store";
+/** What we publish, in the order each one costs us something. */
+const PROMISES = [
+  {
+    number: "01",
+    title: "Every milligram, named",
+    body: "On the pack, on the site, and in the first email. No blends, ever, in either formula.",
+  },
+  {
+    number: "02",
+    title: "A report for every lot",
+    body: "Third-party tested and published unedited, at a URL printed on the box. Including lots we chose not to sell.",
+  },
+  {
+    number: "03",
+    title: "A dated change log",
+    body: "If a dose moves you read it here first, with a date, before it reaches a pack.",
+  },
+  {
+    number: "04",
+    title: "No body talk",
+    body: "No before-and-afters, no weight or calorie numbers, no suggestion that your body needs correcting.",
+  },
+];
 
-  // A referral link is `/?ref=CODE`. Three confirmed referrals promote the referrer into
-  // the Founding 500 without changing anyone else's position.
-  const referredBy = ref?.trim().toUpperCase() || undefined;
-
-  const jar = getFormat("CB-JAR-30");
-  const sticks = getFormat("CB-STK-30");
-  const subscription = getFormat("CB-JAR-SUB");
-  const currentLot = lots.find((lot) => lot.status === "shipping");
+export default async function HomePage() {
+  const mode = await resolveSiteMode();
+  // The hero shows the range, so it reads the same catalogue the sections below do.
+  const [lead, second] = catalogue;
 
   return (
     <>
@@ -49,251 +55,128 @@ export default async function HomePage({
             <span className={styles.hero__eyebrow}>Open formula</span>
           </p>
 
-          <h1 className="lu-h1">
-            We published the formula
+          <h1 className={`lu-h1 ${styles.hero__title}`}>
+            Two formulas.
             <br />
-            <em>before we made the product.</em>
+            <em>Every milligram published.</em>
           </h1>
 
-          {isStore ? (
-            <>
-              <p className={styles.hero__lede}>
-                It&rsquo;s made now — and the formula in the jar is the one we published in week
-                one, unchanged. Every milligram on the front of the pack, and a lab report for
-                your lot before it ships.
-              </p>
+          <p className={styles.hero__lede}>
+            No proprietary blends, no undisclosed complexes, and a lab report for every lot at a
+            URL printed on the box.
+          </p>
 
-              <div className={styles.hero__buy}>
-                <Link href="/crave-balance" className="lu-btn">
-                  Shop {product.name}
-                </Link>
-                <p className={styles.hero__price}>
-                  <span className={styles.hero__priceValue}>{formatPrice(jar.price)}</span>
-                  <span className={styles.hero__priceMeta}>
-                    {formatPrice(jar.perServing!)} per serving · {jar.servings} servings
-                  </span>
-                </p>
-              </div>
-
-              <dl className={styles.facts}>
-                <div>
-                  <dt className={styles.facts__label}>In stock</dt>
-                  <dd className={styles.facts__value}>Ships in {commerce.dispatchDays}</dd>
-                </div>
-                <div className={styles.facts__divider} aria-hidden="true" />
-                <div>
-                  <dt className={styles.facts__label}>Current lot</dt>
-                  <dd className={styles.facts__value}>
-                    <Link href={`/lot/${currentLot?.batch}`}>{currentLot?.batch}</Link>
-                  </dd>
-                </div>
-                <div className={styles.facts__divider} aria-hidden="true" />
-                <div>
-                  <dt className={styles.facts__label}>Returns</dt>
-                  <dd className={styles.facts__value}>
-                    {commerce.returnWindowDays} days, opened
-                  </dd>
-                </div>
-              </dl>
-            </>
-          ) : (
-            <>
-              <p className={styles.hero__lede}>
-                Every milligram named. No proprietary blends, no undisclosed complexes. Join the
-                list and watch the formula get built over twelve weeks — what we chose, what we
-                rejected, and why.
-              </p>
-
-              <WaitlistForm id="join" referredBy={referredBy} />
-              <FoundingProgress />
-            </>
-          )}
+          <div className={styles.hero__actions}>
+            <Link href={mode === "store" ? "/shop" : "/join"} className="lu-btn">
+              {mode === "store" ? "Shop the range" : site.navAction.waitlist.label}
+            </Link>
+            <Link href="#formulas" className={styles.hero__secondary}>
+              See both formulas
+            </Link>
+          </div>
         </div>
 
-        <Image
-          src={packPlum}
-          alt={`${product.name} jar, stick packs and carton`}
-          className={styles.hero__pack}
-          width={470}
-          height={620}
-          priority
-          sizes="(max-width: 900px) 100vw, 470px"
-        />
-      </section>
-
-      {/* -------------------------------------------------------- dose strip */}
-      <DoseStrip />
-
-      {/* ------------------------------------------- block 3: mode-dependent */}
-      {isStore ? (
-        <section className={`lu-container ${styles.formats}`} aria-labelledby="formats-title">
-          <div className="lu-sectionHead">
-            <h2 id="formats-title" className="lu-h2">
-              One product. Two ways to take it.
-            </h2>
-            <Link href="/shop" className="lu-moreLink">
-              All formats
-            </Link>
+        <div className={styles.hero__packs}>
+          <div className={`${styles.hero__pack} ${styles["hero__pack--front"]}`}>
+            <Image
+              src={lead.image}
+              alt={`${lead.name} pack`}
+              className={styles.hero__packImage}
+              fill
+              priority
+              sizes="(max-width: 900px) 50vw, 230px"
+            />
           </div>
-
-          <div className={styles.formats__grid}>
-            <article className={styles.format}>
-              <div className={styles.format__figure}>
-                <Image
-                  src={packPlum}
-                  alt={jar.name}
-                  className={styles.format__image}
-                  fill
-                  sizes="(max-width: 640px) 100vw, 400px"
-                />
-              </div>
-              <div className={styles.format__body}>
-                <h3 className={styles.format__name}>{jar.name}</h3>
-                <p className={styles.format__note}>
-                  {jar.servings} servings, scoop included. {jar.note}
-                </p>
-                <div className={styles.format__foot}>
-                  <span className={styles.format__price}>{formatPrice(jar.price)}</span>
-                  <Link href="/crave-balance" className="lu-moreLink">
-                    Add to bag
-                  </Link>
-                </div>
-              </div>
-            </article>
-
-            <article className={styles.format}>
-              <DropInSlot caption="stick pack carton" className={styles.format__slot} />
-              <div className={styles.format__body}>
-                <h3 className={styles.format__name}>{sticks.name}</h3>
-                <p className={styles.format__note}>
-                  {sticks.unit}. For the bag, the desk, the trip.
-                </p>
-                <div className={styles.format__foot}>
-                  <span className={styles.format__price}>{formatPrice(sticks.price)}</span>
-                  <Link href="/crave-balance" className="lu-moreLink">
-                    Add to bag
-                  </Link>
-                </div>
-              </div>
-            </article>
-
-            <article className={styles.subscribe}>
-              <div className={styles.subscribe__top}>
-                <p className="lu-label lu-label--wide lu-label--onPlum">Subscribe</p>
-                <h3 className={styles.subscribe__title}>
-                  Save {subscription.discountPct}%, and never think about it again
-                </h3>
-                <p className={styles.subscribe__body}>
-                  Every {commerce.subscription.intervalDays} days.{" "}
-                  {commerce.subscription.cancelPolicy}
-                </p>
-              </div>
-              <p className={styles.subscribe__price}>
-                <span className={styles.subscribe__priceValue}>
-                  {formatPrice(subscription.price)}
-                </span>
-                <span className={styles.subscribe__priceMeta}>
-                  per {subscription.intervalDays} days
-                </span>
-              </p>
-            </article>
-          </div>
-        </section>
-      ) : (
-        <section className={`lu-container ${styles.tiers}`} aria-labelledby="tiers-title">
-          <div className="lu-sectionHead">
-            <h2 id="tiers-title" className="lu-h2">
-              Where you land on the list
-            </h2>
-            <p className="lu-sectionHead__aside">Position is set the moment you sign up.</p>
-          </div>
-
-          <div className={styles.tiers__grid}>
-            {waitlistTiers.map((tier) => (
-              <article
-                key={tier.id}
-                className={[
-                  styles.tier,
-                  tier.id === "founding" ? styles["tier--founding"] : "",
-                  tier.id === "referral" ? styles["tier--referral"] : "",
-                ]
-                  .filter(Boolean)
-                  .join(" ")}
-              >
-                <div className={styles.tier__head}>
-                  <h3 className={styles.tier__name}>{tier.name}</h3>
-                  <p className={styles.tier__offer}>{tier.offer}</p>
-                </div>
-                <p className={styles.tier__trigger}>{tier.trigger}</p>
-                <hr
-                  className={tier.id === "referral" ? "lu-rule lu-rule--onPlum" : "lu-rule"}
-                />
-                <ul className={`lu-bullets ${styles.tier__benefits}`}>
-                  {tier.benefits.map((benefit) => (
-                    <li key={benefit}>{benefit}</li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* ----------------------------------------------- open formula series */}
-      <section className="lu-band" aria-labelledby="series-title">
-        <div className={`lu-container ${styles.series}`}>
-          <div className="lu-sectionHead">
-            <div>
-              <p className="lu-label lu-label--wide" style={{ marginBottom: "10px" }}>
-                The open formula series
-              </p>
-              <h2 id="series-title" className="lu-h2">
-                Six decisions, published in full
-              </h2>
-            </div>
-            <Link href="/open-formula" className="lu-moreLink">
-              Read the series
-            </Link>
-          </div>
-
-          <div className={styles.series__grid}>
-            {articles.map((article) => (
-              <Link
-                key={article.slug}
-                /* Unpublished pieces point at the index rather than at a page that
-                   does not exist yet. The week they land is on the card. */
-                href={article.published ? `/open-formula/${article.slug}` : "/open-formula"}
-                className={styles.series__cell}
-              >
-                <p className={styles.series__number}>{article.number}</p>
-                <p className={styles.series__title}>{article.title}</p>
-                {article.published ? null : (
-                  <p className={styles.series__pending}>Week {article.week}</p>
-                )}
-              </Link>
-            ))}
+          <div className={`${styles.hero__pack} ${styles["hero__pack--back"]}`}>
+            <Image
+              src={second.image}
+              alt={`${second.name} pack`}
+              className={styles.hero__packImage}
+              fill
+              sizes="(max-width: 900px) 50vw, 230px"
+            />
           </div>
         </div>
       </section>
 
-      {/* ------------------------------------------------------- COA promise */}
-      <section className={`lu-container ${styles.coa}`} aria-labelledby="coa-title">
-        <div className={styles.coa__card}>
-          <div className={styles.coa__copy}>
+      {/* -------------------------------------------------- one per product */}
+      <div id="formulas">
+        {catalogue.map((entry, index) => (
+          <ProductSection key={entry.id} product={entry} index={index} mode={mode} />
+        ))}
+      </div>
+
+      {/* --------------------------------------------------- what we publish */}
+      <section className="lu-band lu-band--plum" aria-labelledby="publish-title">
+        <div className={`lu-container ${styles.publish}`}>
+          <div className={styles.publish__head}>
+            <h2 id="publish-title" className={styles.publish__title}>
+              Most of this category is built on not telling you.
+            </h2>
+            <p className={styles.publish__lede}>
+              Proprietary blends exist so you cannot check the dose. We started from the
+              opposite end: print everything, then live with it.
+            </p>
+          </div>
+
+          <ol className={styles.publish__grid}>
+            {PROMISES.map((promise) => (
+              <li key={promise.number} className={styles.promise}>
+                <p className={styles.promise__number}>{promise.number}</p>
+                <h3 className={styles.promise__title}>{promise.title}</h3>
+                <p className={styles.promise__body}>{promise.body}</p>
+              </li>
+            ))}
+          </ol>
+
+          <div className={styles.publish__foot}>
+            <Link href="/open-formula" className={styles.publish__link}>
+              Read the open formula series
+            </Link>
+            <Link href="/about" className={styles.publish__link}>
+              About LUNARA
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------ proof and ask */}
+      <div className={`lu-container ${styles.close}`}>
+        <section className={styles.coa} aria-labelledby="coa-title">
+          <div className={styles.coa__top}>
             <IconDocumentCheck size={40} className={styles.coa__icon} />
             <div>
               <h2 id="coa-title" className={styles.coa__title}>
                 A lab report for every lot, at a URL printed on the box
               </h2>
               <p className={styles.coa__body}>
-                Identity, potency, heavy metals, microbials — for the powder in your hand, not a
-                sample from a good week. Almost nobody in this category does it.
+                Identity, potency, heavy metals, microbials. For the powder in your hand, not a
+                sample from a good week.
               </p>
             </div>
           </div>
           <BatchLookup />
-        </div>
-      </section>
+        </section>
+
+        <section className={styles.join} aria-labelledby="join-title">
+          <h2 id="join-title" className={styles.join__title}>
+            {mode === "store"
+              ? "One formula in two formats, and one in capsules."
+              : "The formulas are public. Nothing is for sale yet."}
+          </h2>
+          <p className={styles.join__body}>
+            {mode === "store"
+              ? "Free US shipping over $50, and a sixty-day return on an opened jar."
+              : "The Founding 500 get 30% off and 48 hours before general access. Nothing is charged now."}
+          </p>
+          <Link
+            href={mode === "store" ? "/shop" : "/join"}
+            className={`lu-btn ${styles.join__cta}`}
+          >
+            {mode === "store" ? "Shop the range" : site.navAction.waitlist.label}
+          </Link>
+        </section>
+      </div>
     </>
   );
 }

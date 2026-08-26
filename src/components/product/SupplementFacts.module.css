@@ -26,9 +26,12 @@
   font-weight: 700;
 }
 
+/* The one square corner left on the site, and deliberately so: this panel is a
+   reproduction of a printed regulatory artifact, not a card in our design system. */
 .panel {
   background: var(--lu-panel);
   border: 2px solid var(--lu-ink);
+  border-radius: 0;
   padding: 18px 20px;
 }
 

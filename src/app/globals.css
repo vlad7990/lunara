@@ -245,7 +245,7 @@ blockquote {
   height: auto;
   padding: 11px 20px;
   font-size: var(--lu-fs-label);
-  border-radius: 0;
+  border-radius: var(--lu-radius-field);
 }
 
 .lu-btn--gold {
@@ -262,7 +262,7 @@ blockquote {
   background: transparent;
   border: 1px solid var(--lu-gold-line-chip);
   color: var(--lu-gold);
-  border-radius: 0;
+  border-radius: var(--lu-radius-field);
 }
 
 .lu-btn--outlineOnPlum:hover {

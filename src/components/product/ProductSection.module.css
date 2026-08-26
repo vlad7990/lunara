@@ -1,0 +1,255 @@
+/**
+ * One product, one section, one accent.
+ *
+ * The accent is set once on the section as `--accent` and everything inside reads it, so a
+ * Cycle Ritual section can never borrow Crave Balance's plum. Layout alternates side by side
+ * so two products in a row do not read as the same slab twice.
+ */
+
+.section {
+  padding-top: 84px;
+  padding-bottom: 84px;
+}
+
+.section--plum {
+  --accent: var(--lu-plum);
+  --accent-mid: var(--lu-plum-mid);
+  --accent-hover: var(--lu-plum-hover);
+}
+
+.section--wine {
+  --accent: var(--lu-wine);
+  --accent-mid: var(--lu-wine-mid);
+  --accent-hover: var(--lu-wine-hover);
+}
+
+.section--green {
+  --accent: var(--lu-green);
+  --accent-mid: var(--lu-green-mid);
+  --accent-hover: var(--lu-green-mid);
+}
+
+/* The warmer ground the packshots were photographed on. */
+.section--tinted {
+  background: var(--lu-blush);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 520px 1fr;
+  gap: 72px;
+  align-items: center;
+}
+
+/* Even-indexed products put the pack on the right, odd on the left. */
+.grid--reversed {
+  grid-template-columns: 1fr 520px;
+}
+
+.grid--reversed .figure {
+  order: 2;
+}
+
+.figure {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  max-height: 620px;
+  border-radius: var(--lu-radius-card);
+  overflow: hidden;
+  background: var(--lu-blush);
+}
+
+.image {
+  object-fit: cover;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 560px;
+}
+
+.format {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 15px;
+  border-radius: var(--lu-radius-pill);
+  background: var(--lu-card);
+  border: 1px solid var(--lu-gold-border);
+  font-size: var(--lu-fs-label);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--lu-gold-deep);
+  font-weight: 700;
+}
+
+.name {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: clamp(34px, 4.5vw, 46px);
+  line-height: 1.05;
+  color: var(--accent);
+}
+
+.subtitle {
+  font-size: var(--lu-fs-legal);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lu-muted-2);
+  font-weight: 600;
+  margin-top: -12px;
+}
+
+.lede {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--lu-body-2);
+}
+
+/* ------------------------------------------------------------- dose card */
+
+/*
+ * The dose card from the printed collateral: an accent header bar, then one row per
+ * ingredient with a dotted rule between. Name in the sans, dose in the display serif.
+ */
+.doses {
+  border: 1px solid var(--lu-gold-border);
+  border-radius: var(--lu-radius-card);
+  background: var(--lu-card);
+  overflow: hidden;
+}
+
+.doses__head {
+  padding: 12px 22px;
+  background: var(--accent);
+  font-size: var(--lu-fs-label);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--lu-gold);
+  font-weight: 700;
+}
+
+.doses__list {
+  margin: 0;
+  padding: 4px 22px 12px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+}
+
+.doses__name {
+  padding: 11px 0;
+  border-bottom: 1px dotted var(--lu-hairline-strong);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-mid);
+  font-weight: 700;
+}
+
+.doses__value {
+  padding: 11px 0;
+  border-bottom: 1px dotted var(--lu-hairline-strong);
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: 22px;
+  color: var(--lu-ink);
+  text-align: right;
+}
+
+.doses__list > :nth-last-child(-n + 2) {
+  border-bottom: none;
+}
+
+.footnote {
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--lu-muted-2);
+}
+
+/* ------------------------------------------------------- format rationale */
+
+.why {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 18px 20px;
+  border-radius: var(--lu-radius-card);
+  background: var(--lu-gold-wash);
+  border: 1px solid var(--lu-gold-border);
+}
+
+.why__icon {
+  color: var(--lu-gold-deep);
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+.why__text {
+  font-size: var(--lu-fs-sm);
+  line-height: 1.6;
+  color: var(--lu-warn-body);
+}
+
+/* --------------------------------------------------------------- actions */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.cta {
+  background: var(--accent);
+}
+
+.cta:hover {
+  background: var(--accent-hover);
+}
+
+.secondary {
+  font-size: var(--lu-fs-legal);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* ------------------------------------------------------------ responsive */
+
+@media (max-width: 1100px) {
+  .grid,
+  .grid--reversed {
+    grid-template-columns: 420px 1fr;
+    gap: 44px;
+  }
+
+  .grid--reversed {
+    grid-template-columns: 1fr 420px;
+  }
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .grid,
+  .grid--reversed {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  /* Pack first on every product once stacked: alternating order reads as a bug. */
+  .grid--reversed .figure {
+    order: 0;
+  }
+
+  .figure {
+    max-width: 420px;
+  }
+}

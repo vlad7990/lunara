@@ -34,7 +34,7 @@ export default async function BagPage() {
           manufacturing queue. The Founding 500 get 48 hours before anyone else can add this to a
           bag.
         </p>
-        <Link href="/#join" className={`lu-btn ${styles.empty__cta}`}>
+        <Link href="/join" className={`lu-btn ${styles.empty__cta}`}>
           Join the list
         </Link>
         <Link href="/crave-balance" className={styles.empty__secondary}>

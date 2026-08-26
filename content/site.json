@@ -25,6 +25,10 @@
       "route": "/crave-balance"
     },
     {
+      "label": "Cycle Ritual",
+      "route": "/cycle-ritual"
+    },
+    {
       "label": "Open formula",
       "route": "/open-formula"
     },
@@ -44,7 +48,7 @@
   "navAction": {
     "waitlist": {
       "label": "Join the list",
-      "route": "/#join"
+      "route": "/join"
     },
     "store": {
       "label": "Bag · {count}",
@@ -64,7 +68,11 @@
     "any:/faq": "If the honest answer is \"ask your doctor\", that is the answer we give.",
     "any:/about": "A supplement company that publishes its own change log.",
     "waitlist:/bag": "Nothing is on sale yet. The bag opens when the first production run lands.",
-    "store:/bag": "Free US shipping over $50 · 60-day return on an opened jar"
+    "store:/bag": "Free US shipping over $50 · 60-day return on an opened jar",
+    "waitlist:/cycle-ritual": "Not for sale yet - this is the label we intend to print. Founding 500 still open.",
+    "store:/cycle-ritual": "Free US shipping over $50 - 90 vegan capsules, 30 days",
+    "waitlist:/join": "The formula is published. The product isn't made yet. Founding 500 still open.",
+    "store:/join": "Free US shipping over $50 · every lot's lab report published at lunara.co/lot"
   },
   "waitlist": {
     "foundingTotal": 500,
@@ -140,6 +148,7 @@
       "links": [
         "Shop",
         "Crave Balance",
+        "Cycle Ritual",
         "Open formula",
         "Batch COAs",
         "FAQ"

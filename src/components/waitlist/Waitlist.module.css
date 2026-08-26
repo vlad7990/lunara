@@ -96,7 +96,7 @@
   background: var(--lu-card);
   border: 1px solid var(--lu-hairline);
   /* The one card in the design with a radius — it reads as a chip, not a panel. */
-  border-radius: 5px;
+  border-radius: var(--lu-radius-card);
 }
 
 .progress__head {

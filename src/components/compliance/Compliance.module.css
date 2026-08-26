@@ -29,6 +29,7 @@
 
 /* The full warning set. Used by the product page, the FAQ sidebar and checkout. */
 .warnings {
+  border-radius: var(--lu-radius-card);
   display: flex;
   flex-direction: column;
   gap: 0;

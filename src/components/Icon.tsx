@@ -186,6 +186,29 @@ export function IconClock(props: IconProps) {
   );
 }
 
+/** Lady's mantle — the scalloped leaf on the Cycle Ritual pack. */
+export function IconMantle(props: IconProps) {
+  return (
+    <Svg strokeWidth={1.4} {...props}>
+      <path d="M12 21v-6.4" />
+      <path d="M12 14.6c-3.4 0-5.6-2-5.6-4.6 0-1 .5-1.9 1.3-2.4-.3-1.1.1-2.3 1-3 .9.7 1.3 1.9 1 3 .8.5 1.3 1.4 1.3 2.4" />
+      <path d="M12 14.6c3.4 0 5.6-2 5.6-4.6 0-1-.5-1.9-1.3-2.4.3-1.1-.1-2.3-1-3-.9.7-1.3 1.9-1 3-.8.5-1.3 1.4-1.3 2.4" />
+      <path d="M9.2 18.2c-1.6 0-2.6-1-2.6-2.2M14.8 18.2c1.6 0 2.6-1 2.6-2.2" />
+    </Svg>
+  );
+}
+
+/** Ginger rhizome. */
+export function IconGinger(props: IconProps) {
+  return (
+    <Svg strokeWidth={1.4} {...props}>
+      <path d="M8.4 16.6c-1.9-.5-3-2-2.6-3.6.3-1.3 1.6-2 3-1.8-.6-1.6.1-3.3 1.6-3.9 1.4-.6 3 .1 3.7 1.5 1.1-1 2.7-1 3.7 0 1 1 1 2.7-.1 3.7 1.3.5 2 1.9 1.6 3.2-.5 1.5-2.2 2.3-3.8 1.7" />
+      <path d="M15.5 17.4c0 1.6-1.6 2.8-3.5 2.8s-3.5-1.2-3.5-2.8" />
+      <path d="M11 12.6h2M12 15.2h2.4" />
+    </Svg>
+  );
+}
+
 export function IconLeaf(props: IconProps) {
   return (
     <Svg strokeWidth={1.5} {...props}>

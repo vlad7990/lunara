@@ -35,6 +35,7 @@
 }
 
 .plan {
+  border-radius: var(--lu-radius-chip);
   flex: 1;
   padding: 16px 18px;
   border: 1px solid var(--lu-hairline-strong);
@@ -44,7 +45,7 @@
   gap: 4px;
   text-align: left;
   cursor: pointer;
-  border-radius: 0;
+  border-radius: var(--lu-radius-field);
   transition: border-color var(--lu-transition), background-color var(--lu-transition);
 }
 
@@ -74,6 +75,7 @@
 }
 
 .stepper {
+  border-radius: var(--lu-radius-chip);
   display: flex;
   align-items: center;
   border: 1px solid var(--lu-hairline-strong);
@@ -115,7 +117,7 @@
   flex: 1;
   height: 56px;
   letter-spacing: 0.18em;
-  border-radius: 0;
+  border-radius: var(--lu-radius-field);
 }
 
 .terms {

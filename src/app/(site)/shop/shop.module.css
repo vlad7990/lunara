@@ -23,6 +23,7 @@
 }
 
 .sameCard {
+  border-radius: var(--lu-radius-card);
   padding: 24px 26px;
   background: var(--lu-card);
   border: 1px solid var(--lu-gold-border);
@@ -71,7 +72,7 @@
   color: var(--lu-ink);
   font-weight: 700;
   cursor: pointer;
-  border-radius: 0;
+  border-radius: var(--lu-radius-field);
   transition: border-color var(--lu-transition), background-color var(--lu-transition);
 }
 
@@ -97,6 +98,8 @@
 }
 
 .card {
+  border-radius: var(--lu-radius-card);
+  overflow: hidden;
   background: var(--lu-card);
   border: 1px solid var(--lu-hairline);
   display: flex;
@@ -120,6 +123,7 @@
 }
 
 .card__badge {
+  border-radius: var(--lu-radius-chip);
   position: absolute;
   top: 18px;
   left: 18px;
@@ -205,6 +209,7 @@
 
 /* The founding-price chip that sits above every waitlist CTA. */
 .foundingChip {
+  border-radius: var(--lu-radius-chip);
   padding: 12px 14px;
   background: var(--lu-gold-wash);
   border: 1px solid var(--lu-gold-border);
@@ -222,12 +227,13 @@
   width: 100%;
   letter-spacing: 0.18em;
   font-size: var(--lu-fs-legal);
-  border-radius: 0;
+  border-radius: var(--lu-radius-field);
 }
 
 /* ---------------------------------------------- subscription & bundle cards */
 
 .offer {
+  border-radius: var(--lu-radius-card);
   padding: 36px 34px 34px;
   display: flex;
   flex-direction: column;
@@ -360,6 +366,8 @@
 }
 
 .compare__wrap {
+  border-radius: var(--lu-radius-card);
+  overflow: hidden;
   border: 1px solid var(--lu-hairline-strong);
   background: var(--lu-card);
   overflow-x: auto;
@@ -473,6 +481,7 @@
 }
 
 .coaBand__inner {
+  border-radius: var(--lu-radius-card);
   display: grid;
   grid-template-columns: 1fr 380px;
   gap: 44px;
@@ -501,7 +510,7 @@
   height: 50px;
   letter-spacing: 0.16em;
   font-size: var(--lu-fs-legal);
-  border-radius: 0;
+  border-radius: var(--lu-radius-field);
 }
 
 /* ------------------------------------------------------------ responsive */

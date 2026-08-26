@@ -49,11 +49,20 @@ the product does, stop and flag it instead.
 
 ## Visual rules that are easy to get wrong
 
-- **Sharp corners.** `border-radius: 0` on cards, bands, tables, images. The only exceptions
-  are form fields and primary buttons at `3px`, and pills at `999px`.
+- **One radius scale, applied everywhere.** Panels and cards `14px`
+  (`--lu-radius-card`), badges and small controls `6px` (`--lu-radius-chip`), fields and
+  buttons `4px` (`--lu-radius-field`), pills `999px`. Matched to the printed product
+  collateral, which rounds its cards at 14-18px. Mixing scales is the one thing that always
+  reads as broken, so there is exactly one documented exception: the Supplement Facts panel
+  stays square, because it reproduces a printed regulatory artifact rather than a card.
 - **No shadows on content.** Elevation is only for genuinely floating surfaces (cookie bar,
   modals). Cards sit flat on the page with a 1px hairline.
 - **No gradients** except the two-stop gold on the waitlist progress bar.
+- **Surfaces are warm.** The page sits in the same cream-blush family as the product
+  photography (`--lu-chalk`, `--lu-chalk-alt`, `--lu-blush`), not the cooler original chalk.
+- **One accent per product, never mixed inside a section.** Crave Balance is plum
+  (`--lu-plum`), its alternative colourway forest green (`--lu-green`), Cycle Ritual is
+  burgundy (`--lu-wine`). A Cycle Ritual section does not borrow Crave's plum.
 - **Uppercase micro-labels** are 10–11px, `letter-spacing: 0.16–0.24em`, weight 600–700,
   in `--lu-gold-deep` on light or `--lu-gold` on plum. They are structural, not decorative.
 - **Display serif for numbers.** Doses and prices are Cormorant Garamond; labels are

@@ -30,6 +30,7 @@
 }
 
 .ruleCard {
+  border-radius: var(--lu-radius-card);
   padding: 26px 28px;
   background: var(--lu-card);
   border: 1px solid var(--lu-gold-border);
@@ -63,6 +64,7 @@
 }
 
 .entry {
+  border-radius: var(--lu-radius-card);
   background: var(--lu-card);
   border: 1px solid var(--lu-hairline);
   padding: 30px 28px 32px;
@@ -269,6 +271,8 @@
 /* ---------------------------------------------------------- decision log */
 
 .decision {
+  border-radius: var(--lu-radius-card);
+  overflow: hidden;
   margin-top: 18px;
   border: 1px solid var(--lu-gold-border);
   background: var(--lu-gold-tint);
@@ -324,6 +328,7 @@
 }
 
 .sideCta {
+  border-radius: var(--lu-radius-card);
   border: 1px solid var(--lu-gold-border);
   background: var(--lu-gold-tint);
   padding: 26px;
@@ -351,10 +356,11 @@
   width: 100%;
   font-size: var(--lu-fs-legal);
   letter-spacing: 0.16em;
-  border-radius: 0;
+  border-radius: var(--lu-radius-field);
 }
 
 .changeLog {
+  border-radius: var(--lu-radius-card);
   border: 1px solid var(--lu-hairline);
   background: var(--lu-chalk);
   padding: 24px;
@@ -401,12 +407,14 @@
 }
 
 .sideSlot {
+  border-radius: var(--lu-radius-card);
   aspect-ratio: 4 / 5;
 }
 
 /* ----------------------------------------------------------- pending body */
 
 .pending {
+  border-radius: 0 var(--lu-radius-card) var(--lu-radius-card) 0;
   max-width: 680px;
   padding: 32px 34px;
   background: var(--lu-chalk);

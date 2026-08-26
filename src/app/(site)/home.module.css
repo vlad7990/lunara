@@ -2,17 +2,19 @@
 
 .hero {
   display: grid;
-  grid-template-columns: 1fr 470px;
-  gap: 68px;
+  grid-template-columns: 1fr 460px;
+  gap: 64px;
   align-items: center;
-  padding-top: 84px;
-  padding-bottom: 76px;
+  /* Capped: more top padding and the hero floats halfway down the viewport. */
+  padding-top: 72px;
+  padding-bottom: 72px;
 }
 
 .hero__copy {
   display: flex;
   flex-direction: column;
-  gap: 26px;
+  gap: 24px;
+  align-items: flex-start;
 }
 
 .hero__spark {
@@ -27,363 +29,182 @@
   font-weight: 700;
 }
 
+.hero__title {
+  font-size: clamp(38px, 5.2vw, 58px);
+}
+
 .hero__lede {
   font-size: 17px;
   line-height: 1.65;
   color: var(--lu-body-2);
-  max-width: 460px;
+  max-width: 480px;
   text-wrap: pretty;
 }
 
-.hero__pack {
-  width: 470px;
-  height: 620px;
-  object-fit: cover;
-  display: block;
-  justify-self: end;
-}
-
-/* Store mode: CTA, price, and the stock/lot/returns strip. */
-.hero__buy {
+.hero__actions {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
-.hero__price {
-  display: flex;
-  flex-direction: column;
-}
-
-.hero__priceValue {
-  font-family: var(--lu-font-display);
-  font-weight: 400;
-  font-size: 26px;
-  color: var(--lu-ink);
-}
-
-.hero__priceMeta {
-  font-size: 12px;
-  color: var(--lu-muted-2);
-}
-
-.facts {
-  display: flex;
-  gap: 26px;
-  max-width: 470px;
-  padding: 20px 22px;
-  background: var(--lu-card);
-  border: 1px solid var(--lu-hairline);
-  border-radius: 5px;
-}
-
-.facts__divider {
-  width: 1px;
-  background: var(--lu-rule);
-  flex: 0 0 auto;
-}
-
-.facts__label {
-  font-size: var(--lu-fs-label);
+.hero__secondary {
+  font-size: var(--lu-fs-legal);
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--lu-gold-deep);
   font-weight: 700;
-  margin-bottom: 6px;
 }
 
-.facts__value {
-  font-size: var(--lu-fs-sm);
-  color: var(--lu-ink);
-}
-
-/* ------------------------------------------------------- waitlist tiers */
-
-.tiers {
-  padding-top: 80px;
-  padding-bottom: 72px;
-}
-
-.tiers__grid {
+/* Two packs, side by side. The hero shows the range, not one product. */
+.hero__packs {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-
-.tier {
-  padding: 28px 26px 30px;
-  background: var(--lu-card);
-  border: 1px solid var(--lu-hairline);
-  border-top: 3px solid var(--lu-hairline-strong);
-  display: flex;
-  flex-direction: column;
+  grid-template-columns: 1fr 1fr;
   gap: 14px;
+  align-items: end;
+  justify-self: end;
+  width: 100%;
+  max-width: 460px;
 }
 
-.tier--founding {
-  border: 1px solid var(--lu-gold-border);
-  border-top: 3px solid var(--lu-gold-deep);
-}
-
-.tier--referral {
-  background: var(--lu-plum);
-  border: none;
-  border-top: 3px solid var(--lu-gold);
-}
-
-.tier__head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.tier__name {
-  font-family: var(--lu-font-display);
-  font-weight: 400;
-  font-size: 26px;
-  color: var(--lu-ink);
-}
-
-.tier--founding .tier__name {
-  color: var(--lu-plum-mid);
-}
-
-.tier--referral .tier__name {
-  color: var(--lu-cream-2);
-}
-
-.tier__offer {
-  font-size: var(--lu-fs-legal);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: var(--lu-muted-2);
-  white-space: nowrap;
-}
-
-.tier--founding .tier__offer {
-  color: var(--lu-gold-deep);
-}
-
-.tier--referral .tier__offer {
-  color: var(--lu-gold);
-}
-
-.tier__trigger {
-  font-size: var(--lu-fs-legal);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--lu-muted-2);
-  font-weight: 600;
-}
-
-.tier--referral .tier__trigger {
-  color: var(--lu-cream-quiet);
-}
-
-.tier--referral .tier__benefits {
-  color: var(--lu-cream-strong);
-}
-
-/* --------------------------------------------------- store: the formats */
-
-.formats {
-  padding-top: 80px;
-  padding-bottom: 72px;
-}
-
-.formats__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.format {
-  background: var(--lu-card);
-  border: 1px solid var(--lu-hairline);
-  display: flex;
-  flex-direction: column;
-  transition: border-color var(--lu-transition);
-}
-
-.format:hover {
-  border-color: var(--lu-gold);
-}
-
-.format__figure {
+.hero__pack {
   position: relative;
-  height: 300px;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  border-radius: var(--lu-radius-card);
+  overflow: hidden;
+  background: var(--lu-blush);
 }
 
-/* Cropped fill: the render is 2:3 and the card slot is landscape. */
-.format__image {
+/* The lead product sits a little taller, so the pair has a subject. */
+.hero__pack--front {
+  margin-bottom: 0;
+}
+
+.hero__pack--back {
+  margin-bottom: 34px;
+}
+
+.hero__packImage {
   object-fit: cover;
-  object-position: 44% 58%;
 }
 
-.format__slot {
-  height: 300px;
-  border: none;
-  border-bottom: 1px dashed var(--lu-gold-dashed);
+/* ------------------------------------------------------- what we publish */
+
+/*
+ * Full-bleed accent band. Deliberately a different layout family from the product
+ * splits above and below it, so the page does not read as four alternating slabs.
+ */
+.publish {
+  padding-top: var(--lu-section);
+  padding-bottom: var(--lu-section);
 }
 
-.format__body {
-  padding: 24px 26px 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  flex: 1;
+.publish__head {
+  max-width: 760px;
+  margin-bottom: 44px;
 }
 
-.format__name {
+.publish__title {
   font-family: var(--lu-font-display);
   font-weight: 400;
-  font-size: 26px;
-  color: var(--lu-ink);
-}
-
-.format__note {
-  font-size: var(--lu-fs-sm);
-  line-height: 1.55;
-  color: var(--lu-muted);
-}
-
-.format__foot {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  padding-top: 8px;
-  margin-top: auto;
-}
-
-.format__price {
-  font-family: var(--lu-font-display);
-  font-weight: 400;
-  font-size: 24px;
-  color: var(--lu-ink);
-}
-
-.subscribe {
-  background: var(--lu-plum);
-  padding: 34px 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 24px;
-}
-
-.subscribe__top {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.subscribe__title {
-  font-family: var(--lu-font-display);
-  font-weight: 400;
-  font-size: 30px;
+  font-size: clamp(30px, 4vw, 40px);
   line-height: 1.15;
   color: var(--lu-cream);
+  margin-bottom: 14px;
 }
 
-.subscribe__body {
-  font-size: var(--lu-fs-sm);
-  line-height: 1.6;
+.publish__lede {
+  font-size: 17px;
+  line-height: 1.65;
   color: var(--lu-cream-dim);
 }
 
-.subscribe__price {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-}
-
-.subscribe__priceValue {
-  font-family: var(--lu-font-display);
-  font-weight: 400;
-  font-size: 30px;
-  color: var(--lu-cream);
-}
-
-.subscribe__priceMeta {
-  font-size: 12px;
-  color: var(--lu-cream-faint);
-}
-
-/* --------------------------------------------------- open formula series */
-
-.series {
-  padding-top: var(--lu-section);
-  padding-bottom: var(--lu-section);
-}
-
-/* 1px gaps on a hairline background draw the dividers — no borders per cell. */
-.series__grid {
+.publish__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1px;
-  background: var(--lu-hairline-strong);
-  border: 1px solid var(--lu-hairline-strong);
+  background: var(--lu-gold-line-divider);
+  border-radius: var(--lu-radius-card);
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.series__cell {
-  background: var(--lu-chalk);
-  padding: 24px 26px;
-  display: block;
-  transition: background-color var(--lu-transition);
+.promise {
+  background: var(--lu-plum);
+  padding: 26px 24px 28px;
 }
 
-.series__cell:hover {
-  background: var(--lu-card);
-}
-
-.series__number {
+.promise__number {
   font-family: var(--lu-font-display);
   font-weight: 400;
-  font-size: 22px;
-  color: var(--lu-gold-deep);
+  font-size: 26px;
+  color: var(--lu-gold);
+  margin-bottom: 12px;
+}
+
+.promise__title {
+  font-size: var(--lu-fs-body-lg);
+  line-height: 1.4;
+  color: var(--lu-cream);
   margin-bottom: 8px;
 }
 
-.series__title {
-  font-size: var(--lu-fs-body);
-  line-height: 1.45;
-  color: var(--lu-ink);
-  font-weight: 500;
+.promise__body {
+  font-size: var(--lu-fs-sm);
+  line-height: 1.65;
+  color: var(--lu-cream-dim);
 }
 
-.series__pending {
+.publish__foot {
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.publish__link {
   font-size: var(--lu-fs-legal);
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--lu-muted-2);
-  font-weight: 600;
-  margin-top: 8px;
+  color: var(--lu-gold);
+  font-weight: 700;
 }
 
-/* ------------------------------------------------------------ COA promise */
+.publish__link:hover {
+  color: var(--lu-cream-2);
+}
 
-.coa {
+/* ------------------------------------------------------------ COA + join */
+
+/*
+ * The last two blocks share a row: the lab-report promise carries the proof, the join
+ * card carries the ask. Asymmetric split so it does not read as two equal cards.
+ */
+.close {
   padding-top: var(--lu-section);
   padding-bottom: var(--lu-section);
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 24px;
+  align-items: stretch;
 }
 
-.coa__card {
-  display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 48px;
-  align-items: center;
-  padding: 44px 46px;
+.coa {
+  padding: 40px 42px;
   background: var(--lu-card);
   border: 1px solid var(--lu-hairline);
+  border-radius: var(--lu-radius-card);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
 }
 
-.coa__copy {
+.coa__top {
   display: flex;
-  gap: 30px;
+  gap: 26px;
   align-items: flex-start;
 }
 
@@ -408,73 +229,84 @@
   color: var(--lu-muted);
 }
 
+.join {
+  padding: 40px 38px;
+  background: var(--lu-plum);
+  border-radius: var(--lu-radius-card);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+
+.join__title {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.15;
+  color: var(--lu-cream);
+}
+
+.join__body {
+  font-size: var(--lu-fs-sm);
+  line-height: 1.65;
+  color: var(--lu-cream-dim);
+}
+
+.join__cta {
+  align-self: flex-start;
+  background: var(--lu-gold);
+  color: var(--lu-plum-deep);
+}
+
+.join__cta:hover {
+  background: var(--lu-gold-deep);
+  color: var(--lu-plum-deep);
+}
+
 /* ------------------------------------------------------------ responsive */
 
 @media (max-width: 1100px) {
   .hero {
-    grid-template-columns: 1fr 380px;
-    gap: 44px;
+    grid-template-columns: 1fr 360px;
+    gap: 40px;
   }
 
-  .hero__pack {
-    width: 380px;
-    height: 500px;
-  }
 
-  .tiers__grid,
-  .formats__grid,
-  .series__grid {
+  .publish__grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .close {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
-    padding-top: 52px;
-    padding-bottom: 52px;
+    padding-top: 48px;
+    padding-bottom: 48px;
   }
 
-  .hero__pack {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 470 / 620;
-    max-width: 470px;
+  .hero__packs {
     justify-self: start;
-  }
-
-  .coa__card {
-    grid-template-columns: 1fr;
-    gap: 30px;
-    padding: 32px;
+    max-width: 420px;
   }
 }
 
 @media (max-width: 640px) {
-  .tiers__grid,
-  .formats__grid,
-  .series__grid {
+  .publish__grid {
     grid-template-columns: 1fr;
   }
 
-  .facts {
+  .coa,
+  .join {
+    padding: 30px 24px;
+  }
+
+  .coa__top {
     flex-direction: column;
     gap: 16px;
-  }
-
-  .facts__divider {
-    width: auto;
-    height: 1px;
-  }
-
-  .tiers,
-  .formats {
-    padding-top: 52px;
-    padding-bottom: 52px;
-  }
-
-  .coa__copy {
-    flex-direction: column;
-    gap: 18px;
   }
 }

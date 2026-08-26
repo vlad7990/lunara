@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { FdaDisclaimer } from "@/components/compliance";
-import { compliance, footerGroups, product, site } from "@/lib/content";
+import { catalogue, compliance, footerGroups, site } from "@/lib/content";
 
 import styles from "./Shell.module.css";
 
@@ -13,6 +13,7 @@ import styles from "./Shell.module.css";
 const ROUTES: Record<string, string> = {
   Shop: "/shop",
   "Crave Balance": "/crave-balance",
+  "Cycle Ritual": "/cycle-ritual",
   "Open formula": "/open-formula",
   "Batch COAs": "/lot",
   FAQ: "/faq",
@@ -53,7 +54,11 @@ export function Footer({ compact = false }: { compact?: boolean }) {
           <div className={styles.footer__top}>
             <div className={styles.footer__brand}>
               <span className={styles.footer__wordmark}>{site.brand.name}</span>
-              <p className={styles.footer__tagline}>{product.subtitle}, published in full.</p>
+              {/* Brand-level, not one product's subtitle: the range is two formulas now. */}
+              <p className={styles.footer__tagline}>
+                {catalogue.length} formulas, published in full. Every milligram named, and a lab
+                report for every lot.
+              </p>
             </div>
 
             <div className={styles.footer__groups}>

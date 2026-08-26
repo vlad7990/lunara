@@ -23,6 +23,7 @@
 }
 
 .head__lookup {
+  border-radius: var(--lu-radius-card);
   padding: 28px 30px;
   background: var(--lu-card);
   border: 1px solid var(--lu-gold-border);
@@ -35,6 +36,7 @@
 }
 
 .record__inner {
+  border-radius: var(--lu-radius-card);
   background: var(--lu-plum);
   padding: 48px 52px;
 }
@@ -73,6 +75,7 @@
 }
 
 .chip {
+  border-radius: var(--lu-radius-chip);
   display: inline-flex;
   align-items: center;
   gap: 9px;
@@ -123,7 +126,7 @@
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  border-radius: 0;
+  border-radius: var(--lu-radius-field);
   transition: background-color var(--lu-transition), color var(--lu-transition);
 }
 
@@ -187,6 +190,8 @@
 }
 
 .tableWrap {
+  border-radius: var(--lu-radius-card);
+  overflow: hidden;
   border: 1px solid var(--lu-hairline);
   background: var(--lu-card);
   overflow-x: auto;
@@ -341,6 +346,7 @@
 }
 
 .notFound__inner {
+  border-radius: var(--lu-radius-card);
   padding: 44px 46px;
   background: var(--lu-warn-bg);
   border: 1px solid var(--lu-warn-border);

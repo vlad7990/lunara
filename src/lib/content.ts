@@ -10,6 +10,7 @@ import complianceJson from "@content/compliance.json";
 import faqJson from "@content/faq.json";
 import lotsJson from "@content/lots.json";
 import productJson from "@content/product.json";
+import productsJson from "@content/products.json";
 import siteJson from "@content/site.json";
 
 /* ------------------------------------------------------------------ types */
@@ -48,6 +49,48 @@ export interface Format {
   intervalDays?: number;
   saving?: number;
   note: string;
+}
+
+/** Each product owns one accent. They are never mixed inside a section. */
+export type ProductAccent = "plum" | "wine" | "green";
+
+export interface KeyDose {
+  name: string;
+  dose: string;
+}
+
+/**
+ * The catalogue record. Crave Balance's full detail stays in `product.json` — this is the
+ * shorter shape every product needs to appear on the home page and in navigation.
+ */
+export interface CatalogueProduct {
+  id: string;
+  slug: string;
+  name: string;
+  subtitle: string;
+  accent: ProductAccent;
+  format: string;
+  unit: string;
+  servings: number;
+  servingSize: string;
+  image: string;
+  lede: string;
+  /** Why this product is a powder, or a capsule. The format is a decision, not a default. */
+  whyThisFormat: string;
+  keyDoses: KeyDose[];
+  ingredients?: {
+    name: string;
+    dose: number;
+    unit: string;
+    qualifier: string | null;
+    short: string;
+    long: string;
+    evidenceNote?: string;
+  }[];
+  benefits?: string[];
+  /** A caveat that must render wherever the product's claims do. */
+  footnote?: string;
+  dosesAreFinal: boolean;
 }
 
 export interface Ingredient {
@@ -159,6 +202,12 @@ export const nav: NavLink[] = siteJson.nav;
 export const footerGroups: FooterGroup[] = siteJson.footer;
 export const waitlistTiers: WaitlistTier[] = siteJson.waitlist.tiers;
 export const commerce = siteJson.commerce;
+
+export const catalogue: CatalogueProduct[] = productsJson.products as CatalogueProduct[];
+
+export function getCatalogueProduct(slug: string): CatalogueProduct | undefined {
+  return catalogue.find((entry) => entry.slug === slug);
+}
 
 export const formats: Format[] = productJson.formats;
 export const ingredients: Ingredient[] = productJson.ingredients;
