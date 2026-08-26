@@ -1,0 +1,133 @@
+/* LUNARA — design tokens
+   Single source of truth for colour, type and spacing.
+   Every value below is lifted verbatim from the HTML design references in the handoff.
+   Plum is the shipping colourway; the green stack is the unpicked alternative.
+
+   No hex code may appear anywhere else in this codebase. If a design reference uses a
+   colour that is not here yet, add it here first. */
+
+:root {
+  /* --- Brand: plum (shipping) --- */
+  --lu-plum:            #3E1C2A;  /* dark bands, primary button, announcement bar */
+  --lu-plum-mid:        #4A2233;  /* accent type, italic phrases, uppercase labels */
+  --lu-plum-hover:      #5C2A3C;  /* primary button hover only */
+  --lu-plum-deep:       #2A1620;  /* type on gold fill (cookie "Accept all") */
+
+  /* --- Brand: forest green (alternative colourway, not in use) --- */
+  --lu-green:           #1E3A31;
+  --lu-green-mid:       #24463C;
+
+  /* --- Gold stack --- */
+  --lu-gold:            #C9A75C;  /* on dark surfaces, foil, wordmark on plum */
+  --lu-gold-deep:       #A6813C;  /* links, eyebrow labels, wordmark on light */
+  --lu-gold-wash:       #F3E9D6;  /* table headers, chips */
+  --lu-gold-border:     #E0CFA8;  /* emphasised card borders */
+  --lu-gold-tint:       #FDF7EA;  /* selected card fill */
+  --lu-gold-chip:       #E9D8B4;  /* type inside outline chips on plum */
+  --lu-gold-dashed:     #C9B698;  /* dashed border on drop-in image slots */
+
+  /* --- Surfaces --- */
+  --lu-chalk:           #F7EFE4;  /* page background */
+  --lu-chalk-alt:       #EFE6D8;  /* alternating band, footer */
+  --lu-card:            #FFFCF7;  /* cards, inputs */
+  --lu-panel:           #FFFFFF;  /* Supplement Facts panel ONLY — it prints white */
+
+  /* --- Fields on plum (the COA band) --- */
+  --lu-field-plum:      rgba(251, 243, 228, 0.07);
+  --lu-field-plum-text: rgba(243, 228, 203, 0.50);
+
+  /* --- Lines --- */
+  --lu-hairline:        #E7DCCB;  /* default 1px border */
+  --lu-hairline-strong: #DCCDB2;  /* grid gaps, form borders */
+  --lu-rule:            #EDE2CE;  /* inner dividers */
+  --lu-border-alt:      #E0D4C0;  /* border on chalk-alt bands */
+  --lu-rule-facts:      #C8C4BC;  /* Supplement Facts row rules only */
+
+  /* --- Text on light --- */
+  --lu-ink:             #2A2320;  /* headings, Supplement Facts rules */
+  --lu-body:            #3C352F;  /* long-form body */
+  --lu-body-2:          #554C43;  /* secondary body */
+  --lu-muted:           #6D6157;  /* nav, captions */
+  --lu-muted-2:         #8A7B69;  /* legal, meta */
+  --lu-placeholder:     #A6957C;  /* input placeholder, drop-in slot labels */
+
+  /* --- Text on plum --- */
+  --lu-cream:           #FBF3E4;
+  --lu-cream-2:         #F3E4CB;
+  --lu-cream-strong:    rgba(243, 228, 203, 0.86);
+  --lu-cream-dim:       rgba(243, 228, 203, 0.72);
+  --lu-cream-body:      rgba(243, 228, 203, 0.62);
+  --lu-cream-quiet:     rgba(243, 228, 203, 0.60);
+  --lu-cream-faint:     rgba(243, 228, 203, 0.55);
+  --lu-cream-ghost:     rgba(243, 228, 203, 0.45);
+  --lu-cream-82:        rgba(243, 228, 203, 0.82);
+
+  /* --- Gold rules on plum --- */
+  --lu-gold-line:       rgba(201, 167, 92, 0.28);  /* divider inside plum cards */
+  --lu-gold-line-head:  rgba(201, 167, 92, 0.30);  /* dose-strip header rule */
+  --lu-gold-line-soft:  rgba(201, 167, 92, 0.24);  /* dose-strip column dividers */
+  --lu-gold-line-chip:  rgba(201, 167, 92, 0.40);  /* outline button on plum */
+  --lu-gold-line-btn:   rgba(201, 167, 92, 0.45);  /* cookie outline button */
+  --lu-gold-fill-chip:  rgba(201, 167, 92, 0.28);  /* active preview chip fill */
+  --lu-gold-line-divider: rgba(201, 167, 92, 0.22); /* grid-gap dividers on plum bands */
+
+  /* --- Warning / caution (safety copy only) --- */
+  --lu-warn-bg:         #FBF1E8;
+  --lu-warn-border:     #E8CFC0;
+  --lu-warn-text:       #A25A44;
+  --lu-warn-body:       #6D5A50;
+  --lu-draft:           #B0846A;  /* "Draft · pending counsel review" flag */
+
+  /* --- Lab result semantics (COA tables only) --- */
+  --lu-pass:            #4C7A5E;
+  --lu-pass-dot:        #6FA383;
+  --lu-pass-fill:       rgba(76, 122, 94, 0.16);
+  --lu-pass-border:     rgba(76, 122, 94, 0.60);
+  --lu-pass-type:       #A8CDB6;
+
+  /* Held-back lots on plum — the same chip, in the caution accent. */
+  --lu-warn-chip-fill:   rgba(162, 90, 68, 0.18);
+  --lu-warn-chip-border: rgba(162, 90, 68, 0.60);
+  --lu-warn-chip-type:   #E0B49F;
+
+  /* Gold hover wash on plum (outline buttons). */
+  --lu-gold-fill-soft:  rgba(201, 167, 92, 0.12);
+
+  /* --- Type --- */
+  --lu-font-display: var(--font-cormorant), Georgia, serif;
+  --lu-font-body:    var(--font-inter-tight), system-ui, -apple-system, sans-serif;
+
+  --lu-fs-h1:      56px;  /* line-height 1.03, letter-spacing -0.015em */
+  --lu-fs-h2:      38px;  /* line-height 1.10 */
+  --lu-fs-h3:      29px;  /* line-height 1.15 */
+  --lu-fs-dek:     23px;  /* display serif, line-height 1.45 */
+  --lu-fs-body-lg: 18px;  /* article body, line-height 1.72 */
+  --lu-fs-body:    16px;  /* line-height 1.65 */
+  --lu-fs-sm:      14px;  /* line-height 1.60 */
+  --lu-fs-legal:   11px;  /* line-height 1.60 */
+  --lu-fs-label:   10px;  /* uppercase, letter-spacing 0.18-0.24em, weight 700 */
+
+  --lu-track-wordmark: 0.42em;  /* nav/footer wordmark */
+  --lu-track-mark:     0.46em;  /* pack + dose-card wordmark */
+  --lu-track-label:    0.18em;
+
+  /* --- Layout --- */
+  --lu-container:  1240px;
+  --lu-gutter:     40px;
+  --lu-section:    72px;   /* 64-84px range */
+
+  /* --- Radii: essentially zero. Sharp corners are the brand. --- */
+  --lu-radius-field: 3px;  /* inputs and primary buttons ONLY */
+  --lu-radius-pill:  999px;
+  --lu-radius-card:  0;
+
+  /* --- Elevation: content is never raised. Floating surfaces only. --- */
+  --lu-shadow-float: 0 20px 50px rgba(62, 28, 42, 0.10);
+
+  /* --- Motion: colour only. No lift, no shadow, no scale. --- */
+  --lu-transition: 220ms ease-out;
+}
+
+@media (max-width: 640px) {
+  :root { --lu-gutter: 16px; }
+}

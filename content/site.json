@@ -1,0 +1,174 @@
+{
+  "brand": {
+    "name": "LUNARA",
+    "wordmarkTracking": "0.46em",
+    "email": "hello@lunara.co",
+    "copyright": "© 2026 LUNARA"
+  },
+  "mode": {
+    "key": "SITE_MODE",
+    "values": [
+      "waitlist",
+      "store"
+    ],
+    "default": "waitlist",
+    "designOverride": "localStorage['lunara.mode']",
+    "note": "Resolve server-side. Commerce surfaces must never flash the wrong state."
+  },
+  "nav": [
+    {
+      "label": "Shop",
+      "route": "/shop"
+    },
+    {
+      "label": "Crave Balance",
+      "route": "/crave-balance"
+    },
+    {
+      "label": "Open formula",
+      "route": "/open-formula"
+    },
+    {
+      "label": "Batch COAs",
+      "route": "/lot"
+    },
+    {
+      "label": "FAQ",
+      "route": "/faq"
+    },
+    {
+      "label": "About",
+      "route": "/about"
+    }
+  ],
+  "navAction": {
+    "waitlist": {
+      "label": "Join the list",
+      "route": "/#join"
+    },
+    "store": {
+      "label": "Bag · {count}",
+      "route": "/bag",
+      "icon": "bag"
+    }
+  },
+  "announcements": {
+    "waitlist:/": "The formula is published. The product isn't made yet. Founding 500 still open.",
+    "store:/": "Free US shipping over $50 · every lot's lab report published at lunara.co/lot",
+    "waitlist:/shop": "Nothing is on sale yet. Prices are published so you can decide before we ask.",
+    "store:/shop": "Free US shipping over $50 · shipping from lot CB-2026-0412",
+    "waitlist:/crave-balance": "Not for sale yet — this is the label we intend to print. Founding 500 still open.",
+    "store:/crave-balance": "Free US shipping over $50 · current lot CB-2026-0412, report online",
+    "any:/open-formula": "Six formulation decisions, published in full — including the ones that cost us money.",
+    "any:/lot": "A lab report for every lot, published unedited, at the URL printed on your pack.",
+    "any:/faq": "If the honest answer is \"ask your doctor\", that is the answer we give.",
+    "any:/about": "A supplement company that publishes its own change log.",
+    "waitlist:/bag": "Nothing is on sale yet. The bag opens when the first production run lands.",
+    "store:/bag": "Free US shipping over $50 · 60-day return on an opened jar"
+  },
+  "waitlist": {
+    "foundingTotal": 500,
+    "tiers": [
+      {
+        "id": "founding",
+        "name": "Founding 500",
+        "trigger": "First 500 signups",
+        "offer": "30% off",
+        "benefits": [
+          "30% off your first order",
+          "Permanent founding badge",
+          "Your name in the first box insert",
+          "48-hour early access at launch"
+        ]
+      },
+      {
+        "id": "early",
+        "name": "Early list",
+        "trigger": "Place 501 onward",
+        "offer": "20% off",
+        "benefits": [
+          "20% off your first order",
+          "The full open-formula series",
+          "General-access launch window"
+        ]
+      },
+      {
+        "id": "referral",
+        "name": "Referral unlock",
+        "trigger": "Three confirmed referrals",
+        "offer": "3 refs",
+        "benefits": [
+          "Moves you into Founding 500",
+          "Regardless of your position in line",
+          "Your referrals keep their own place"
+        ]
+      }
+    ],
+    "form": {
+      "fields": [
+        "email"
+      ],
+      "submitLabel": "Claim a place",
+      "microcopy": "One field, one button, no quiz. Unsubscribe from any email.",
+      "success": "You're on the list. The full Dose Card is in your inbox within the hour.",
+      "noQuiz": true
+    }
+  },
+  "commerce": {
+    "shippingFreeOver": 50,
+    "flatShipping": 6.5,
+    "returnWindowDays": 60,
+    "returnOpened": true,
+    "dispatchDays": "1–2 business days",
+    "shipsTo": [
+      "US"
+    ],
+    "subscription": {
+      "intervalDays": 30,
+      "discountPct": 15,
+      "reminderDaysBefore": 3,
+      "cancelPolicy": "One click from any email. No phone call, no chat window, no retention offer."
+    },
+    "checkoutGate": {
+      "required": true,
+      "text": "I am 18 or older, I am not pregnant or nursing, and I have read the warnings. I understand this is a dietary supplement and not a medicine, and that these statements have not been evaluated by the Food and Drug Administration."
+    }
+  },
+  "footer": [
+    {
+      "heading": "Product",
+      "links": [
+        "Shop",
+        "Crave Balance",
+        "Open formula",
+        "Batch COAs",
+        "FAQ"
+      ]
+    },
+    {
+      "heading": "Company",
+      "links": [
+        "About",
+        "Press",
+        "Contact",
+        "Careers"
+      ]
+    },
+    {
+      "heading": "Legal",
+      "links": [
+        "Terms",
+        "Privacy · CCPA",
+        "Shipping & returns",
+        "Accessibility"
+      ]
+    },
+    {
+      "heading": "California",
+      "links": [
+        "Your privacy choices",
+        "Do not sell or share"
+      ]
+    }
+  ]
+}

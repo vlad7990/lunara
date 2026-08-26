@@ -1,0 +1,388 @@
+@import "../styles/tokens.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--lu-chalk);
+  color: var(--lu-ink);
+  font-family: var(--lu-font-body);
+  /* non-negotiable: doses and prices are the product */
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--lu-gold-deep);
+  text-decoration: none;
+  transition: color var(--lu-transition);
+}
+
+a:hover {
+  color: var(--lu-gold);
+}
+
+/*
+ * A link sitting inside running text has to be distinguishable from the text by something
+ * other than colour (WCAG 1.4.1). Standalone links — nav, CTAs, card links, the uppercase
+ * "more" links — are structurally obvious and stay undecorated.
+ */
+p a:not([class]),
+dd a:not([class]),
+li a:not([class]),
+blockquote a:not([class]) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+em {
+  font-style: italic;
+  color: var(--lu-plum-mid);
+}
+
+img {
+  max-width: 100%;
+}
+
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-variant-numeric: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+dl,
+dd,
+figure,
+blockquote {
+  margin: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--lu-gold-deep);
+  outline-offset: 2px;
+}
+
+/* Visible only to assistive technology. */
+.lu-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.lu-skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 12px 20px;
+  background: var(--lu-plum);
+  color: var(--lu-cream-2);
+  font-size: var(--lu-fs-label);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.lu-skip-link:focus {
+  left: var(--lu-gutter);
+  top: 8px;
+}
+
+/* ------------------------------------------------------------------------
+   Structural primitives.
+
+   These are the handful of classes that repeat on every page. Everything else
+   lives in a co-located CSS module. No hex codes here — tokens only.
+   ------------------------------------------------------------------------ */
+
+.lu-container {
+  max-width: var(--lu-container);
+  margin: 0 auto;
+  padding-left: var(--lu-gutter);
+  padding-right: var(--lu-gutter);
+}
+
+/* Uppercase micro-labels are structural, not decorative. */
+.lu-label {
+  font-size: var(--lu-fs-label);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--lu-gold-deep);
+}
+
+.lu-label--wide {
+  letter-spacing: 0.24em;
+}
+
+.lu-label--onPlum {
+  color: var(--lu-gold);
+}
+
+.lu-label--muted {
+  color: var(--lu-muted-2);
+}
+
+/* Display serif. Doses and prices are set in it; labels are not. */
+.lu-display {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+}
+
+.lu-h1 {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: clamp(38px, 6vw, 62px);
+  line-height: 1.03;
+  letter-spacing: -0.015em;
+  color: var(--lu-ink);
+  text-wrap: balance;
+}
+
+.lu-h2 {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: clamp(30px, 4vw, var(--lu-fs-h2));
+  line-height: 1.1;
+  color: var(--lu-ink);
+  text-wrap: balance;
+}
+
+.lu-h3 {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: var(--lu-fs-h3);
+  line-height: 1.15;
+  color: var(--lu-ink);
+}
+
+/* Section head: title left, quiet meta or link right. Repeats on every page. */
+.lu-sectionHead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.lu-sectionHead__aside {
+  font-size: 12px;
+  color: var(--lu-muted-2);
+}
+
+.lu-moreLink {
+  font-size: var(--lu-fs-legal);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Buttons. 3px radius is the only radius a button may have. */
+.lu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  height: 54px;
+  padding: 0 28px;
+  border: none;
+  border-radius: var(--lu-radius-field);
+  background: var(--lu-plum);
+  color: var(--lu-cream-2);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--lu-transition), color var(--lu-transition),
+    border-color var(--lu-transition);
+}
+
+.lu-btn:hover {
+  background: var(--lu-plum-hover);
+  color: var(--lu-cream-2);
+}
+
+.lu-btn:disabled {
+  cursor: not-allowed;
+  background: var(--lu-hairline-strong);
+  color: var(--lu-muted-2);
+}
+
+.lu-btn--sm {
+  height: 46px;
+  padding: 0 20px;
+  font-size: var(--lu-fs-label);
+}
+
+.lu-btn--nav {
+  height: auto;
+  padding: 11px 20px;
+  font-size: var(--lu-fs-label);
+  border-radius: 0;
+}
+
+.lu-btn--gold {
+  background: var(--lu-gold);
+  color: var(--lu-plum-deep);
+}
+
+.lu-btn--gold:hover {
+  background: var(--lu-gold-deep);
+  color: var(--lu-plum-deep);
+}
+
+.lu-btn--outlineOnPlum {
+  background: transparent;
+  border: 1px solid var(--lu-gold-line-chip);
+  color: var(--lu-gold);
+  border-radius: 0;
+}
+
+.lu-btn--outlineOnPlum:hover {
+  background: transparent;
+  border-color: var(--lu-gold);
+  color: var(--lu-gold);
+}
+
+/* Fields. The other place a 3px radius is allowed. */
+.lu-field {
+  height: 54px;
+  width: 100%;
+  padding: 0 18px;
+  border: 1px solid var(--lu-hairline-strong);
+  border-radius: var(--lu-radius-field);
+  background: var(--lu-card);
+  font-size: var(--lu-fs-body);
+  color: var(--lu-ink);
+  outline: none;
+  transition: border-color var(--lu-transition);
+}
+
+.lu-field::placeholder {
+  color: var(--lu-placeholder);
+}
+
+.lu-field:focus {
+  border-color: var(--lu-gold-deep);
+}
+
+/*
+ * The design signals focus with the gold border. A 1px border-colour change is not a
+ * sufficient focus indicator on its own (WCAG 2.4.11), so keyboard focus also gets the
+ * standard ring — pointer focus keeps the quieter border-only treatment.
+ */
+.lu-field:focus-visible {
+  outline: 2px solid var(--lu-gold-deep);
+  outline-offset: 2px;
+}
+
+.lu-field--sm {
+  height: 46px;
+  padding: 0 16px;
+  font-size: 15px;
+}
+
+/* Pills are the only 999px radius on the page. */
+.lu-pill {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 15px;
+  border: 1px solid var(--lu-gold-border);
+  border-radius: var(--lu-radius-pill);
+  background: var(--lu-card);
+}
+
+/* Cards sit flat on the page. Hover is a border colour change — no lift, no shadow. */
+.lu-card {
+  background: var(--lu-card);
+  border: 1px solid var(--lu-hairline);
+  border-radius: var(--lu-radius-card);
+}
+
+.lu-card--hoverable {
+  transition: border-color var(--lu-transition);
+}
+
+.lu-card--hoverable:hover {
+  border-color: var(--lu-gold);
+}
+
+/* Alternating full-bleed bands. */
+.lu-band {
+  background: var(--lu-chalk-alt);
+  border-top: 1px solid var(--lu-border-alt);
+  border-bottom: 1px solid var(--lu-border-alt);
+}
+
+.lu-band--plum {
+  background: var(--lu-plum);
+  border: none;
+}
+
+.lu-section {
+  padding-top: var(--lu-section);
+  padding-bottom: var(--lu-section);
+}
+
+.lu-rule {
+  height: 1px;
+  background: var(--lu-rule);
+  border: 0;
+}
+
+.lu-rule--onPlum {
+  background: var(--lu-gold-line);
+}
+
+/* Prose lists inside cards. */
+.lu-bullets {
+  margin: 0;
+  padding-left: 18px;
+  font-size: var(--lu-fs-sm);
+  line-height: 1.7;
+  color: var(--lu-body-2);
+}
+
+@media (max-width: 640px) {
+  .lu-btn {
+    padding: 0 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

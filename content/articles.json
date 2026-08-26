@@ -1,0 +1,75 @@
+{
+  "series": [
+    {
+      "number": "01",
+      "slug": "why-we-published-the-dose-card",
+      "title": "Why we published the dose card",
+      "dek": "A discount gives you nothing to be curious about. A formula does.",
+      "week": 5,
+      "published": true
+    },
+    {
+      "number": "02",
+      "slug": "why-a-stick-pack-not-a-capsule",
+      "title": "Why it's a stick pack, not a capsule",
+      "dek": "Three grams of inositol is nine capsules. Nobody takes nine capsules.",
+      "week": 5,
+      "published": true
+    },
+    {
+      "number": "03",
+      "slug": "the-fiber-decision",
+      "title": "The fiber decision",
+      "dek": "We wanted it in. The texture, and the honesty about dose, kept it out.",
+      "week": 6,
+      "published": true
+    },
+    {
+      "number": "04",
+      "slug": "why-theres-no-berberine",
+      "title": "Why there's no berberine",
+      "dek": "The most requested ingredient we left out. Three reasons, one unflattering.",
+      "week": 6,
+      "published": true,
+      "isFeatured": true,
+      "decision": {
+        "considered": "Berberine HCl, 500 mg per serving",
+        "rejected": "GI tolerability at an effective dose · CYP3A4 interaction profile · mechanism outside this formula's job",
+        "revisitIf": "We ship a separate capsule format where dose and timing can be controlled"
+      },
+      "pullQuote": "If an ingredient only makes the label longer, it is not an ingredient. It is copywriting.",
+      "bodyFile": "articles/why-theres-no-berberine.md"
+    },
+    {
+      "number": "05",
+      "slug": "why-theres-no-caffeine",
+      "title": "Why there's no caffeine",
+      "dek": "You don't need a spike at 3pm. You need the edge taken off.",
+      "week": 7,
+      "published": false
+    },
+    {
+      "number": "06",
+      "slug": "what-clinically-studied-means",
+      "title": "What \"clinically studied\" actually means",
+      "dek": "Studied at what dose, in whom, for how long, and by whom.",
+      "week": 8,
+      "published": false
+    }
+  ],
+  "changeLog": [
+    {
+      "date": "2026-03-12",
+      "summary": "Saffron extract dose set at 28 mg after supplier standardisation confirmed."
+    },
+    {
+      "date": "2026-02-28",
+      "summary": "Myo-inositol fixed at 3,000 mg, down from a 4,000 mg option, to keep one scoop drinkable."
+    },
+    {
+      "date": "2026-02-14",
+      "summary": "Added fiber removed from the formula. Reasoning published as article 03.",
+      "relatedArticle": "the-fiber-decision"
+    }
+  ]
+}

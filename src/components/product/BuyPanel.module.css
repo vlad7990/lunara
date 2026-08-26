@@ -1,0 +1,131 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 560px;
+}
+
+/* Price row, between hairlines. */
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 20px 0;
+  border-top: 1px solid var(--lu-hairline);
+  border-bottom: 1px solid var(--lu-hairline);
+  flex-wrap: wrap;
+}
+
+.price {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: 42px;
+  color: var(--lu-ink);
+}
+
+.priceMeta {
+  font-size: 13px;
+  color: var(--lu-muted-2);
+}
+
+/* Two-up plan picker. Selected is a 2px gold border on the gold tint. */
+.plans {
+  display: flex;
+  gap: 10px;
+}
+
+.plan {
+  flex: 1;
+  padding: 16px 18px;
+  border: 1px solid var(--lu-hairline-strong);
+  background: var(--lu-card);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 0;
+  transition: border-color var(--lu-transition), background-color var(--lu-transition);
+}
+
+.plan[aria-checked="true"] {
+  border: 2px solid var(--lu-gold-deep);
+  background: var(--lu-gold-tint);
+  /* Keep the 2px border from nudging the content when selection moves. */
+  padding: 15px 17px;
+}
+
+.plan__name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--lu-ink);
+}
+
+.plan__meta {
+  font-size: 12px;
+  color: var(--lu-muted);
+}
+
+/* Quantity stepper and add-to-bag share a row. */
+.buyRow {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--lu-hairline-strong);
+  background: var(--lu-card);
+  flex: 0 0 auto;
+}
+
+.stepper__btn {
+  width: 46px;
+  height: 56px;
+  border: none;
+  background: transparent;
+  color: var(--lu-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--lu-transition);
+}
+
+.stepper__btn:hover:not(:disabled) {
+  color: var(--lu-plum);
+}
+
+.stepper__btn:disabled {
+  color: var(--lu-hairline-strong);
+  cursor: not-allowed;
+}
+
+.stepper__value {
+  width: 40px;
+  text-align: center;
+  font-size: var(--lu-fs-body);
+  color: var(--lu-ink);
+  font-weight: 600;
+}
+
+.add {
+  flex: 1;
+  height: 56px;
+  letter-spacing: 0.18em;
+  border-radius: 0;
+}
+
+.terms {
+  font-size: 12px;
+  color: var(--lu-muted-2);
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .plans {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,28 @@
+/**
+ * A labelled slot for photography that has not been shot yet.
+ *
+ * It holds the final aspect ratio so the layout does not move when the frame arrives,
+ * and it says out loud what belongs in it. Sharp corners, dashed hairline, no shadow.
+ */
+
+.slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  background: var(--lu-chalk-alt);
+  border: 1px dashed var(--lu-gold-dashed);
+  border-radius: var(--lu-radius-card);
+  color: var(--lu-placeholder);
+  font-size: var(--lu-fs-label);
+  line-height: 1.45;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.caption {
+  max-width: 22ch;
+}

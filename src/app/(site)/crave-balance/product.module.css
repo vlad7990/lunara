@@ -1,0 +1,406 @@
+/* ------------------------------------------------------------- PDP hero */
+
+.hero {
+  padding-top: 40px;
+  padding-bottom: 72px;
+  display: grid;
+  grid-template-columns: 560px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.gallery__hero {
+  position: relative;
+  width: 100%;
+  height: 640px;
+}
+
+.gallery__heroImage {
+  object-fit: cover;
+}
+
+.gallery__thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.gallery__thumb {
+  position: relative;
+  height: 116px;
+  border: 1px solid var(--lu-hairline-strong);
+}
+
+.gallery__thumbImage {
+  object-fit: cover;
+}
+
+.gallery__slot {
+  height: 116px;
+  padding: 8px;
+  letter-spacing: 0.06em;
+  line-height: 1.35;
+}
+
+/* --------------------------------------------------------------- buy side */
+
+.buy {
+  padding-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.buy__titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.buy__title {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: clamp(38px, 5vw, 54px);
+  line-height: 1.02;
+  color: var(--lu-ink);
+}
+
+.buy__spec {
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lu-muted-2);
+  font-weight: 600;
+}
+
+.buy__intro {
+  font-size: var(--lu-fs-body);
+  line-height: 1.65;
+  color: var(--lu-body-2);
+  max-width: 560px;
+  text-wrap: pretty;
+}
+
+/* Waitlist: the "not on sale yet" panel and the notify form. */
+.notSale {
+  padding: 26px 28px;
+  background: var(--lu-plum);
+}
+
+.notSale__label {
+  margin-bottom: 12px;
+}
+
+.notSale__title {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.2;
+  color: var(--lu-cream);
+  margin-bottom: 12px;
+}
+
+.notSale__body {
+  font-size: var(--lu-fs-sm);
+  line-height: 1.6;
+  color: var(--lu-cream-dim);
+}
+
+.notify {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.notify__form {
+  max-width: 520px;
+}
+
+.notify__price {
+  font-size: 12px;
+  color: var(--lu-muted-2);
+}
+
+/* What we publish — four commitments in a 2×2 grid. */
+.publish {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px;
+  background: var(--lu-card);
+  border: 1px solid var(--lu-hairline);
+  max-width: 560px;
+}
+
+.publish__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.publish__icon {
+  color: var(--lu-gold-deep);
+  flex: 0 0 auto;
+}
+
+.publish__label {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lu-plum-mid);
+  font-weight: 700;
+}
+
+.publish__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--lu-body-2);
+}
+
+/* -------------------------------------------- Supplement Facts + how to use */
+
+.label {
+  padding-top: var(--lu-section);
+  padding-bottom: var(--lu-section);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 52px;
+  align-items: start;
+}
+
+.howTo {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* 1px gaps on a hairline background — no per-step borders. */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--lu-hairline-strong);
+  border: 1px solid var(--lu-hairline-strong);
+  margin: 0;
+  padding: 0;
+  counter-reset: step;
+}
+
+.step {
+  background: var(--lu-card);
+  padding: 22px 24px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.step__icon {
+  color: var(--lu-gold-deep);
+  flex: 0 0 auto;
+}
+
+.step__label {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lu-gold-deep);
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.step__text {
+  font-size: var(--lu-fs-body);
+  line-height: 1.5;
+  color: var(--lu-ink);
+}
+
+/* ------------------------------------------------- ingredient rationale */
+
+.rationale {
+  padding-top: 80px;
+  padding-bottom: 72px;
+}
+
+.rationale__head {
+  max-width: 700px;
+  margin-bottom: 34px;
+}
+
+.rationale__label {
+  margin-bottom: 12px;
+}
+
+.rationale__title {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: clamp(30px, 4vw, 40px);
+  line-height: 1.1;
+  color: var(--lu-ink);
+  margin-bottom: 12px;
+}
+
+.rationale__dek {
+  font-size: var(--lu-fs-body);
+  line-height: 1.6;
+  color: var(--lu-muted);
+}
+
+.rationale__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--lu-hairline);
+  border: 1px solid var(--lu-hairline);
+}
+
+.cell {
+  background: var(--lu-card);
+  padding: 28px 26px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cell--absent {
+  background: var(--lu-chalk);
+}
+
+.cell__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cell__name {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lu-plum-mid);
+  font-weight: 700;
+}
+
+.cell--absent .cell__name {
+  color: var(--lu-muted-2);
+}
+
+/* The dose is the display serif; the name is the sans. That inversion is the signature. */
+.cell__dose {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: 22px;
+  color: var(--lu-gold-deep);
+  white-space: nowrap;
+}
+
+.cell__body {
+  font-size: var(--lu-fs-sm);
+  line-height: 1.6;
+  color: var(--lu-body-2);
+}
+
+.cell--absent .cell__body {
+  line-height: 1.7;
+}
+
+/* ---------------------------------------------------------------- COA band */
+
+.coa {
+  padding-bottom: var(--lu-section);
+}
+
+.coa__inner {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 44px;
+  align-items: center;
+  padding: 42px 46px;
+  background: var(--lu-plum);
+}
+
+.coa__label {
+  margin-bottom: 12px;
+}
+
+.coa__title {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 1.1;
+  color: var(--lu-cream);
+  margin-bottom: 10px;
+}
+
+.coa__body {
+  font-size: var(--lu-fs-sm);
+  line-height: 1.6;
+  color: var(--lu-cream-dim);
+  max-width: 520px;
+}
+
+/* ------------------------------------------------------------ responsive */
+
+@media (max-width: 1100px) {
+  .hero {
+    grid-template-columns: 440px 1fr;
+    gap: 40px;
+  }
+
+  .gallery__hero {
+    height: 520px;
+  }
+
+  .rationale__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .gallery__hero {
+    height: auto;
+    aspect-ratio: 560 / 640;
+  }
+
+  .label {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .coa__inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .rationale__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .publish__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .step {
+    padding: 20px;
+    gap: 16px;
+  }
+}

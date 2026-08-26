@@ -1,0 +1,87 @@
+/**
+ * Batch lookup.
+ *
+ * A plain GET form to `/lot`, which redirects to `/lot/:batch` on the server. No JavaScript
+ * is involved at any point — the person using this is standing in their kitchen holding a
+ * pack with the URL printed on it.
+ */
+
+.lookup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label {
+  font-size: var(--lu-fs-label);
+  letter-spacing: var(--lu-track-label);
+  text-transform: uppercase;
+  color: var(--lu-muted-2);
+  font-weight: 700;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+.field {
+  flex: 1;
+  min-width: 0;
+  text-transform: uppercase;
+}
+
+.field::placeholder {
+  text-transform: none;
+}
+
+.hint {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--lu-muted-2);
+}
+
+/* On the plum bands — the product COA strip and the lot page head. */
+.lookup--onPlum .label {
+  color: var(--lu-gold);
+}
+
+.lookup--onPlum .hint {
+  color: var(--lu-cream-faint);
+}
+
+.lookup--onPlum .label {
+  color: var(--lu-cream-quiet);
+  letter-spacing: 0.16em;
+  font-size: var(--lu-fs-legal);
+}
+
+.lookup--onPlum .field {
+  background: var(--lu-field-plum);
+  border-color: var(--lu-gold-line-chip);
+  color: var(--lu-cream);
+}
+
+.lookup--onPlum .field::placeholder {
+  color: var(--lu-field-plum-text);
+}
+
+.lookup--onPlum .field:focus {
+  border-color: var(--lu-gold);
+}
+
+.lookup--onPlum .submit {
+  background: var(--lu-gold);
+  color: var(--lu-plum-deep);
+}
+
+.lookup--onPlum .submit:hover {
+  background: var(--lu-gold-deep);
+  color: var(--lu-plum-deep);
+}
+
+@media (max-width: 640px) {
+  .row {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,102 @@
+/**
+ * The Supplement Facts panel.
+ *
+ * A semantic table, never an image — screen readers have to reach the numbers. The rules
+ * are the FDA panel's own: an 8px solid bar under the serving line, 1px hairlines between
+ * rows, and a 2px rule above the footnote.
+ *
+ * This is a LAYOUT DRAFT. The real panel comes from the contract manufacturer and must be
+ * cleared by regulatory counsel before print or publication.
+ */
+
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.draft {
+  font-size: var(--lu-fs-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lu-draft);
+  font-weight: 700;
+}
+
+.panel {
+  background: var(--lu-panel);
+  border: 2px solid var(--lu-ink);
+  padding: 18px 20px;
+}
+
+.serving {
+  font-size: 13px;
+  color: var(--lu-ink);
+  padding-bottom: 8px;
+}
+
+/* The heavy bar the FDA panel puts under the serving statement. */
+.bar {
+  height: 8px;
+  background: var(--lu-ink);
+  margin-bottom: 6px;
+  border: 0;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  color: var(--lu-ink);
+  text-align: left;
+}
+
+.table thead th {
+  font-size: 12px;
+  font-weight: 700;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--lu-ink);
+  vertical-align: bottom;
+}
+
+.table thead th + th {
+  text-align: right;
+  padding-left: 16px;
+  white-space: nowrap;
+}
+
+.table tbody th {
+  font-weight: 400;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--lu-rule-facts);
+}
+
+.table tbody td {
+  padding: 8px 0 8px 16px;
+  text-align: right;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--lu-rule-facts);
+}
+
+/* The last row closes the panel with the FDA's 2px rule. */
+.table tbody tr:last-child th,
+.table tbody tr:last-child td {
+  border-bottom: 2px solid var(--lu-ink);
+}
+
+.footnote {
+  font-size: var(--lu-fs-legal);
+  color: var(--lu-ink);
+  padding-top: 8px;
+  line-height: 1.5;
+}
+
+.status {
+  margin-top: 14px;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--lu-muted-2);
+}

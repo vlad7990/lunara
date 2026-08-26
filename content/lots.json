@@ -1,0 +1,117 @@
+{
+  "note": "Illustrative records for layout. Live COAs are uploaded per lot, unedited, with the testing laboratory named and the signed PDF attached.",
+  "lots": [
+    {
+      "batch": "CB-2026-0412",
+      "status": "shipping",
+      "statusLabel": "Shipping now",
+      "manufacturedAt": "2026-04-12",
+      "bestBefore": "2028-04-12",
+      "units": 8400,
+      "facility": "cGMP, NSF-registered",
+      "lab": "Third-party, ISO 17025",
+      "allSpecsMet": true,
+      "pdfUrl": "/lot/CB-2026-0412.pdf",
+      "assays": [
+        {
+          "analyte": "Myo-inositol",
+          "claim": "3,000 mg",
+          "result": "3,062 mg",
+          "method": "HPLC-RID",
+          "status": "PASS"
+        },
+        {
+          "analyte": "D-chiro-inositol",
+          "claim": "75 mg",
+          "result": "76.4 mg",
+          "method": "HPLC-RID",
+          "status": "PASS"
+        },
+        {
+          "analyte": "L-theanine",
+          "claim": "200 mg",
+          "result": "204 mg",
+          "method": "HPLC-UV",
+          "status": "PASS"
+        },
+        {
+          "analyte": "Chromium (total)",
+          "claim": "200 mcg",
+          "result": "198 mcg",
+          "method": "ICP-MS",
+          "status": "PASS"
+        },
+        {
+          "analyte": "Saffron extract · crocins",
+          "claim": "≥ 3.5%",
+          "result": "3.8%",
+          "method": "HPLC-UV, ISO 3632",
+          "status": "PASS"
+        }
+      ],
+      "heavyMetals": [
+        {
+          "analyte": "Lead",
+          "spec": "< 0.5 ppm",
+          "result": "< 0.02"
+        },
+        {
+          "analyte": "Arsenic",
+          "spec": "< 1.0 ppm",
+          "result": "< 0.05"
+        },
+        {
+          "analyte": "Cadmium",
+          "spec": "< 0.5 ppm",
+          "result": "< 0.01"
+        },
+        {
+          "analyte": "Mercury",
+          "spec": "< 0.1 ppm",
+          "result": "< 0.005"
+        }
+      ],
+      "microbials": [
+        {
+          "test": "Total aerobic count",
+          "spec": "< 10³ cfu/g",
+          "result": "40"
+        },
+        {
+          "test": "Yeast & mould",
+          "spec": "< 10² cfu/g",
+          "result": "< 10"
+        },
+        {
+          "test": "E. coli",
+          "spec": "Absent",
+          "result": "Absent"
+        },
+        {
+          "test": "Salmonella",
+          "spec": "Absent",
+          "result": "Absent"
+        }
+      ]
+    },
+    {
+      "batch": "CB-2026-0228",
+      "status": "pilot",
+      "statusLabel": "Pilot run · not sold",
+      "manufacturedAt": "2026-02-28",
+      "bestBefore": "2028-02-28",
+      "units": 1200,
+      "allSpecsMet": true
+    },
+    {
+      "batch": "CB-2026-0119",
+      "status": "held",
+      "statusLabel": "Held back · flavour trial",
+      "manufacturedAt": "2026-01-19",
+      "bestBefore": null,
+      "units": 400,
+      "allSpecsMet": true,
+      "publicNote": "This lot never went on sale — the raspberry note read as medicinal at 3 g. Its report is here anyway, because a transparency page that only shows the good lots is an advertisement."
+    }
+  ]
+}

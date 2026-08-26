@@ -1,0 +1,481 @@
+/* ------------------------------------------------------- waitlist empty */
+
+.empty {
+  padding-top: 100px;
+  padding-bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  text-align: center;
+}
+
+.empty__icon {
+  color: var(--lu-gold);
+}
+
+.empty__title {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.06;
+  color: var(--lu-ink);
+  max-width: 620px;
+}
+
+.empty__body {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--lu-body-2);
+  max-width: 520px;
+}
+
+.empty__cta {
+  margin-top: 6px;
+  height: auto;
+  padding: 16px 34px;
+  letter-spacing: 0.18em;
+  border-radius: 0;
+}
+
+.empty__secondary {
+  font-size: var(--lu-fs-legal);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* ------------------------------------------------------------- store bag */
+
+.page {
+  padding-top: 56px;
+  padding-bottom: 80px;
+}
+
+.title {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: clamp(34px, 5vw, 46px);
+  color: var(--lu-ink);
+  margin-bottom: 34px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 56px;
+  align-items: start;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.lines {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ------------------------------------------------------------- line item */
+
+.line {
+  border: 1px solid var(--lu-hairline);
+  background: var(--lu-card);
+}
+
+.line__inner {
+  display: grid;
+  grid-template-columns: 130px 1fr auto;
+  gap: 24px;
+  padding: 24px;
+  align-items: center;
+}
+
+.line__figure {
+  position: relative;
+  width: 130px;
+  height: 150px;
+}
+
+.line__image {
+  object-fit: cover;
+}
+
+.line__detail {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.line__name {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: 26px;
+  color: var(--lu-ink);
+}
+
+.line__spec {
+  font-size: 13px;
+  color: var(--lu-muted);
+}
+
+.planChip {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 11px;
+  background: var(--lu-gold-wash);
+  border: 1px solid var(--lu-gold-border);
+  font-size: var(--lu-fs-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lu-gold-deep);
+  font-weight: 700;
+}
+
+.line__controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--lu-hairline-strong);
+}
+
+.stepper__btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  color: var(--lu-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--lu-transition);
+}
+
+.stepper__btn:hover:not(:disabled) {
+  color: var(--lu-plum);
+}
+
+.stepper__btn:disabled {
+  color: var(--lu-hairline-strong);
+  cursor: not-allowed;
+}
+
+.stepper__value {
+  width: 32px;
+  text-align: center;
+  font-size: 15px;
+  color: var(--lu-ink);
+  font-weight: 600;
+}
+
+.linkBtn {
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--lu-gold-deep);
+  font-weight: 700;
+  cursor: pointer;
+  transition: color var(--lu-transition);
+}
+
+.linkBtn:hover {
+  color: var(--lu-gold);
+}
+
+.line__money {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.line__total {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: 28px;
+  color: var(--lu-ink);
+}
+
+.line__unit {
+  font-size: 12px;
+  color: var(--lu-muted-2);
+}
+
+/* The strip that links the shipping lot's report. */
+.line__lot {
+  padding: 16px 24px;
+  border-top: 1px solid var(--lu-rule);
+  background: var(--lu-chalk);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.line__lotIcon {
+  color: var(--lu-gold-deep);
+  flex: 0 0 auto;
+}
+
+.line__lotText {
+  font-size: 13px;
+  color: var(--lu-muted);
+}
+
+.line__lotText strong {
+  color: var(--lu-ink);
+}
+
+/* -------------------------------------------------------------- checkout */
+
+.checkout {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.checkout__title {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: 30px;
+  color: var(--lu-ink);
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field--wide {
+  grid-column: 1 / -1;
+}
+
+.field__pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.field__label {
+  font-size: var(--lu-fs-legal);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lu-muted-2);
+  font-weight: 700;
+}
+
+.field__input {
+  height: 50px;
+  border-radius: 0;
+  font-size: 15px;
+}
+
+/* The acknowledgement gate. The pay button is disabled until it is checked. */
+.ack {
+  padding: 20px 22px;
+  background: var(--lu-warn-bg);
+  border: 1px solid var(--lu-warn-border);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ack__label {
+  font-size: var(--lu-fs-legal);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lu-warn-text);
+  font-weight: 700;
+}
+
+.ack__row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.ack__box {
+  width: 18px;
+  height: 18px;
+  margin: 2px 0 0;
+  accent-color: var(--lu-plum-mid);
+  flex: 0 0 auto;
+}
+
+.ack__text {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--lu-warn-body);
+}
+
+.pay {
+  height: 58px;
+  width: 100%;
+  letter-spacing: 0.2em;
+  border-radius: 0;
+}
+
+.terms {
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--lu-muted-2);
+  text-align: center;
+}
+
+/* --------------------------------------------------------------- summary */
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: sticky;
+  top: 130px;
+}
+
+.summary__card {
+  border: 1px solid var(--lu-gold-border);
+  background: var(--lu-card);
+  padding: 26px 28px;
+}
+
+.summary__label {
+  font-size: var(--lu-fs-legal);
+  letter-spacing: var(--lu-track-label);
+  text-transform: uppercase;
+  color: var(--lu-gold-deep);
+  font-weight: 700;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--lu-rule);
+}
+
+.summary__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--lu-rule);
+  font-size: 15px;
+  color: var(--lu-body-2);
+  margin: 0;
+}
+
+.summary__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.summary__row dd {
+  color: var(--lu-ink);
+  text-align: right;
+}
+
+.summary__row--saving dd {
+  color: var(--lu-pass);
+}
+
+.summary__row--muted dd {
+  color: var(--lu-muted-2);
+}
+
+.summary__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding-top: 16px;
+}
+
+.summary__totalLabel {
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lu-ink);
+  font-weight: 700;
+}
+
+.summary__totalValue {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: 34px;
+  color: var(--lu-ink);
+}
+
+.sideCard {
+  border: 1px solid var(--lu-hairline);
+  background: var(--lu-chalk);
+  padding: 22px 24px;
+}
+
+.sideCard--card {
+  background: var(--lu-card);
+}
+
+.sideCard__label {
+  font-size: var(--lu-fs-legal);
+  letter-spacing: var(--lu-track-label);
+  text-transform: uppercase;
+  color: var(--lu-muted-2);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.sideCard__body {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--lu-muted);
+}
+
+/* ------------------------------------------------------------ responsive */
+
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .summary {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .line__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .line__money {
+    align-items: flex-start;
+  }
+
+  .fields {
+    grid-template-columns: 1fr;
+  }
+
+  .field--wide {
+    grid-column: auto;
+  }
+}

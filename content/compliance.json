@@ -1,0 +1,40 @@
+{
+  "market": "US",
+  "fdaDisclaimer": "These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.",
+  "fdaDisclaimerPlacement": "Footer of every page, adjacent to every structure/function claim, and on the product label.",
+  "preLaunchDisclaimer": "Preliminary formula — doses shown are targets and are not final.",
+  "warningSet": [
+    "Not for use by anyone under 18 years of age.",
+    "Not for use by women who are pregnant or nursing.",
+    "Consult your physician before use if you have a medical condition, or take any prescription medication — particularly medication affecting blood glucose, mood, or thyroid function.",
+    "Discontinue use and consult a physician if you experience any adverse reaction.",
+    "Do not exceed one serving per day.",
+    "Keep out of reach of children.",
+    "Store below 25 °C, away from direct light. Do not use if the seal is broken.",
+    "This is a dietary supplement, not a substitute for a varied diet or for medical treatment."
+  ],
+  "neverPublish": [
+    "Before-and-after imagery, of any kind",
+    "Weight, calorie or clothing-size numbers",
+    "Any reference to prescription weight-loss medication",
+    "Language implying a body needs correcting",
+    "A dose written without its unit, or a total without a split",
+    "Gradients, textures, drop shadows or stock illustration",
+    "Claims of a timeline for results",
+    "Emoji, exclamation marks"
+  ],
+  "claimsRule": "Any claim about the product must come from the approved-claims list, reviewed by regulatory counsel. If it is not on that list it does not ship — no exceptions for social captions or creator briefs. Wire the list as the source for product-page strings so an unreviewed claim cannot be published.",
+  "operational": [
+    "21 CFR 101.93 claim notification filed within 30 days of first sale.",
+    "FDA facility registration confirmation held from the contract manufacturer.",
+    "Product liability insurance bound before first shipment.",
+    "Regulatory counsel review of label and first 90 days of ad copy.",
+    "Meta and TikTok business accounts age-gated 18+ at account level before any ad runs.",
+    "Cookie consent plus CCPA/CPRA controls live from day one (California traffic is immediate)."
+  ],
+  "blocking": [
+    "Supplement Facts panel must be produced by the contract manufacturer and cleared by counsel. The panel in the designs is a layout draft.",
+    "All six policies drafted or reviewed by counsel, split into one route each with its own consent record.",
+    "Approved-claims list wired as the source of every product-page string."
+  ]
+}

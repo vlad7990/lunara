@@ -1,0 +1,191 @@
+.head {
+  padding-top: var(--lu-section);
+  padding-bottom: 40px;
+}
+
+.head__copy {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.head__title {
+  font-size: clamp(34px, 4.5vw, 52px);
+  line-height: 1.04;
+}
+
+.head__lede {
+  font-size: var(--lu-fs-body);
+  line-height: 1.65;
+  color: var(--lu-body-2);
+}
+
+.layout {
+  padding-bottom: 80px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* --------------------------------------------------------------- index */
+
+.index {
+  position: sticky;
+  top: 130px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.index__link {
+  padding: 12px 16px;
+  background: var(--lu-card);
+  border: 1px solid var(--lu-hairline);
+  font-size: var(--lu-fs-sm);
+  color: var(--lu-ink);
+  transition: border-color var(--lu-transition), background-color var(--lu-transition);
+}
+
+.index__link:hover {
+  border-color: var(--lu-gold);
+  color: var(--lu-ink);
+}
+
+.index__link[aria-current="page"] {
+  border-color: var(--lu-gold-deep);
+  background: var(--lu-gold-tint);
+}
+
+/* --------------------------------------------------------------- policy */
+
+.body {
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 52px;
+}
+
+.policy__kicker {
+  font-size: var(--lu-fs-legal);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--lu-gold-deep);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.policy--caution .policy__kicker {
+  color: var(--lu-warn-text);
+}
+
+.policy__title {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 1.15;
+  color: var(--lu-ink);
+  margin-bottom: 16px;
+}
+
+/* The plain-language summary, in a gold-bordered card. */
+.summary {
+  padding: 20px 22px;
+  background: var(--lu-card);
+  border-left: 3px solid var(--lu-gold-deep);
+  margin-bottom: 20px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--lu-body);
+}
+
+.paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 15px;
+  line-height: 1.72;
+  color: var(--lu-body-2);
+}
+
+.cards {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.card {
+  padding: 18px 20px;
+  background: var(--lu-chalk);
+  border: 1px solid var(--lu-hairline);
+  scroll-margin-top: 140px;
+}
+
+.card__label {
+  font-size: var(--lu-fs-legal);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lu-gold-deep);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.card__body {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--lu-muted);
+}
+
+/* The FDA statement itself, quoted in the caution accent. */
+.statement {
+  padding: 26px 28px;
+  background: var(--lu-warn-bg);
+  border: 1px solid var(--lu-warn-border);
+}
+
+.statement__quote {
+  font-size: var(--lu-fs-body);
+  line-height: 1.7;
+  color: var(--lu-body);
+  margin-bottom: 16px;
+}
+
+/* The standing note that this copy is not launch-ready. */
+.notice {
+  padding: 26px 28px;
+  background: var(--lu-plum);
+}
+
+.notice__label {
+  font-size: var(--lu-fs-label);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--lu-gold);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.notice__body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--lu-cream-82);
+}
+
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .index {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,92 @@
+.disclaimer {
+  font-size: var(--lu-fs-legal);
+  line-height: 1.6;
+  color: var(--lu-muted-2);
+  max-width: 900px;
+}
+
+.disclaimer--onPlum {
+  color: var(--lu-cream-faint);
+}
+
+/* Inside a sidebar card the disclaimer is body copy, not a legal footnote. */
+.disclaimer--body {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--lu-muted);
+  max-width: none;
+}
+
+.doseDisclaimer {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--lu-muted-2);
+}
+
+.doseDisclaimer--onPlum {
+  color: var(--lu-cream-body);
+}
+
+/* The full warning set. Used by the product page, the FAQ sidebar and checkout. */
+.warnings {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: var(--lu-warn-bg);
+  border: 1px solid var(--lu-warn-border);
+  padding: 22px 24px 24px;
+}
+
+.warnings__heading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: var(--lu-fs-legal);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--lu-warn-text);
+  margin-bottom: 14px;
+}
+
+.warnings__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.warnings__item {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--lu-warn-body);
+  padding: 9px 0;
+  border-top: 1px solid var(--lu-warn-border);
+}
+
+.warnings__item:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.warnings__item:last-child {
+  padding-bottom: 0;
+}
+
+/* Compact variant for the "Before you start" card on the product page. */
+.warnings--compact .warnings__item {
+  font-size: 12px;
+  padding: 7px 0;
+}
+
+.draftFlag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--lu-fs-label);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--lu-warn-text);
+}

@@ -1,0 +1,551 @@
+/* ------------------------------------------------------------------ head */
+
+.head {
+  padding-top: 76px;
+  padding-bottom: 44px;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 64px;
+  align-items: end;
+}
+
+.head__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.head__lede {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--lu-body-2);
+  max-width: 560px;
+}
+
+.sameCard {
+  padding: 24px 26px;
+  background: var(--lu-card);
+  border: 1px solid var(--lu-gold-border);
+}
+
+.sameCard__label {
+  font-size: var(--lu-fs-label);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--lu-gold-deep);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.sameCard__body {
+  font-size: var(--lu-fs-sm);
+  line-height: 1.7;
+  color: var(--lu-body);
+}
+
+/* ------------------------------------------------------------ filter row */
+
+.filter {
+  padding-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid var(--lu-hairline);
+  flex-wrap: wrap;
+}
+
+.filter__buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter__btn {
+  padding: 9px 16px;
+  border: 1px solid var(--lu-hairline-strong);
+  background: transparent;
+  font-size: var(--lu-fs-legal);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lu-ink);
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 0;
+  transition: border-color var(--lu-transition), background-color var(--lu-transition);
+}
+
+.filter__btn[aria-pressed="true"] {
+  border-color: var(--lu-gold-deep);
+  background: var(--lu-card);
+}
+
+.filter__note {
+  font-size: 13px;
+  color: var(--lu-muted-2);
+}
+
+/* ------------------------------------------------------------------ grid */
+
+.grid {
+  padding-top: 34px;
+  padding-bottom: 72px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.card {
+  background: var(--lu-card);
+  border: 1px solid var(--lu-hairline);
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--lu-transition);
+}
+
+.card:hover {
+  border-color: var(--lu-gold);
+}
+
+.card__figure {
+  position: relative;
+  height: 380px;
+}
+
+/* Cropped fill: the render is 2:3 and the card slot is landscape. */
+.card__image {
+  object-fit: cover;
+  object-position: 42% 58%;
+}
+
+.card__badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  padding: 6px 12px;
+  background: color-mix(in srgb, var(--lu-plum) 90%, transparent);
+  font-size: var(--lu-fs-label);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lu-gold);
+  font-weight: 700;
+}
+
+/* The sticks slot is a framed placeholder inside a chalk-alt panel, not a bare dashed box. */
+.card__slotFrame {
+  height: 380px;
+  border-bottom: 1px solid var(--lu-hairline);
+  background: var(--lu-chalk-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.card__slot {
+  background: transparent;
+  padding: 40px 34px;
+  height: auto;
+}
+
+.card__body {
+  padding: 28px 30px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+.card__titleRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.card__name {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: 30px;
+  color: var(--lu-ink);
+}
+
+.card__price {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: 28px;
+  color: var(--lu-ink);
+  white-space: nowrap;
+}
+
+.card__meta {
+  font-size: var(--lu-fs-legal);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lu-muted-2);
+  font-weight: 600;
+}
+
+.card__copy {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--lu-body-2);
+}
+
+.card__spacer {
+  flex: 1;
+}
+
+.card__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* The founding-price chip that sits above every waitlist CTA. */
+.foundingChip {
+  padding: 12px 14px;
+  background: var(--lu-gold-wash);
+  border: 1px solid var(--lu-gold-border);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--lu-warn-body);
+}
+
+.foundingChip strong {
+  color: var(--lu-ink);
+}
+
+.card__cta {
+  height: 50px;
+  width: 100%;
+  letter-spacing: 0.18em;
+  font-size: var(--lu-fs-legal);
+  border-radius: 0;
+}
+
+/* ---------------------------------------------- subscription & bundle cards */
+
+.offer {
+  padding: 36px 34px 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.offer--sub {
+  background: var(--lu-plum);
+}
+
+.offer--bundle {
+  background: var(--lu-card);
+  border: 1px solid var(--lu-gold-border);
+}
+
+.offer__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.offer__kicker,
+.offer__saving {
+  font-size: var(--lu-fs-label);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--lu-gold-deep);
+  font-weight: 700;
+}
+
+.offer__saving {
+  letter-spacing: 0.16em;
+}
+
+.offer--sub .offer__kicker,
+.offer--sub .offer__saving {
+  color: var(--lu-gold);
+}
+
+.offer__title {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 1.1;
+  color: var(--lu-ink);
+}
+
+.offer--sub .offer__title {
+  color: var(--lu-cream);
+}
+
+.offer__price {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.offer__priceValue {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: 38px;
+  color: var(--lu-ink);
+}
+
+.offer--sub .offer__priceValue {
+  color: var(--lu-cream);
+}
+
+.offer__priceWas {
+  font-size: 13px;
+  color: var(--lu-muted-2);
+  text-decoration: line-through;
+}
+
+.offer--sub .offer__priceWas {
+  color: var(--lu-cream-faint);
+}
+
+.offer__copy {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--lu-body-2);
+}
+
+.offer--sub .offer__copy {
+  color: var(--lu-cream-dim);
+}
+
+.offer__points {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 16px 0;
+  border-top: 1px solid var(--lu-rule);
+  border-bottom: 1px solid var(--lu-rule);
+  margin: 0;
+  list-style: none;
+  font-size: 13px;
+  color: var(--lu-body-2);
+}
+
+.offer--sub .offer__points {
+  border-color: var(--lu-gold-line);
+  color: var(--lu-cream-82);
+}
+
+/* -------------------------------------------------------- comparison table */
+
+.compare {
+  padding-top: 68px;
+  padding-bottom: 68px;
+}
+
+.compare__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 26px;
+  flex-wrap: wrap;
+}
+
+.compare__aside {
+  font-size: 13px;
+  color: var(--lu-muted);
+  max-width: 420px;
+  text-align: right;
+  line-height: 1.55;
+}
+
+.compare__wrap {
+  border: 1px solid var(--lu-hairline-strong);
+  background: var(--lu-card);
+  overflow-x: auto;
+}
+
+.compare__table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+  font-size: 15px;
+  color: var(--lu-ink);
+  text-align: left;
+}
+
+.compare__table th,
+.compare__table td {
+  padding: 14px 22px;
+  vertical-align: top;
+}
+
+.compare__table thead th {
+  background: var(--lu-gold-wash);
+  padding: 13px 22px;
+  font-size: var(--lu-fs-label);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lu-gold-deep);
+  font-weight: 700;
+}
+
+.compare__table tbody th {
+  color: var(--lu-muted);
+  font-weight: 400;
+  width: 34%;
+}
+
+.compare__table tbody tr {
+  border-top: 1px solid var(--lu-rule);
+}
+
+.compare__note {
+  margin-top: 16px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--lu-muted);
+  max-width: 760px;
+}
+
+/* ---------------------------------------------------- what we don't sell */
+
+.dontSell {
+  padding-top: var(--lu-section);
+  padding-bottom: var(--lu-section);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.dontSell__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.dontSell__body {
+  font-size: var(--lu-fs-body);
+  line-height: 1.7;
+  color: var(--lu-body-2);
+}
+
+.dontSell__list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.dontSell__row {
+  padding: 18px 0;
+  border-top: 1px solid var(--lu-hairline);
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 20px;
+}
+
+.dontSell__row:last-child {
+  border-bottom: 1px solid var(--lu-hairline);
+}
+
+.dontSell__term {
+  font-size: 15px;
+  color: var(--lu-ink);
+  font-weight: 600;
+}
+
+.dontSell__def {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--lu-muted);
+  margin: 0;
+}
+
+/* ---------------------------------------------------------------- COA band */
+
+.coaBand {
+  padding-bottom: 76px;
+}
+
+.coaBand__label {
+  margin-bottom: 12px;
+}
+
+.coaBand__inner {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 44px;
+  align-items: center;
+  padding: 40px 44px;
+  background: var(--lu-plum);
+}
+
+.coaBand__title {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.15;
+  color: var(--lu-cream);
+  margin-bottom: 10px;
+}
+
+.coaBand__body {
+  font-size: var(--lu-fs-sm);
+  line-height: 1.6;
+  color: var(--lu-cream-dim);
+  max-width: 520px;
+}
+
+.coaBand__cta {
+  height: 50px;
+  letter-spacing: 0.16em;
+  font-size: var(--lu-fs-legal);
+  border-radius: 0;
+}
+
+/* ------------------------------------------------------------ responsive */
+
+@media (max-width: 1100px) {
+  .head {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-top: 52px;
+  }
+
+  .dontSell {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dontSell {
+    grid-template-columns: 1fr;
+  }
+
+  .coaBand__inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 32px;
+  }
+
+  .compare__aside {
+    text-align: left;
+  }
+}
+
+@media (max-width: 640px) {
+  .dontSell__row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .offer,
+  .card__body {
+    padding: 26px 22px;
+  }
+}

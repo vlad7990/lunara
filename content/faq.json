@@ -1,0 +1,98 @@
+{
+  "groups": [
+    {
+      "id": "formula",
+      "title": "The formula",
+      "items": [
+        {
+          "q": "Why publish the formula at all? Won't someone copy it?",
+          "a": "Probably. The formula was never the moat — inositol is not proprietary and the ratio is in the literature. What can't be copied quickly is being the brand that published first and kept publishing. We would rather earn your trust than protect a recipe."
+        },
+        {
+          "q": "Why 40:1?",
+          "a": "It is the approximate physiological plasma ratio of myo- to D-chiro-inositol, and the ratio used in the trials most often cited. A higher D-chiro dose is not a stronger product; it is a different one, and not one the research supports."
+        },
+        {
+          "q": "Are the doses final?",
+          "a": "They are targets. Final values are confirmed when raw material is selected, because standardisation varies between suppliers — particularly for saffron. Any change appears in the change log with a date before it appears on a pack."
+        },
+        {
+          "q": "Why is there no berberine, caffeine or added fiber?",
+          "a": "Each is a published decision rather than an omission — tolerability, drug interactions, format, and in fiber's case an honest dose we couldn't fit in one scoop.",
+          "link": "/open-formula"
+        }
+      ]
+    },
+    {
+      "id": "taking",
+      "title": "Taking it",
+      "items": [
+        {
+          "q": "When will I feel something?",
+          "a": "Inositol is cumulative and the published studies run eight to twelve weeks. We would rather tell you that than promise a week-one difference. Some people notice the theanine the first afternoon; that is the theanine, not the formula working."
+        },
+        {
+          "q": "Is this a weight-loss product?",
+          "a": "No. It supports metabolic function and the experience of craving. It is not a weight-loss drug, not a substitute for one, and we will not market it as either. We do not publish body-weight claims, before-and-after imagery, or calorie numbers."
+        },
+        {
+          "q": "Morning or evening?",
+          "a": "With a meal, once a day. Most people choose lunch or the early afternoon, which is when the craving they bought it for tends to arrive. There is no stimulant, so evening is fine if that is when you remember."
+        },
+        {
+          "q": "What does it taste like?",
+          "a": "Faintly sweet raspberry, slightly floral from the saffron. Sweetened with steviol glycosides — no sugar, no sugar alcohols. Three grams of inositol is mildly sweet on its own, which is why the flavour load is light."
+        }
+      ]
+    },
+    {
+      "id": "safety",
+      "title": "Safety and interactions",
+      "tone": "caution",
+      "items": [
+        {
+          "q": "Can I take it with my medication?",
+          "a": "Ask your physician or pharmacist — particularly with anything affecting blood glucose, mood, or thyroid function. We will not answer that question for you, and any brand that does is guessing about a person they have never met."
+        },
+        {
+          "q": "I'm on a GLP-1. Is this compatible?",
+          "a": "That is a conversation with your prescriber, not with us. We do not make claims about use alongside prescription weight-management medication and we do not market to that use case."
+        },
+        {
+          "q": "Pregnant or nursing?",
+          "a": "Not for use by women who are pregnant or nursing. Not for anyone under 18."
+        },
+        {
+          "q": "Allergens and diet",
+          "a": "No gluten, dairy, soy, egg, nut or shellfish ingredients. Vegan. Produced in a cGMP facility that also handles dairy and soy — the full allergen statement for your lot is on its certificate of analysis.",
+          "link": "/lot"
+        }
+      ]
+    },
+    {
+      "id": "ordering",
+      "title": "Ordering",
+      "modeScoped": true,
+      "waitlist": [
+        {
+          "q": "When can I buy it?",
+          "a": "Manufacturing lead time is twelve to twenty weeks from formula lock. The Founding 500 get a 48-hour window before general access. Nothing is charged when you join the list."
+        },
+        {
+          "q": "How do referrals work?",
+          "a": "Three confirmed referrals moves you into the Founding 500 regardless of your position in line, and your referrals keep their own place. No tiers beyond that, no points, no leaderboard."
+        }
+      ],
+      "store": [
+        {
+          "q": "Shipping and returns",
+          "a": "Free US shipping over $50, 1–2 business days to dispatch. Sixty-day return on an opened jar — if it isn't for you, we would rather have the feedback than the sale."
+        },
+        {
+          "q": "How do I cancel a subscription?",
+          "a": "One link in any email, or one click in your account. No phone call, no chat window, no retention offer. Skip, pause and change interval are on the same screen."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+/**
+ * What's in one serving — the full-bleed plum band.
+ *
+ * The numbers are the design. Ingredient names are uppercase micro-labels in the sans;
+ * the doses are Cormorant. That inversion is the signature and is not to be normalised.
+ */
+
+.strip {
+  padding: 52px 0;
+}
+
+.head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--lu-gold-line-head);
+  flex-wrap: wrap;
+}
+
+.title {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: 33px;
+  color: var(--lu-cream-2);
+}
+
+.meta {
+  font-size: var(--lu-fs-label);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--lu-gold);
+  font-weight: 700;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-top: 30px;
+}
+
+.cell {
+  padding: 2px 24px;
+  border-right: 1px solid var(--lu-gold-line-soft);
+}
+
+.cell:first-child {
+  padding-left: 0;
+}
+
+.cell:last-child {
+  padding-right: 0;
+  border-right: none;
+}
+
+.cell__name {
+  font-size: var(--lu-fs-label);
+  letter-spacing: var(--lu-track-label);
+  text-transform: uppercase;
+  color: var(--lu-gold);
+  font-weight: 700;
+  margin-bottom: 9px;
+}
+
+.cell__dose {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: 31px;
+  line-height: 1.1;
+  color: var(--lu-cream);
+}
+
+.foot {
+  margin-top: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--lu-gutter);
+  flex-wrap: wrap;
+}
+
+.foot__note {
+  font-size: 12px;
+  color: var(--lu-cream-body);
+  line-height: 1.5;
+}
+
+.foot__link {
+  font-size: var(--lu-fs-legal);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lu-gold);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.foot__link:hover {
+  color: var(--lu-cream-2);
+}
+
+/* The dose strip becomes two columns on mobile. It must never scroll horizontally —
+   every number has to be visible. */
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 26px;
+  }
+
+  .cell:nth-child(3n) {
+    border-right: none;
+    padding-right: 0;
+  }
+
+  .cell:nth-child(3n + 1) {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cell,
+  .cell:nth-child(3n),
+  .cell:nth-child(3n + 1) {
+    padding: 2px 16px;
+    border-right: 1px solid var(--lu-gold-line-soft);
+  }
+
+  .cell:nth-child(2n) {
+    border-right: none;
+    padding-right: 0;
+  }
+
+  .cell:nth-child(2n + 1) {
+    padding-left: 0;
+  }
+
+  .title {
+    font-size: 27px;
+  }
+}

@@ -1,0 +1,153 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 470px;
+}
+
+.form--full {
+  max-width: none;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.row .field {
+  flex: 1;
+  min-width: 0;
+}
+
+.confirmation {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--lu-plum-mid);
+  font-weight: 600;
+}
+
+.position {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--lu-body-2);
+  font-weight: 400;
+  margin-top: 6px;
+}
+
+.position strong {
+  color: var(--lu-ink);
+  font-weight: 600;
+}
+
+.error {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--lu-warn-text);
+  font-weight: 600;
+}
+
+.microcopy {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--lu-muted-2);
+}
+
+/* On plum — the open-formula sidebar card and the product notify panel. */
+.form--onPlum .microcopy {
+  color: var(--lu-cream-faint);
+}
+
+.form--onPlum .confirmation {
+  color: var(--lu-cream);
+}
+
+.form--onPlum .position {
+  color: var(--lu-cream-dim);
+}
+
+.form--onPlum .position strong {
+  color: var(--lu-cream);
+}
+
+.form--onPlum .error {
+  color: var(--lu-gold);
+}
+
+/* Stacked — narrow columns, where a side-by-side field and button would crush both. */
+.form--stacked .row {
+  flex-direction: column;
+}
+
+.form--stacked .row .button {
+  width: 100%;
+}
+
+/* -------------------------------------------------- Founding 500 progress */
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  max-width: 470px;
+  padding: 20px 22px;
+  background: var(--lu-card);
+  border: 1px solid var(--lu-hairline);
+  /* The one card in the design with a radius — it reads as a chip, not a panel. */
+  border-radius: 5px;
+}
+
+.progress__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.progress__label {
+  font-size: var(--lu-fs-legal);
+  letter-spacing: var(--lu-track-label);
+  text-transform: uppercase;
+  color: var(--lu-plum-mid);
+  font-weight: 700;
+}
+
+.progress__count {
+  font-size: 13px;
+  color: var(--lu-muted);
+}
+
+.progress__count strong {
+  color: var(--lu-ink);
+}
+
+.progress__track {
+  height: 5px;
+  border-radius: var(--lu-radius-pill);
+  background: var(--lu-rule);
+  overflow: hidden;
+}
+
+/* The only gradient in the design. */
+.progress__bar {
+  height: 100%;
+  border-radius: var(--lu-radius-pill);
+  background: linear-gradient(90deg, var(--lu-gold-deep), var(--lu-gold));
+}
+
+.progress__foot {
+  font-size: 12px;
+  color: var(--lu-muted-2);
+}
+
+@media (max-width: 640px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .row .button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "id": "crave-balance",
+  "name": "Crave Balance",
+  "subtitle": "Daily metabolic & craving support",
+  "flavour": "Raspberry saffron",
+  "servings": 30,
+  "netWeight": "150 g",
+  "servingSize": "1 scoop (5 g)",
+  "dosesAreFinal": false,
+  "doseDisclaimer": "Target doses — final values confirm on raw-material selection, and we publish the change if they move.",
+  "inositolRatio": "40:1",
+  "formats": [
+    {
+      "sku": "CB-JAR-30",
+      "name": "Crave Balance · jar",
+      "price": 54,
+      "foundingPrice": 37.8,
+      "perServing": 1.8,
+      "servings": 30,
+      "unit": "150 g jar with 5 g scoop",
+      "recyclable": true,
+      "note": "The everyday format."
+    },
+    {
+      "sku": "CB-STK-30",
+      "name": "Crave Balance · sticks",
+      "price": 58,
+      "foundingPrice": 40.6,
+      "perServing": 1.93,
+      "servings": 30,
+      "unit": "30 × 5 g single-serve sticks",
+      "recyclable": false,
+      "note": "Four dollars more because pre-measured film costs more than a jar — not because it is better."
+    },
+    {
+      "sku": "CB-JAR-SUB",
+      "name": "Crave Balance · subscription",
+      "price": 45.9,
+      "listPrice": 54,
+      "discountPct": 15,
+      "intervalDays": 30,
+      "note": "Inositol only works taken daily, so this is the honest default."
+    },
+    {
+      "sku": "CB-JAR-60",
+      "name": "Two jars, sixty days",
+      "price": 94,
+      "listPrice": 108,
+      "saving": 14,
+      "note": "The shortest honest test of the formula. The only bundle we sell."
+    }
+  ],
+  "ingredients": [
+    {
+      "name": "Myo-inositol",
+      "dose": 3000,
+      "unit": "mg",
+      "isTarget": true,
+      "short": "Insulin signalling · metabolic support",
+      "long": "The base of the formula. Supports insulin signalling, normal glucose metabolism and a healthy menstrual cycle. Dosed at the level used in the literature, not a token amount."
+    },
+    {
+      "name": "D-chiro-inositol",
+      "dose": 75,
+      "unit": "mg",
+      "isTarget": true,
+      "short": "Complements myo-inositol",
+      "long": "Paired with myo at 40:1 — the physiological plasma ratio, and the one used in the trials people actually cite. More is not better here."
+    },
+    {
+      "name": "Inositol ratio",
+      "dose": "40 : 1",
+      "unit": null,
+      "isTarget": false,
+      "short": "The ratio used in the published trials",
+      "long": "It is the approximate physiological plasma ratio, and the ratio used in the trials most often cited."
+    },
+    {
+      "name": "L-theanine",
+      "dose": 200,
+      "unit": "mg",
+      "isTarget": true,
+      "short": "Calm without sedation",
+      "long": "For the part of a craving that isn't hunger. Supports a calm, focused state without sedation — which is why there is no caffeine in here to fight it."
+    },
+    {
+      "name": "Chromium picolinate",
+      "dose": 200,
+      "unit": "mcg",
+      "isTarget": true,
+      "short": "Macronutrient metabolism",
+      "long": "An essential trace mineral that supports macronutrient and glucose metabolism. Picolinate for absorption; 200 mcg because that is the studied range."
+    },
+    {
+      "name": "Saffron extract",
+      "dose": 28,
+      "unit": "mg",
+      "isTarget": true,
+      "short": "Crocus sativus, standardized",
+      "long": "Standardized Crocus sativus stigma extract, for emotional wellbeing and the snacking that follows a hard afternoon. The most expensive gram in the jar."
+    }
+  ],
+  "excluded": [
+    {
+      "name": "Berberine",
+      "reason": "GI tolerability at an effective dose, CYP3A4 interaction profile, mechanism outside this formula's job.",
+      "article": "why-theres-no-berberine"
+    },
+    {
+      "name": "Caffeine",
+      "reason": "You do not need a spike at 3pm; you need the edge taken off. It would also fight the theanine.",
+      "article": "why-theres-no-caffeine"
+    },
+    {
+      "name": "Added fiber",
+      "reason": "Texture, and an honest dose we could not fit in one scoop.",
+      "article": "the-fiber-decision"
+    },
+    {
+      "name": "Proprietary blends",
+      "reason": "A blend exists so the split cannot be checked. Once you have one you can no longer publish a dose card.",
+      "article": "why-we-published-the-dose-card"
+    }
+  ],
+  "supplementFacts": {
+    "status": "DRAFT — must be produced by the contract manufacturer and cleared by regulatory counsel before print or publication.",
+    "servingSize": "1 scoop (5 g)",
+    "servingsPerContainer": 30,
+    "rows": [
+      {
+        "name": "Chromium (as chromium picolinate)",
+        "amount": "200 mcg",
+        "dv": "571%"
+      },
+      {
+        "name": "Myo-Inositol",
+        "amount": "3,000 mg",
+        "dv": "†"
+      },
+      {
+        "name": "D-Chiro-Inositol",
+        "amount": "75 mg",
+        "dv": "†"
+      },
+      {
+        "name": "L-Theanine",
+        "amount": "200 mg",
+        "dv": "†"
+      },
+      {
+        "name": "Saffron extract (Crocus sativus, stigma)",
+        "amount": "28 mg",
+        "dv": "†"
+      }
+    ],
+    "footnote": "† Daily Value not established.",
+    "otherIngredients": "Natural raspberry flavor, citric acid, steviol glycosides."
+  },
+  "directions": [
+    {
+      "step": 1,
+      "title": "Dissolve one level scoop in 250–300 ml of water",
+      "detail": "Stir; it clears in a few seconds."
+    },
+    {
+      "step": 2,
+      "title": "Once a day, with a meal",
+      "detail": "Most people take it with lunch or in the early afternoon."
+    },
+    {
+      "step": 3,
+      "title": "Daily, without gaps",
+      "detail": "Inositol is a consistency ingredient, not an as-needed one."
+    }
+  ]
+}

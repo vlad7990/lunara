@@ -1,0 +1,153 @@
+.head {
+  padding-top: 80px;
+  padding-bottom: 48px;
+}
+
+.head__copy {
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.head__lede {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--lu-body-2);
+}
+
+.layout {
+  padding-bottom: 40px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 64px;
+  align-items: start;
+}
+
+.groups {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+
+.group__heading {
+  font-size: var(--lu-fs-legal);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--lu-gold-deep);
+  font-weight: 700;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--lu-hairline-strong);
+}
+
+/* The safety group carries the caution accent on its heading rule. */
+.group--caution .group__heading {
+  color: var(--lu-warn-text);
+  border-bottom-color: var(--lu-warn-border);
+}
+
+.group__list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.item {
+  padding: 26px 0;
+  border-bottom: 1px solid var(--lu-rule);
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.item__q {
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--lu-ink);
+  margin-bottom: 10px;
+}
+
+.item__a {
+  font-size: var(--lu-fs-body);
+  line-height: 1.7;
+  color: var(--lu-body-2);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------- sidebar */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  position: sticky;
+  top: 130px;
+}
+
+.sideCard {
+  padding: 24px 26px;
+  background: var(--lu-card);
+  border: 1px solid var(--lu-hairline);
+}
+
+.sideCard__label {
+  font-size: var(--lu-fs-legal);
+  letter-spacing: var(--lu-track-label);
+  text-transform: uppercase;
+  color: var(--lu-gold-deep);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.sideCard__body {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--lu-muted);
+}
+
+.contact {
+  padding: 24px 26px;
+  background: var(--lu-plum);
+}
+
+.contact__title {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.25;
+  color: var(--lu-cream);
+  margin-bottom: 10px;
+}
+
+.contact__body {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--lu-cream-dim);
+  margin-bottom: 14px;
+}
+
+.contact__email a {
+  font-size: var(--lu-fs-sm);
+  color: var(--lu-gold);
+  font-weight: 600;
+}
+
+.contact__email a:hover {
+  color: var(--lu-cream);
+}
+
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .sidebar {
+    position: static;
+  }
+
+  .head {
+    padding-top: 52px;
+  }
+}
