@@ -16,25 +16,27 @@ import styles from "./home.module.css";
  * `/join`, where the only decision on offer is whether to sign up.
  */
 
-/** What we publish, in the order each one costs us something. */
+/**
+ * What we publish, in the order each one costs us something.
+ *
+ * These carried 01-04 above the headings. The numerals only counted: each heading already
+ * names its own promise, and the hairline between columns does the separating. Four
+ * commitments read as commitments; a numbered list reads as a list.
+ */
 const PROMISES = [
   {
-    number: "01",
     title: "Every milligram, named",
     body: "On the pack, on the site, and in the first email. No blends, ever, in either formula.",
   },
   {
-    number: "02",
     title: "A report for every lot",
     body: "Third-party tested and published unedited, at a URL printed on the box. Including lots we chose not to sell.",
   },
   {
-    number: "03",
     title: "A dated change log",
     body: "If a dose moves you read it here first, with a date, before it reaches a pack.",
   },
   {
-    number: "04",
     title: "No body talk",
     body: "No before-and-afters, no weight or calorie numbers, no suggestion that your body needs correcting.",
   },
@@ -121,8 +123,7 @@ export default async function HomePage() {
 
           <ol className={styles.publish__grid}>
             {PROMISES.map((promise) => (
-              <li key={promise.number} className={styles.promise}>
-                <p className={styles.promise__number}>{promise.number}</p>
+              <li key={promise.title} className={styles.promise}>
                 <h3 className={styles.promise__title}>{promise.title}</h3>
                 <p className={styles.promise__body}>{promise.body}</p>
               </li>

@@ -136,14 +136,6 @@
   padding: 26px 24px 28px;
 }
 
-.promise__number {
-  font-family: var(--lu-font-display);
-  font-weight: 400;
-  font-size: 26px;
-  color: var(--lu-gold);
-  margin-bottom: 12px;
-}
-
 .promise__title {
   font-size: var(--lu-fs-body-lg);
   line-height: 1.4;

@@ -16,22 +16,18 @@ export const metadata: Metadata = {
 /** The four promises, in the order they cost us something. */
 const PROMISES = [
   {
-    number: "01",
     title: "Every milligram, in public",
     body: "Named on the pack, on the site, and in the first email you receive. No blends, ever — not even one.",
   },
   {
-    number: "02",
     title: "A report for every lot",
     body: "Third-party tested, published unedited at a URL printed on the box — including the lots we decided not to sell.",
   },
   {
-    number: "03",
     title: "A dated change log",
     body: "If a dose moves, you read it here first. No quiet reformulation between production runs.",
   },
   {
-    number: "04",
     title: "No body talk",
     body: "No before-and-afters, no weight or calorie numbers, no suggestion that your body needs correcting.",
   },
@@ -103,8 +99,7 @@ export default function AboutPage() {
 
           <ol className={styles.promises__grid}>
             {PROMISES.map((promise) => (
-              <li key={promise.number} className={styles.promise}>
-                <p className={styles.promise__number}>{promise.number}</p>
+              <li key={promise.title} className={styles.promise}>
                 <h3 className={styles.promise__title}>{promise.title}</h3>
                 <p className={styles.promise__body}>{promise.body}</p>
               </li>
