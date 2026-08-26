@@ -51,6 +51,28 @@ export function IconSpark(props: IconProps) {
   );
 }
 
+/**
+ * The filled four-point star the collateral sets between two hairlines, under a product
+ * name. Solid rather than stroked, because at ornament size a stroked star reads as an
+ * asterisk. Concave edges, so it is the printed diamond and not a plus sign.
+ */
+export function IconDiamond({ size = 12, className, style }: Omit<IconProps, "strokeWidth">) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      style={style}
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M12 1.5c.8 5.4 3.6 8.6 10.5 10.5C15.6 13.9 12.8 17.1 12 22.5c-.8-5.4-3.6-8.6-10.5-10.5C8.4 10.1 11.2 6.9 12 1.5z" />
+    </svg>
+  );
+}
+
 export function IconBag(props: IconProps) {
   return (
     <Svg strokeWidth={1.8} {...props}>
@@ -215,5 +237,95 @@ export function IconLeaf(props: IconProps) {
       <path d="M20 4c0 9-5.4 14-12 14H4c0-9 5.4-14 12-14z" />
       <path d="M4 20c2.4-4.8 5.6-8 9.6-10" />
     </Svg>
+  );
+}
+
+/* ------------------------------------------------------------------ formula marks
+ *
+ * The marks the printed collateral sets beside each ingredient: a molecular cluster for
+ * the inositols, wave lines for theanine, a crocus for saffron. Same outline language as
+ * everything above, so they sit in the set rather than beside it.
+ */
+
+/** Molecular cluster. The inositols, drawn the way the pack draws them. */
+export function IconInositol(props: IconProps) {
+  return (
+    <Svg strokeWidth={1.4} {...props}>
+      <circle cx="12" cy="6.4" r="1.7" />
+      <circle cx="5.6" cy="10.4" r="1.7" />
+      <circle cx="18.4" cy="10.4" r="1.7" />
+      <circle cx="8.2" cy="17.4" r="1.7" />
+      <circle cx="15.8" cy="17.4" r="1.7" />
+      <path d="M10.6 7.4 7 9.4M13.4 7.4 17 9.4M6.4 12 7.6 15.8M17.6 12l-1.2 3.8M9.9 17.4h4.2" />
+    </Svg>
+  );
+}
+
+/** Three drawn-out waves. Theanine: calm without sedation. */
+export function IconWaves(props: IconProps) {
+  return (
+    <Svg strokeWidth={1.5} {...props}>
+      <path d="M3 8.4c2.2-2.2 4.4-2.2 6.6 0s4.4 2.2 6.6 0 3.6-1.7 4.8-.6" />
+      <path d="M3 13c2.2-2.2 4.4-2.2 6.6 0s4.4 2.2 6.6 0 3.6-1.7 4.8-.6" />
+      <path d="M3 17.6c2.2-2.2 4.4-2.2 6.6 0s4.4 2.2 6.6 0 3.6-1.7 4.8-.6" />
+    </Svg>
+  );
+}
+
+/** Crocus sativus. Three stigmas above the petals, which is the part we buy. */
+export function IconCrocus(props: IconProps) {
+  return (
+    <Svg strokeWidth={1.4} {...props}>
+      <path d="M12 21v-6.2" />
+      <path d="M12 14.8c-2.8 0-4.8-1.8-4.8-4.2 0-1.5.8-2.8 2-3.5" />
+      <path d="M12 14.8c2.8 0 4.8-1.8 4.8-4.2 0-1.5-.8-2.8-2-3.5" />
+      <path d="M12 14.8c0-3.4 0-6.2 0-8.6" />
+      <path d="M12 8.6 9.4 3.4M12 8.6l2.6-5.2M12 8.2V3" />
+      <path d="M8.6 18.4c-1.4-.2-2.4-1.1-2.6-2.3M15.4 18.4c1.4-.2 2.4-1.1 2.6-2.3" />
+    </Svg>
+  );
+}
+
+/**
+ * A short symbol inside a hairline circle: Cr, Mg, B6, 40:1.
+ *
+ * The collateral sets these beside chromium, magnesium, B6 and the inositol ratio. They are
+ * lettering rather than drawing, so they are real text in the display serif and not traced
+ * paths: the glyphs stay crisp at any size and the mark scales with `size` like every icon.
+ * Decorative, like the rest of the set, because the label beside it already says the name.
+ */
+export function ElementMark({
+  symbol,
+  size = 18,
+  strokeWidth = 1.4,
+  className,
+  style,
+}: IconProps & { symbol: string }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      className={className}
+      style={style}
+      aria-hidden="true"
+      focusable="false"
+    >
+      <circle cx="12" cy="12" r="10.2" stroke="currentColor" strokeWidth={strokeWidth} />
+      <text
+        x="12"
+        y="12"
+        textAnchor="middle"
+        dominantBaseline="central"
+        fill="currentColor"
+        stroke="none"
+        fontFamily="var(--lu-font-display)"
+        fontSize={symbol.length > 2 ? 8.6 : 11}
+        letterSpacing="0.02em"
+      >
+        {symbol}
+      </text>
+    </svg>
   );
 }

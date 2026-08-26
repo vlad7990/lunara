@@ -1,0 +1,42 @@
+/**
+ * Decoration, held to the same rules as everything else: no gradient, no shadow, no fill.
+ * Flat gold line on the cream, exactly as the packs print it.
+ */
+
+/* ------------------------------------------------------------- spark divider */
+
+/* No margin of its own: spacing belongs to whoever places it, because the containers that
+   use it already set their own rhythm with flex gaps. */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.divider--start {
+  justify-content: flex-start;
+}
+
+/* The rules stop well short of the container: the mark is the point, not the line. */
+.divider__rule {
+  height: 1px;
+  width: 46px;
+  background: var(--lu-gold-border);
+}
+
+.divider--start .divider__rule:first-child {
+  width: 26px;
+}
+
+.divider__spark {
+  color: var(--lu-gold-deep);
+  flex: none;
+}
+
+.divider--onPlum .divider__rule {
+  background: var(--lu-gold-line);
+}
+
+.divider--onPlum .divider__spark {
+  color: var(--lu-gold);
+}

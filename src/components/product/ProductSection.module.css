@@ -103,6 +103,13 @@
   margin-top: -12px;
 }
 
+/* `.copy` is a flex column with a 20px gap, which already separates these. The negative
+   margin pulls the mark back toward the subtitle it belongs to, so it reads as part of the
+   product name block rather than as a third element floating between two. */
+.divider {
+  margin: -8px 0;
+}
+
 .lede {
   font-size: 17px;
   line-height: 1.65;
@@ -148,6 +155,20 @@
   text-transform: uppercase;
   color: var(--accent-mid);
   font-weight: 700;
+  /* The mark sits in its own track so the names stay left-aligned with each other whether
+     or not a given ingredient has one. */
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.doses__mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lu-gold-deep);
+  line-height: 0;
 }
 
 .doses__value {

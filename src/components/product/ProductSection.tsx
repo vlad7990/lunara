@@ -4,7 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { IconFlask } from "@/components/Icon";
+import { SparkDivider } from "@/components/Ornament";
 import { splitDose, type CatalogueProduct, type SiteMode } from "@/lib/content";
+
+import { FormulaMark } from "./formulaMarks";
 
 import styles from "./ProductSection.module.css";
 
@@ -61,6 +64,9 @@ export function ProductSection({
           </h2>
           <p className={styles.subtitle}>{product.subtitle}</p>
 
+          {/* The pack sets this mark under the product subtitle. So does this. */}
+          <SparkDivider align="start" className={styles.divider} />
+
           <p className={styles.lede}>{product.lede}</p>
 
           <div className={styles.doses}>
@@ -74,7 +80,12 @@ export function ProductSection({
                 const { amount, unit } = splitDose(dose.dose);
                 return (
                   <Fragment key={dose.name}>
-                    <dt className={styles.doses__name}>{dose.name}</dt>
+                    <dt className={styles.doses__name}>
+                      <span className={styles.doses__mark} aria-hidden="true">
+                        <FormulaMark name={dose.name} size={18} />
+                      </span>
+                      {dose.name}
+                    </dt>
                     <dd className={styles.doses__value}>
                       <span className={styles.doses__amount}>{amount}</span>
                       {/* Real space, not a grid gap, so the row still reads "200 mcg". */}
