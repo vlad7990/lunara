@@ -79,6 +79,15 @@
   border-color: var(--lu-gold);
 }
 
+/* An unpublished piece renders as a div rather than a link, so it must not answer the
+   pointer either — a card that lights up on hover and does nothing on click is the same
+   broken promise the self-link was. The "Week 7" label carries the state instead. */
+.entry--pending,
+.entry--pending:hover {
+  border-color: var(--lu-hairline);
+  cursor: default;
+}
+
 /* The piece you are reading is a plum card. */
 .entry--current {
   background: var(--lu-plum);

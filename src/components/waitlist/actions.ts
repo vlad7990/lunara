@@ -47,6 +47,11 @@ export async function joinWaitlist(
   const referredBy = String(formData.get("ref") ?? "") || undefined;
 
   // Client validation is email format only. This is the server's version of that check.
+  // An empty field is named as empty: telling someone who typed nothing that what they
+  // typed "does not look like an email address" describes a mistake they did not make.
+  if (email.trim() === "") {
+    return { status: "error", message: "Enter your email address to claim a place." };
+  }
   if (!isValidEmail(email)) {
     return { status: "error", message: "That does not look like an email address." };
   }

@@ -53,13 +53,9 @@ export function SeriesIndex({ currentSlug }: { currentSlug?: string }) {
       <div className={styles.index__grid}>
         {articles.map((article) => {
           const current = article.slug === currentSlug;
-          return (
-            <Link
-              key={article.slug}
-              href={article.published ? `/open-formula/${article.slug}` : "/open-formula"}
-              className={`${styles.entry} ${current ? styles["entry--current"] : ""}`}
-              aria-current={current ? "page" : undefined}
-            >
+
+          const body = (
+            <>
               <div className={styles.entry__head}>
                 <span className={styles.entry__number}>{article.number}</span>
                 <span className={styles.entry__week}>
@@ -68,6 +64,34 @@ export function SeriesIndex({ currentSlug }: { currentSlug?: string }) {
               </div>
               <h2 className={styles.entry__title}>{article.title}</h2>
               <p className={styles.entry__dek}>{article.dek}</p>
+            </>
+          );
+
+          /*
+           * An unpublished piece is not a link.
+           *
+           * It used to be one, pointing at `/open-formula` — so clicking "Why there's no
+           * caffeine" silently reloaded the page you were already on. A control that
+           * accepts a click and does nothing visible is worse than no control: the reader
+           * concludes the site is broken rather than that the piece is not out yet. The
+           * "Week 7" label is the honest affordance, so let it be the only one.
+           */
+          if (!article.published) {
+            return (
+              <div key={article.slug} className={`${styles.entry} ${styles["entry--pending"]}`}>
+                {body}
+              </div>
+            );
+          }
+
+          return (
+            <Link
+              key={article.slug}
+              href={`/open-formula/${article.slug}`}
+              className={`${styles.entry} ${current ? styles["entry--current"] : ""}`}
+              aria-current={current ? "page" : undefined}
+            >
+              {body}
             </Link>
           );
         })}
