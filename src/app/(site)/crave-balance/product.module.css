@@ -71,6 +71,7 @@
   font-family: var(--lu-font-display);
   font-weight: 400;
   font-size: clamp(38px, 5vw, 54px);
+  letter-spacing: var(--lu-track-display-xl);
   line-height: 1.02;
   color: var(--lu-ink);
 }
@@ -106,6 +107,7 @@
   font-family: var(--lu-font-display);
   font-weight: 400;
   font-size: 30px;
+  letter-spacing: var(--lu-track-display-md);
   line-height: 1.2;
   color: var(--lu-cream);
   margin-bottom: 12px;
@@ -254,6 +256,7 @@
   font-family: var(--lu-font-display);
   font-weight: 400;
   font-size: clamp(30px, 4vw, 40px);
+  letter-spacing: var(--lu-track-display-lg);
   line-height: 1.1;
   color: var(--lu-ink);
   margin-bottom: 12px;
@@ -362,6 +365,7 @@
   font-family: var(--lu-font-display);
   font-weight: 400;
   font-size: 34px;
+  letter-spacing: var(--lu-track-display-lg);
   line-height: 1.1;
   color: var(--lu-cream);
   margin-bottom: 10px;

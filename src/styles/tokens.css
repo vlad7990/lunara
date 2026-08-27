@@ -125,7 +125,32 @@
   --lu-track-mark:     0.46em;  /* pack + dose-card wordmark */
   --lu-track-label:    0.18em;
 
+  /* --- Optical tracking for the display serif ---
+     Tracking is size-specific or it is wrong somewhere. Cormorant is drawn wide and
+     light, and it loosens visibly as it grows, so the ramp tightens as size climbs.
+     Anchored on the -0.015em the design reference specified for the 56px H1.
+
+     Two carve-outs, both load-bearing:
+
+     Figures never take it. Doses and prices are set in this face precisely because
+     they are the product, and a tightened numeral is a less legible numeral. Every
+     dose, price, batch code and date keeps its natural fit.
+
+     The wordmark never takes it. It is fixed at --lu-track-wordmark / --lu-track-mark
+     and is never re-spaced by eye. */
+  --lu-track-display-xl: -0.018em;  /* 46px and up */
+  --lu-track-display-lg: -0.013em;  /* 32-46px */
+  --lu-track-display-md: -0.008em;  /* 25-32px */
+  --lu-track-display-sm: -0.004em;  /* 18-25px */
+
   /* --- Layout --- */
+
+  /* The measure, for running text. In `ch` because that is what a measure is: a count of
+     characters, not a distance. Stated in px it silently decouples from font size — the
+     FDA disclaimer sat at `max-width: 900px`, a fine measure for 16px body copy and a
+     142-character line at the 11px it is actually set in. */
+  --lu-measure:    72ch;
+
   --lu-container:  1240px;
   --lu-gutter:     40px;
   --lu-section:    72px;   /* 64-84px range */

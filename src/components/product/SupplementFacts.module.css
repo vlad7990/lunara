@@ -90,6 +90,10 @@
   border-bottom: 2px solid var(--lu-ink);
 }
 
+/* No `--lu-measure` here, deliberately. Everywhere else on the site running text is held
+   to 72ch, but this panel reproduces a printed regulatory artifact and a label footnote
+   runs the width of the label. Narrowing it would leave a short column inside a bordered
+   panel, which is not what the printed thing does. Same carve-out as the square corners. */
 .footnote {
   font-size: var(--lu-fs-legal);
   color: var(--lu-ink);

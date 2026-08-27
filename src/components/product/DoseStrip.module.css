@@ -23,6 +23,7 @@
   font-family: var(--lu-font-display);
   font-weight: 400;
   font-size: 33px;
+  letter-spacing: var(--lu-track-display-lg);
   color: var(--lu-cream-2);
 }
 

@@ -124,6 +124,7 @@
   font-family: var(--lu-font-display);
   font-weight: 400;
   font-size: 27px;
+  letter-spacing: var(--lu-track-display-md);
   line-height: 1.15;
   color: var(--lu-ink);
 }
@@ -183,6 +184,7 @@
   font-family: var(--lu-font-display);
   font-weight: 400;
   font-size: clamp(38px, 5vw, 54px);
+  letter-spacing: var(--lu-track-display-xl);
   line-height: 1.03;
   color: var(--lu-ink);
   text-wrap: balance;
@@ -192,6 +194,7 @@
   font-family: var(--lu-font-display);
   font-weight: 400;
   font-size: var(--lu-fs-dek);
+  letter-spacing: var(--lu-track-display-sm);
   line-height: 1.45;
   color: var(--lu-body-2);
 }
@@ -226,6 +229,7 @@
   font-family: var(--lu-font-display);
   font-weight: 500;
   font-size: var(--lu-fs-h3);
+  letter-spacing: var(--lu-track-display-md);
   line-height: 1.15;
   color: var(--lu-ink);
   margin-top: 14px;
@@ -235,6 +239,7 @@
   font-family: var(--lu-font-display);
   font-weight: 500;
   font-size: 24px;
+  letter-spacing: var(--lu-track-display-sm);
   color: var(--lu-ink);
   margin-top: 10px;
 }
@@ -259,6 +264,7 @@
   font-family: var(--lu-font-display);
   font-style: italic;
   font-size: 27px;
+  letter-spacing: var(--lu-track-display-md);
   line-height: 1.4;
   color: var(--lu-plum-mid);
 }
@@ -341,6 +347,7 @@
   font-family: var(--lu-font-display);
   font-weight: 400;
   font-size: 25px;
+  letter-spacing: var(--lu-track-display-sm);
   line-height: 1.25;
   color: var(--lu-ink);
 }
@@ -425,6 +432,7 @@
   font-family: var(--lu-font-display);
   font-weight: 400;
   font-size: 27px;
+  letter-spacing: var(--lu-track-display-md);
   line-height: 1.25;
   color: var(--lu-ink);
   margin-bottom: 12px;

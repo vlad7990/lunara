@@ -71,6 +71,7 @@
 .item__a {
   font-size: var(--lu-fs-body);
   line-height: 1.7;
+  max-width: var(--lu-measure);
   color: var(--lu-body-2);
   margin: 0;
 }
@@ -117,6 +118,7 @@
   font-family: var(--lu-font-display);
   font-weight: 400;
   font-size: 24px;
+  letter-spacing: var(--lu-track-display-sm);
   line-height: 1.25;
   color: var(--lu-cream);
   margin-bottom: 10px;

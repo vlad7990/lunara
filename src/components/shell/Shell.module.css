@@ -111,7 +111,10 @@
   font-family: var(--lu-font-display);
   font-weight: 400;
   font-size: 23px;
-  letter-spacing: 0.4em;
+  /* 0.42em via the token, not 0.4em by hand. The nav wordmark above already reads it;
+     this one had drifted two hundredths, which is precisely the by-eye re-spacing the
+     wordmark rule exists to prevent. */
+  letter-spacing: var(--lu-track-wordmark);
   color: var(--lu-gold-deep);
 }
 

@@ -23,6 +23,7 @@
   font-family: var(--lu-font-display);
   font-weight: 400;
   font-size: var(--lu-fs-dek);
+  letter-spacing: var(--lu-track-display-sm);
   line-height: 1.5;
   color: var(--lu-body-2);
   max-width: 620px;
@@ -54,6 +55,7 @@
   font-family: var(--lu-font-display);
   font-weight: 400;
   font-size: clamp(30px, 4vw, 40px);
+  letter-spacing: var(--lu-track-display-lg);
   line-height: 1.15;
   color: var(--lu-cream);
 }
@@ -129,6 +131,7 @@
   font-family: var(--lu-font-display);
   font-style: italic;
   font-size: 25px;
+  letter-spacing: var(--lu-track-display-md);
   line-height: 1.4;
   color: var(--lu-plum-mid);
 }

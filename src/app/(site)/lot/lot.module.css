@@ -365,6 +365,7 @@
   font-family: var(--lu-font-display);
   font-weight: 400;
   font-size: 30px;
+  letter-spacing: var(--lu-track-display-md);
   line-height: 1.2;
   color: var(--lu-ink);
   margin-bottom: 10px;

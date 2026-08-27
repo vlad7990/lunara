@@ -172,6 +172,7 @@
   font-family: var(--lu-font-display);
   font-weight: 400;
   font-size: 30px;
+  letter-spacing: var(--lu-track-display-md);
   color: var(--lu-ink);
 }
 
@@ -278,6 +279,7 @@
   font-family: var(--lu-font-display);
   font-weight: 400;
   font-size: 36px;
+  letter-spacing: var(--lu-track-display-lg);
   line-height: 1.1;
   color: var(--lu-ink);
 }
@@ -494,6 +496,7 @@
   font-family: var(--lu-font-display);
   font-weight: 400;
   font-size: 32px;
+  letter-spacing: var(--lu-track-display-lg);
   line-height: 1.15;
   color: var(--lu-cream);
   margin-bottom: 10px;

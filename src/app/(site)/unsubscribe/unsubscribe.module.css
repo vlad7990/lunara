@@ -12,6 +12,7 @@
   font-family: var(--lu-font-display);
   font-weight: 400;
   font-size: clamp(32px, 5vw, 46px);
+  letter-spacing: var(--lu-track-display-xl);
   line-height: 1.06;
   color: var(--lu-ink);
   max-width: 620px;

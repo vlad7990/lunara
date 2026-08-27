@@ -158,7 +158,7 @@ blockquote {
   font-weight: 400;
   font-size: clamp(38px, 6vw, 62px);
   line-height: 1.03;
-  letter-spacing: -0.015em;
+  letter-spacing: var(--lu-track-display-xl);
   color: var(--lu-ink);
   text-wrap: balance;
 }
@@ -167,6 +167,7 @@ blockquote {
   font-family: var(--lu-font-display);
   font-weight: 400;
   font-size: clamp(30px, 4vw, var(--lu-fs-h2));
+  letter-spacing: var(--lu-track-display-lg);
   line-height: 1.1;
   color: var(--lu-ink);
   text-wrap: balance;
@@ -176,6 +177,7 @@ blockquote {
   font-family: var(--lu-font-display);
   font-weight: 400;
   font-size: var(--lu-fs-h3);
+  letter-spacing: var(--lu-track-display-md);
   line-height: 1.15;
   color: var(--lu-ink);
 }
