@@ -114,6 +114,7 @@ export const policies: Policy[] = [
     paragraphs: [
       "All content is keyboard navigable, form fields are labelled, and dose tables are marked up as tables rather than as images — the numbers are the product, so they must be readable by a screen reader.",
       "Text contrast was a published gap here until this update, and it is now closed. The gold link and micro-label colour, the muted legal and meta colour, the input placeholder and the draft flag all sat between 2.3:1 and 4.0:1 against the cream surfaces they appear on. All four have been darkened and now meet at least 4.5:1 on every background the site uses, including the gold dose figures on the product pages.",
+      "Also closed in this update: on screens narrower than 640px every text input on the site — including the waitlist field and the batch lookup printed on the pack — was rendering 22 pixels tall instead of 54, which is below the minimum target size and hard to hit accurately. It was a layout fault rather than a design decision, and it is fixed. Separately, asking for reduced motion used to switch off the colour transitions as well; a colour fade is feedback, not movement, so those now stay.",
       "Known gaps as of this update: the certificate-of-analysis PDFs are not yet tagged for screen readers, and the ingredient icons carry decorative alt text where a longer description would help. Both are scheduled.",
       "If anything on this site blocks you, email {email} and we will fix it and tell you when it is fixed.",
     ],

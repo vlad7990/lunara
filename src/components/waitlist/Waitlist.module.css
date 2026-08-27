@@ -14,6 +14,8 @@
   gap: 10px;
 }
 
+/* `flex: 1` is a width instruction here and only here. Every column context below has to
+   hand the field back its own height — see the note on `.lu-field` in globals.css. */
 .row .field {
   flex: 1;
   min-width: 0;
@@ -81,6 +83,11 @@
   flex-direction: column;
 }
 
+/* Main axis is vertical now, so the row's `flex: 1` would size the field's height. */
+.form--stacked .row .field {
+  flex: none;
+}
+
 .form--stacked .row .button {
   width: 100%;
 }
@@ -145,6 +152,10 @@
 @media (max-width: 640px) {
   .row {
     flex-direction: column;
+  }
+
+  .row .field {
+    flex: none;
   }
 
   .row .button {

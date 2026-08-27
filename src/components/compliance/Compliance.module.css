@@ -1,8 +1,21 @@
+/*
+ * The measure is in `ch`, not px, and that is the whole point.
+ *
+ * This was `max-width: 900px` — a sensible measure for 16px body copy, and this text is
+ * 11px, so it was running at 142 characters a line. Roughly twice the distance an eye can
+ * sweep back and reliably find the next line. A px measure silently decouples from font
+ * size; a `ch` measure cannot.
+ *
+ * It matters more here than anywhere else on the site: this component is the FDA
+ * disclaimer, it is in every footer and beside every structure/function claim, and it is
+ * the most-repeated sentence LUNARA publishes. A brand whose position is that it prints
+ * everything does not get to print the required part at an unreadable width.
+ */
 .disclaimer {
   font-size: var(--lu-fs-legal);
   line-height: 1.6;
   color: var(--lu-muted-2);
-  max-width: 900px;
+  max-width: 76ch;
 }
 
 .disclaimer--onPlum {
@@ -17,10 +30,12 @@
   max-width: none;
 }
 
+/* The other repeated compliance string, held to the same measure for the same reason. */
 .doseDisclaimer {
   font-size: 12px;
   line-height: 1.5;
   color: var(--lu-muted-2);
+  max-width: 76ch;
 }
 
 .doseDisclaimer--onPlum {

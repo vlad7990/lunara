@@ -84,4 +84,9 @@
   .row {
     flex-direction: column;
   }
+
+  /* Main axis is vertical now, so `.field`'s `flex: 1` would size its height. */
+  .row .field {
+    flex: none;
+  }
 }

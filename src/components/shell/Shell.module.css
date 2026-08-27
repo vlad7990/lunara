@@ -159,11 +159,13 @@
   gap: 8px;
 }
 
+/* `ch`, not px — 900px at 11px legal type is a 142-character line. See the note on
+   `.disclaimer` in Compliance.module.css; this is the same text at the same size. */
 .footer__legalLine {
   font-size: var(--lu-fs-legal);
   line-height: 1.6;
   color: var(--lu-muted-2);
-  max-width: 900px;
+  max-width: 76ch;
 }
 
 .footer__legalLine a {
@@ -200,7 +202,7 @@
   font-size: 13px;
   line-height: 1.55;
   color: var(--lu-cream-82);
-  max-width: 720px;
+  max-width: 72ch;
 }
 
 .cookies__actions {

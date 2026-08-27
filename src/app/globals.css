@@ -274,6 +274,20 @@ blockquote {
 /* Fields. The other place a 3px radius is allowed. */
 .lu-field {
   height: 54px;
+  /*
+   * `height` alone is not enough, and the failure is silent.
+   *
+   * Every field on this site is a flex item in a `.row`, and every one of those rows
+   * flips to `flex-direction: column` on narrow viewports (and always, in the stacked
+   * waitlist variant). The moment it does, `flex-basis` stops describing width and starts
+   * describing height — so the `flex: 1` written for the side-by-side layout resolves to
+   * `flex-basis: 0%` on the main axis and the field collapses to its line box.
+   *
+   * Measured before this line existed: 54px at 641px wide, 22px at 640px. Every text
+   * input on the site, on every phone — the waitlist email field and the batch lookup
+   * that is printed on the pack. `min-height` is a floor flex cannot argue with.
+   */
+  min-height: 54px;
   width: 100%;
   padding: 0 18px;
   border: 1px solid var(--lu-hairline-strong);
@@ -305,6 +319,7 @@ blockquote {
 
 .lu-field--sm {
   height: 46px;
+  min-height: 46px;
   padding: 0 16px;
   font-size: 15px;
 }
@@ -392,11 +407,29 @@ blockquote {
   }
 }
 
+/*
+ * Reduced motion, scoped to motion.
+ *
+ * The blanket `transition-duration: 0.01ms` this replaces killed every transition on the
+ * site — and every transition on this site is a colour change, because the motion rule
+ * here is "colour only, no lift, no shadow, no scale". A colour fade is not vestibular;
+ * it is the feedback that tells you a link took your hover. Removing it gave a visitor
+ * who asked for less motion a site with less *feedback*, which is not what they asked
+ * for and not what the preference means.
+ *
+ * So: restrict transitions to the properties that cannot move anything, and let anything
+ * that would move — transform, width, height, translate, scale — fall out of the list.
+ * Animations still stop outright; there are none today, and this is the guard for the day
+ * somebody adds one.
+ */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
-    transition-duration: 0.01ms !important;
+    transition-property: color, background-color, border-color, outline-color, fill, stroke,
+      opacity !important;
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
   }
 }
