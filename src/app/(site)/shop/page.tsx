@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { AddToBag } from "@/components/bag/AddToBag";
+import { Band } from "@/components/Band";
 import { DropInSlot } from "@/components/DropInSlot";
 import {
   commerce,
@@ -281,7 +282,7 @@ export default async function ShopPage() {
       />
 
       {/* ------------------------------------------------------- comparison */}
-      <section className="lu-band" aria-labelledby="compare-title">
+      <Band labelledBy="compare-title">
         <div className={`lu-container ${styles.compare}`}>
           <div className={styles.compare__head}>
             <h2 id="compare-title" className="lu-h2">
@@ -322,7 +323,7 @@ export default async function ShopPage() {
             volume.
           </p>
         </div>
-      </section>
+      </Band>
 
       {/* --------------------------------------------- what we don't sell */}
       <section className={`lu-container ${styles.dontSell}`} aria-labelledby="dont-sell-title">

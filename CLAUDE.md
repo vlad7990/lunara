@@ -56,13 +56,22 @@ the product does, stop and flag it instead.
   reads as broken, so there is exactly one documented exception: the Supplement Facts panel
   stays square, because it reproduces a printed regulatory artifact rather than a card.
 - **No shadows on content.** Elevation is only for genuinely floating surfaces (cookie bar,
-  modals). Cards sit flat on the page with a 1px hairline. The cast botanical behind a
-  product section is not elevation: it is a shadow *on the page*, the dappled light the
-  printed collateral casts across its own backgrounds, and it never sits under type.
+  modals). Cards sit flat on the page with a 1px hairline. The cast behind a product
+  section is not elevation: it is a shadow *on the page* — a lunar month, in phase order,
+  which is the brand's own mark rather than a repeat of the ingredient art the packs print.
+  It never sits under type, in either direction, and that is verified rather than assumed:
+  screenshot with and without the layer, mask the glyph pixels, intersect, expect zero.
+  It lives behind the photograph's side of the grid, never the copy's.
 - **Gradients are for soft edges, never for fills.** Three exist and no more: the two-stop
-  gold on the waitlist progress bar, the taper on the spark rule, and the cast botanical.
+  gold on the waitlist progress bar, the taper on the spark rule, and the cast shadow.
   A gradient as the fill of a surface, a button or a headline is still the thing this rule
-  was written to stop.
+  was written to stop. No texture layer either — paper grain is under the ink by
+  definition, and at any opacity worth seeing it moves a passing contrast pairing under AA.
+- **Bands are torn, not ruled.** A full-bleed band has no straight border. Its edge is its
+  own ground, drawn as a shallow irregular deckle that bulges into whatever sits beyond it,
+  with the hairline following the tear. Use `Band`, never a bare `.lu-band` — the component
+  is what stops eight call sites from drifting. This is not a wave divider: a wave sits
+  *between* two sections and belongs to neither, which is why it always reads as a template.
 - **Surfaces are warm.** The page sits in the same cream-blush family as the product
   photography (`--lu-chalk`, `--lu-chalk-alt`, `--lu-blush`), not the cooler original chalk.
 - **One accent per product, never mixed inside a section.** Crave Balance is plum

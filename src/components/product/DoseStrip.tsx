@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { Band } from "@/components/Band";
 import { DoseDisclaimer } from "@/components/compliance";
 import { dosedIngredients, dosesAreFinal, formatDose, product } from "@/lib/content";
 
@@ -15,7 +16,7 @@ export function DoseStrip() {
   const ratioLine = `Inositol ratio ${product.inositolRatio}.`;
 
   return (
-    <section className="lu-band lu-band--plum" aria-labelledby="dose-strip-title">
+    <Band tone="plum" labelledBy="dose-strip-title">
       <div className={`lu-container ${styles.strip}`}>
         <div className={styles.head}>
           <h2 id="dose-strip-title" className={styles.title}>
@@ -44,6 +45,6 @@ export function DoseStrip() {
           </Link>
         </div>
       </div>
-    </section>
+    </Band>
   );
 }

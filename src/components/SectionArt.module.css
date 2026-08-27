@@ -1,14 +1,16 @@
 /**
- * A cast shadow, so it is soft, warm and very faint. The blur is what makes the shape
- * readable as foliage; without it these are ellipses on a stick.
+ * A cast shadow, so it is soft, warm and very faint. The blur is what keeps it a cast and
+ * not a diagram: sharp, these are seven discs and somebody starts counting them.
  */
 
 .art {
   position: absolute;
-  z-index: 0;
-  color: var(--lu-shadow-botanical);
-  opacity: 0.5;
-  filter: blur(7px);
+  color: var(--lu-shadow-cast);
+  /* Softer than the leaves this replaced, at the same tone. A disc is far more mass than a
+     leaf, so seven of them at the old 0.5 / 7px stopped reading as a cast and started
+     reading as a motif somebody placed. */
+  opacity: 0.44;
+  filter: blur(9px);
   pointer-events: none;
   line-height: 0;
 }

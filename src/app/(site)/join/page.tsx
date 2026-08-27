@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import { Band } from "@/components/Band";
 import { BatchLookup } from "@/components/coa/BatchLookup";
 import { DropInSlot } from "@/components/DropInSlot";
 import { IconDocumentCheck, IconSpark } from "@/components/Icon";
@@ -253,7 +254,7 @@ export default async function JoinPage({
       )}
 
       {/* ----------------------------------------------- open formula series */}
-      <section className="lu-band" aria-labelledby="series-title">
+      <Band labelledBy="series-title">
         <div className={`lu-container ${styles.series}`}>
           <div className="lu-sectionHead">
             <div>
@@ -287,7 +288,7 @@ export default async function JoinPage({
             ))}
           </div>
         </div>
-      </section>
+      </Band>
 
       {/* ------------------------------------------------------- COA promise */}
       <section className={`lu-container ${styles.coa}`} aria-labelledby="coa-title">

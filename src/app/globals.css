@@ -336,17 +336,31 @@ blockquote {
   border-color: var(--lu-gold);
 }
 
-/* Alternating full-bleed bands. */
+/* Alternating full-bleed bands.
+   The ground and its hairline are published as custom properties because the
+   band's edges are not drawn by this rule: `Band` draws them as a torn edge in
+   the band's own colour, and it needs to read both from here rather than
+   re-deciding them. The flat 1px borders this used to carry are gone — the
+   hairline now follows the tear. */
 .lu-band {
-  background: var(--lu-chalk-alt);
-  border-top: 1px solid var(--lu-border-alt);
-  border-bottom: 1px solid var(--lu-border-alt);
+  --lu-band-ground: var(--lu-chalk-alt);
+  --lu-band-line: var(--lu-border-alt);
+  background: var(--lu-band-ground);
 }
 
 .lu-band--plum {
-  background: var(--lu-plum);
-  border: none;
+  --lu-band-ground: var(--lu-plum);
+  /* The plum ground is its own boundary; a gold hairline along the tear would
+     read as foil edging, which the collateral does not print. */
+  --lu-band-line: transparent;
 }
+
+/* There is no paper-grain layer here, and that is a decision rather than an omission.
+   A fine multiply grain on the warm bands is the most on-brand texture available to a
+   print-derived site, but paper tooth is under the ink by definition: it darkens the
+   ground beneath every glyph on the band. Measured at 3.5% opacity, the darkest noise
+   pixels take --lu-muted-2 on --lu-chalk-alt from 4.76:1 to 4.41:1 — a pairing that
+   currently clears AA, put under it. Warmth is worth less than that. */
 
 .lu-section {
   padding-top: var(--lu-section);

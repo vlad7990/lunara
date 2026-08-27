@@ -9,10 +9,22 @@
 .section {
   padding-top: 84px;
   padding-bottom: 84px;
-  /* Positions and clips the cast shadow, and keeps content above it. */
+  /* Positions the cast shadow and the torn edges, and keeps content above both. The
+     clipping the cast needs lives on `.artClip`, not here — see ProductSection.tsx. */
   position: relative;
-  overflow: hidden;
   isolation: isolate;
+}
+
+/* Behind the content, not merely beside it. The cast used to clear the type by sitting
+   in a corner nothing occupied, which is a layout coincidence rather than a rule;
+   `z-index: -1` inside the section's own stacking context makes "never under type"
+   structural, so a future layout change cannot quietly break it. */
+.artClip {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
 }
 
 .section--plum {
@@ -33,9 +45,13 @@
   --accent-hover: var(--lu-green-mid);
 }
 
-/* The warmer ground the packshots were photographed on. */
+/* The warmer ground the packshots were photographed on, torn out of the page the same way
+   the bands are. The hairline follows the tear; the tint alone is too small a step from
+   chalk to read as an edge on its own. */
 .section--tinted {
-  background: var(--lu-blush);
+  --lu-band-ground: var(--lu-blush);
+  --lu-band-line: var(--lu-hairline-strong);
+  background: var(--lu-band-ground);
 }
 
 .grid {

@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { Band } from "@/components/Band";
 import { BatchLookup } from "@/components/coa/BatchLookup";
 import { IconDownload } from "@/components/Icon";
 import { formatLotDate, lots, lotsNote, product, type Lot } from "@/lib/content";
@@ -228,7 +229,7 @@ export function AllLots() {
   const held = lots.find((lot) => lot.status === "held");
 
   return (
-    <section className="lu-band" aria-labelledby="all-lots-title">
+    <Band labelledBy="all-lots-title">
       <div className={`lu-container ${styles.allLots}`}>
         <div className={styles.tableHead}>
           <h2 id="all-lots-title" className="lu-h3">
@@ -275,6 +276,6 @@ export function AllLots() {
         {held?.publicNote ? <p className={styles.allLots__note}>{held.publicNote}</p> : null}
         <p className={styles.allLots__illustrative}>{lotsNote}</p>
       </div>
-    </section>
+    </Band>
   );
 }

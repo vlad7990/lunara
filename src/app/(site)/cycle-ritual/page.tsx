@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
+import { Band } from "@/components/Band";
 import { WarningSet } from "@/components/compliance";
 import { IconCalendar, IconClock, IconSpark } from "@/components/Icon";
 import { SparkDivider } from "@/components/Ornament";
@@ -100,7 +101,7 @@ export default async function CycleRitualPage() {
       </section>
 
       {/* ---------------------------------------------- formula breakdown */}
-      <section className="lu-band" aria-labelledby="cycle-formula">
+      <Band labelledBy="cycle-formula">
         <div className={`lu-container ${styles.formula}`}>
           <div className={styles.formula__head}>
             <h2 id="cycle-formula" className={styles.formula__title}>
@@ -135,7 +136,7 @@ export default async function CycleRitualPage() {
 
           {cycle.footnote ? <p className={styles.formula__foot}>{cycle.footnote}</p> : null}
         </div>
-      </section>
+      </Band>
 
       {/* ------------------------------------------------------ how to use */}
       <div className={`lu-container ${styles.use}`}>

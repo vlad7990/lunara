@@ -6,11 +6,11 @@ import styles from "./Ornament.module.css";
  * The two decorative devices the printed collateral uses, and nothing else.
  *
  * Both are purely visual and carry no information, so both are `aria-hidden` and neither is
- * reachable. They are also both flat line art: the collateral sets its botanicals as soft
- * blurred shadows, which the site cannot reproduce, because `compliance.json` puts
- * "Gradients, textures, drop shadows" on the never-publish list and CLAUDE.md keeps
- * elevation for genuinely floating surfaces. The line art is the part of that language that
- * is actually printed on the packs, so it is the part the site can carry.
+ * reachable. Both are flat line art, because that is what the pack prints: a rule with a
+ * mark on it, in one weight, at one size. The soft cast layer is a separate thing entirely
+ * and lives in `SectionArt` — a shadow on the page rather than a mark on the pack. Do not
+ * blur these to match it; a printed rule that fades at the ends is a rule, and a printed
+ * rule that is soft all over is a smudge.
  */
 
 /**

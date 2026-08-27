@@ -1,0 +1,51 @@
+/**
+ * The deckle edges sit outside the band's box, so the band has to be the thing
+ * they are positioned against — and it must not clip them.
+ */
+
+.band {
+  position: relative;
+}
+
+.edge {
+  position: absolute;
+  inset-inline: 0;
+  /* Half the strip on mobile: the same amplitude across a 390px viewport would
+     be four times as steep, which stops reading as a tear and starts reading
+     as a scallop. */
+  height: 10px;
+  pointer-events: none;
+  line-height: 0;
+}
+
+.edge--top {
+  bottom: 100%;
+}
+
+/* Flipped, so both edges tear away from the band rather than running parallel
+   — a sheet torn twice on the same axis reads as a printed border. */
+.edge--bottom {
+  top: 100%;
+  transform: scaleY(-1);
+}
+
+.edge__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.edge__fill {
+  fill: var(--lu-band-ground);
+}
+
+.edge__line {
+  stroke: var(--lu-band-line);
+  stroke-width: 1;
+}
+
+@media (min-width: 641px) {
+  .edge {
+    height: 18px;
+  }
+}

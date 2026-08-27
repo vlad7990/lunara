@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import { Band } from "@/components/Band";
+
 import { product } from "@/lib/content";
 
 import styles from "./about.module.css";
@@ -88,7 +90,7 @@ export default function AboutPage() {
       </section>
 
       {/* ------------------------------------------------- four promises */}
-      <section className="lu-band lu-band--plum" aria-labelledby="promises-title">
+      <Band tone="plum" labelledBy="promises-title">
         <div className={`lu-container ${styles.promises}`}>
           <div className={styles.promises__head}>
             <p className="lu-label lu-label--wide lu-label--onPlum">What we committed to</p>
@@ -106,7 +108,7 @@ export default function AboutPage() {
             ))}
           </ol>
         </div>
-      </section>
+      </Band>
 
       {/* --------------------------------------------------------- essay */}
       <div className={`lu-container ${styles.essay}`}>

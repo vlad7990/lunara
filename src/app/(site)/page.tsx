@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { Band } from "@/components/Band";
 import { BatchLookup } from "@/components/coa/BatchLookup";
 import { IconDocumentCheck, IconSpark } from "@/components/Icon";
 import { ProductSection } from "@/components/product/ProductSection";
@@ -118,7 +119,7 @@ export default async function HomePage() {
       </div>
 
       {/* --------------------------------------------------- what we publish */}
-      <section className="lu-band lu-band--plum" aria-labelledby="publish-title">
+      <Band tone="plum" labelledBy="publish-title">
         <div className={`lu-container ${styles.publish}`}>
           <div className={styles.publish__head}>
             <h2 id="publish-title" className={styles.publish__title}>
@@ -148,7 +149,7 @@ export default async function HomePage() {
             </Link>
           </div>
         </div>
-      </section>
+      </Band>
 
       {/* ---------------------------------------------------- open formula reads
           The band above links to the series without showing any of it. These are the

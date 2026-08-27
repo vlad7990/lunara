@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import { Band } from "@/components/Band";
 import { BatchLookup } from "@/components/coa/BatchLookup";
 import { WarningSet } from "@/components/compliance";
 import { DropInSlot } from "@/components/DropInSlot";
@@ -163,7 +164,7 @@ export default async function ProductPage() {
       </section>
 
       {/* --------------------------------- Supplement Facts + how to use */}
-      <section className="lu-band">
+      <Band>
         <div className={`lu-container ${styles.label}`}>
           <SupplementFacts />
 
@@ -192,7 +193,7 @@ export default async function ProductPage() {
             <WarningSet compact />
           </div>
         </div>
-      </section>
+      </Band>
 
       {/* --------------------------------------------- ingredient rationale */}
       <section className={`lu-container ${styles.rationale}`} aria-labelledby="rationale-title">
