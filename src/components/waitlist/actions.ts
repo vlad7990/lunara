@@ -5,7 +5,13 @@ import { revalidatePath } from "next/cache";
 import { renderWelcomeEmail } from "@/emails/welcome";
 import { mailer, siteUrl } from "@/lib/email";
 import { site } from "@/lib/content";
-import { isValidEmail, waitlist, type WaitlistEntry } from "@/lib/waitlist";
+import {
+  isFoundingPlace,
+  isValidEmail,
+  publishedPlace,
+  waitlist,
+  type WaitlistEntry,
+} from "@/lib/waitlist";
 import { rememberMembership } from "@/lib/waitlist/membership";
 
 import type { WaitlistFormState } from "./state";
@@ -16,12 +22,16 @@ import type { WaitlistFormState } from "./state";
  * Never allowed to fail the signup: the entry is already saved, and a bounced provider is
  * our problem, not something to show someone who just gave us their address.
  */
-async function sendWelcome(entry: WaitlistEntry): Promise<void> {
+async function sendWelcome(entry: WaitlistEntry, place: number): Promise<void> {
   if (!mailer.configured) return;
 
   try {
     const origin = siteUrl();
-    const email = renderWelcomeEmail({ entry, siteUrl: origin });
+    /* The email quotes the same place the card does. It takes it as a parameter rather
+       than reading `entry.position`, because the store's rank does not include the held
+       list and two different places for one person is the bug this whole offset exists
+       to prevent. */
+    const email = renderWelcomeEmail({ entry, place, siteUrl: origin });
 
     const result = await mailer.send({
       to: entry.email,
@@ -60,17 +70,20 @@ export async function joinWaitlist(
   try {
     const { entry, created } = await waitlist.signup(email, referredBy);
 
-    if (created) await sendWelcome(entry);
+    /* The place includes the held list, which is ahead of this signup in the queue. The
+       store's own rank does not know about it, so the offset is applied here — once, at
+       the boundary where a number stops being a row and becomes something a person is
+       told. See `publishedPlace` for why the two counts have to agree. */
+    const place = publishedPlace(entry.position);
+    const founding = isFoundingPlace(place);
+
+    if (created) await sendWelcome(entry, place);
 
     /* Remember the place before revalidating, so a refresh — or a return visit weeks
        later — restores the card instead of showing an empty form to somebody who has
        already joined. No provider is wired, so this cookie is currently the only record
        the visitor keeps. */
-    await rememberMembership({
-      position: entry.position,
-      referralCode: entry.referralCode,
-      founding: entry.founding,
-    });
+    await rememberMembership({ position: place, referralCode: entry.referralCode, founding });
 
     revalidatePath("/", "layout");
 
@@ -83,9 +96,9 @@ export async function joinWaitlist(
           ? site.waitlist.form.success
           : "You're on the list. Your place and referral code are below — keep them."
         : "You were already on the list — here is your place.",
-      position: entry.position,
+      position: place,
       referralCode: entry.referralCode,
-      founding: entry.founding,
+      founding,
     };
   } catch {
     return {

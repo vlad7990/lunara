@@ -49,9 +49,12 @@ function doseRow(name: string, dose: string, last: boolean): string {
 
 export function renderWelcomeEmail({
   entry,
+  place,
   siteUrl,
 }: {
   entry: WaitlistEntry;
+  /** The published place, which includes the held list. Never `entry.position`. */
+  place: number;
   siteUrl: string;
 }): WelcomeEmail {
   const founding = waitlistTiers[0];
@@ -67,7 +70,7 @@ export function renderWelcomeEmail({
     }
   }
 
-  const place = entry.founding
+  const tierLine = entry.founding
     ? `You&rsquo;re inside the ${escape(founding.name)} — ${escape(founding.offer)}, a permanent founding badge, and your name in the first box insert. Three referrals moves a friend in beside you.`
     : `The ${escape(founding.name)} is full, so you&rsquo;re on the ${escape(early.name.toLowerCase())} at ${escape(early.offer)}. Three confirmed referrals still moves you into the ${escape(founding.name)}, without changing anyone else&rsquo;s place.`;
 
@@ -125,8 +128,8 @@ export function renderWelcomeEmail({
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:${c.goldTint};border:1px solid ${c.goldBorder};">
         <tr><td style="padding:22px 24px;">
           <p style="margin:0 0 8px;font-family:${fontBody};font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:${c.goldDeep};font-weight:700;">Your place</p>
-          <p style="margin:0 0 8px;font-family:${fontDisplay};font-size:30px;color:${c.ink};">No. ${entry.position} of ${FOUNDING_TOTAL}</p>
-          <p style="margin:0;font-family:${fontBody};font-size:14px;line-height:1.55;color:${c.body2};">${place}</p>
+          <p style="margin:0 0 8px;font-family:${fontDisplay};font-size:30px;color:${c.ink};">No. ${place} of ${FOUNDING_TOTAL}</p>
+          <p style="margin:0;font-family:${fontBody};font-size:14px;line-height:1.55;color:${c.body2};">${tierLine}</p>
         </td></tr>
       </table>
     </td>
@@ -176,7 +179,7 @@ export function renderWelcomeEmail({
     `${product.name} · one serving`,
     ...rows.map((r) => `  ${r.name}: ${r.dose}`),
     ``,
-    `Your place: No. ${entry.position} of ${FOUNDING_TOTAL}`,
+    `Your place: No. ${place} of ${FOUNDING_TOTAL}`,
     ``,
     `Your referral link: ${referralUrl}`,
     `Three confirmed referrals moves you into the ${founding.name}, regardless of your position in line.`,

@@ -16,12 +16,14 @@ export function GET(request: NextRequest) {
   }
 
   const params = request.nextUrl.searchParams;
-  const place = Number.parseInt(params.get("place") ?? "418", 10);
+  const place = Number.parseInt(params.get("place") ?? "128", 10);
+  const resolvedPlace = Number.isFinite(place) ? place : 128;
 
   const email = renderWelcomeEmail({
+    place: resolvedPlace,
     entry: {
       email: params.get("email") ?? "you@email.com",
-      position: Number.isFinite(place) ? place : 418,
+      position: resolvedPlace,
       referralCode: params.get("code") ?? "K7RM2X",
       createdAt: "2026-04-12T00:00:00.000Z",
       confirmedReferrals: 0,
