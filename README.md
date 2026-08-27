@@ -173,3 +173,29 @@ keep it in step with `tokens.css`.
    the single source the site renders from. Resolve this before `dosesAreFinal` is flipped,
    because flipping it removes the caveat from the dose strip, the Supplement Facts draft,
    the open-formula articles and the welcome email at once.
+
+   Read directly off `public/assets/infographic-crave-plum.jpg`, which sharpens the picture
+   without settling it:
+
+   - **Two of six values are not in conflict at all.** L-theanine (200 mg) and chromium
+     picolinate (200 mcg) are identical on both sides. Only the two inositols and saffron
+     differ, and all three differ in the same direction — range or pending, to fixed.
+   - **The artwork labels itself.** Its footer reads "Предварительная формула" —
+     *preliminary formula* — and its saffron line reads "доза после выбора сырья", *dose
+     after raw-material selection*, which is the same policy `doseDisclaimer` states. It is
+     not asserting rival final doses; it is the pre-decision state, self-described.
+   - **D-chiro is the actual gap.** Myo (2026-02-28) and saffron (2026-03-12) are both dated
+     in the published change log. The move from 50–100 mg to 75 mg is not, so it is the one
+     value with no dated decision behind it. The 40:1 ratio does not corroborate it either
+     way: 2,000/50 and 4,000/100 are both 40:1, and so is 3,000/75.
+
+   **Two separate exposures on those files, neither reviewed.** They are not referenced from
+   `src/` or `content/` and nothing on the site renders them — but they sit in `public/`, so
+   they are served: `/assets/infographic-crave-plum.jpg` returns 200 in production. That
+   means (a) doses which contradict what the site publishes are fetchable and indexable, on
+   a brand whose whole position is that every milligram is published, and (b) the artwork
+   carries Russian structure/function claims — "Поддерживает передачу инсулинового сигнала",
+   "Поддерживает эмоциональное благополучие" and others — which are almost certainly not on
+   the approved-claims list, since that list is reviewed in English. `claimsRule` admits no
+   exception for a translation. Review both before any of this artwork is used for print,
+   social or a creator brief, and before it is linked from anywhere on the site.
