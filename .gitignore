@@ -51,3 +51,6 @@ next-env.d.ts
 
 # Local Claude Code settings (per-developer)
 .claude/settings.local.json
+
+# Neon CLI workspace link (org/project/branch pointer)
+.neon
