@@ -19,7 +19,8 @@
     "Any reference to prescription weight-loss medication",
     "Language implying a body needs correcting",
     "A dose written without its unit, or a total without a split",
-    "Gradients, textures, drop shadows or stock illustration",
+    "Stock illustration, or photography of a product we have not made",
+    "Gradient fills on surfaces, buttons or type, and raised shadows on content",
     "Claims of a timeline for results",
     "Emoji, exclamation marks"
   ],

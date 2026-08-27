@@ -1,0 +1,50 @@
+/**
+ * A cast shadow, so it is soft, warm and very faint. The blur is what makes the shape
+ * readable as foliage; without it these are ellipses on a stick.
+ */
+
+.art {
+  position: absolute;
+  z-index: 0;
+  color: var(--lu-shadow-botanical);
+  opacity: 0.5;
+  filter: blur(7px);
+  pointer-events: none;
+  line-height: 0;
+}
+
+.art--top-right {
+  top: -6%;
+  right: -4%;
+}
+
+.art--top-left {
+  top: -6%;
+  left: -4%;
+  transform: scaleX(-1);
+}
+
+.art--bottom-right {
+  bottom: -8%;
+  right: -4%;
+  transform: scaleY(-1);
+}
+
+.art--bottom-left {
+  bottom: -8%;
+  left: -4%;
+  transform: scale(-1, -1);
+}
+
+/* Wallpaper is the first thing to go when the layout is tight. */
+@media (max-width: 900px) {
+  .art {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .art {
+    display: none;
+  }
+}

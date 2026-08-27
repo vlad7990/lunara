@@ -9,6 +9,10 @@
 .section {
   padding-top: 84px;
   padding-bottom: 84px;
+  /* Positions and clips the cast shadow, and keeps content above it. */
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
 }
 
 .section--plum {

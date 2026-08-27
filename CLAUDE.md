@@ -56,8 +56,13 @@ the product does, stop and flag it instead.
   reads as broken, so there is exactly one documented exception: the Supplement Facts panel
   stays square, because it reproduces a printed regulatory artifact rather than a card.
 - **No shadows on content.** Elevation is only for genuinely floating surfaces (cookie bar,
-  modals). Cards sit flat on the page with a 1px hairline.
-- **No gradients** except the two-stop gold on the waitlist progress bar.
+  modals). Cards sit flat on the page with a 1px hairline. The cast botanical behind a
+  product section is not elevation: it is a shadow *on the page*, the dappled light the
+  printed collateral casts across its own backgrounds, and it never sits under type.
+- **Gradients are for soft edges, never for fills.** Three exist and no more: the two-stop
+  gold on the waitlist progress bar, the taper on the spark rule, and the cast botanical.
+  A gradient as the fill of a surface, a button or a headline is still the thing this rule
+  was written to stop.
 - **Surfaces are warm.** The page sits in the same cream-blush family as the product
   photography (`--lu-chalk`, `--lu-chalk-alt`, `--lu-blush`), not the cooler original chalk.
 - **One accent per product, never mixed inside a section.** Crave Balance is plum

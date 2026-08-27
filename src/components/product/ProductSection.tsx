@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import { IconFlask } from "@/components/Icon";
 import { SparkDivider } from "@/components/Ornament";
+import { SectionArt } from "@/components/SectionArt";
 import { splitDose, type CatalogueProduct, type SiteMode } from "@/lib/content";
 
 import { FormulaMark } from "./formulaMarks";
@@ -41,6 +42,9 @@ export function ProductSection({
         .join(" ")}
       aria-labelledby={`product-${product.id}`}
     >
+      {/* Light through leaves, cast across the ground the packs were shot on. */}
+      <SectionArt position={reversed ? "bottom-left" : "top-right"} />
+
       <div
         className={`lu-container ${styles.grid} ${reversed ? styles["grid--reversed"] : ""}`}
       >

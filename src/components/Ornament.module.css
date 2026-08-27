@@ -1,6 +1,11 @@
 /**
- * Decoration, held to the same rules as everything else: no gradient, no shadow, no fill.
- * Flat gold line on the cream, exactly as the packs print it.
+ * Decoration, matched to the printed collateral.
+ *
+ * The rule is a hairline that fades to nothing at both ends with a filled gold mark at the
+ * centre, which is how the pack sets it under a product name. The fade is a gradient, and
+ * it is deliberate: CLAUDE.md allows exactly one other, on the waitlist bar, and this is the
+ * second. A hard-stopped hairline was the first attempt and read as two stubby bars rather
+ * than as a printed rule.
  */
 
 /* ------------------------------------------------------------- spark divider */
@@ -11,22 +16,40 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 14px;
 }
 
 .divider--start {
   justify-content: flex-start;
 }
 
-/* The rules stop well short of the container: the mark is the point, not the line. */
+/*
+ * Each rule takes the space it is given rather than a fixed width, so the ornament is as
+ * wide as whatever holds it. Fading outward from the mark keeps the eye on the mark and
+ * stops the line from colliding with the container edge.
+ */
 .divider__rule {
   height: 1px;
-  width: 46px;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 210px;
+  background: linear-gradient(to left, var(--lu-gold-border), transparent);
+}
+
+.divider__rule:last-child {
+  background: linear-gradient(to right, var(--lu-gold-border), transparent);
+}
+
+/* Left-aligned, the short inner stub would fade into nothing, so it keeps a flat weight
+   and only the outer end tapers. */
+.divider--start .divider__rule:first-child {
+  flex: 0 0 auto;
+  width: 30px;
   background: var(--lu-gold-border);
 }
 
-.divider--start .divider__rule:first-child {
-  width: 26px;
+.divider--start .divider__rule:last-child {
+  max-width: 150px;
 }
 
 .divider__spark {
@@ -35,6 +58,15 @@
 }
 
 .divider--onPlum .divider__rule {
+  background: linear-gradient(to left, var(--lu-gold-line), transparent);
+}
+
+.divider--onPlum .divider__rule:last-child {
+  background: linear-gradient(to right, var(--lu-gold-line), transparent);
+}
+
+.divider--onPlum .divider--start .divider__rule:first-child,
+.divider--onPlum.divider--start .divider__rule:first-child {
   background: var(--lu-gold-line);
 }
 
