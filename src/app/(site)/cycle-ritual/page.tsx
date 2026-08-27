@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Band } from "@/components/Band";
+import { LaunchNotice } from "@/components/LaunchNotice";
 import { WarningSet } from "@/components/compliance";
 import { IconCalendar, IconClock, IconSpark } from "@/components/Icon";
 import { SparkDivider } from "@/components/Ornament";
@@ -101,6 +102,7 @@ export default async function CycleRitualPage() {
               {cycle.name} follows {crave?.name} into production. Everyone on the list hears
               first.
             </p>
+            <LaunchNotice tone="onPlum" />
           </div>
 
           <WaitlistForm submitLabel="Notify me" showMicrocopy={false} className={styles.notify} />

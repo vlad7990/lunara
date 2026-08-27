@@ -57,6 +57,18 @@ export async function joinWaitlist(
   const email = String(formData.get("email") ?? "");
   const referredBy = String(formData.get("ref") ?? "") || undefined;
 
+  /*
+   * Name and product are optional at this layer even though the full form asks for them.
+   * The compact capture in the article sidebars still sends email alone, the list opened
+   * with an email-only form, and the held list has neither — so a required field here
+   * would reject entries that are perfectly valid. Trimmed and length-capped because they
+   * come from a text input and end up in an email and a box insert.
+   */
+  const details = {
+    name: String(formData.get("name") ?? "").trim().slice(0, 80) || undefined,
+    productInterest: String(formData.get("productInterest") ?? "").trim().slice(0, 40) || undefined,
+  };
+
   // Client validation is email format only. This is the server's version of that check.
   // An empty field is named as empty: telling someone who typed nothing that what they
   // typed "does not look like an email address" describes a mistake they did not make.
@@ -68,7 +80,7 @@ export async function joinWaitlist(
   }
 
   try {
-    const { entry, created } = await waitlist.signup(email, referredBy);
+    const { entry, created } = await waitlist.signup(email, referredBy, details);
 
     /* The place includes the held list, which is ahead of this signup in the queue. The
        store's own rank does not know about it, so the offset is applied here — once, at

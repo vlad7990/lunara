@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Band } from "@/components/Band";
+import { LaunchNotice } from "@/components/LaunchNotice";
 import { BatchLookup } from "@/components/coa/BatchLookup";
 import { DropInSlot } from "@/components/DropInSlot";
 import { IconDocumentCheck, IconSpark } from "@/components/Icon";
@@ -124,6 +125,8 @@ export default async function JoinPage({
                 rejected, and why.
               </p>
 
+              <LaunchNotice />
+
               {/* Someone who has already joined gets their place back, not an empty
                   field. Resolved server-side so the card is in the first paint. */}
               {membership ? (
@@ -132,7 +135,7 @@ export default async function JoinPage({
                   message="You are already on the list. This is your place — it does not move."
                 />
               ) : (
-                <WaitlistForm id="join" referredBy={referredBy} />
+                <WaitlistForm id="join" fields="full" referredBy={referredBy} />
               )}
               <FoundingProgress />
             </>

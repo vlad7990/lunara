@@ -127,3 +127,75 @@
     width: 100%;
   }
 }
+
+/* ------------------------------------------------------- the full signup */
+
+/*
+ * The three-field form, used on the path where somebody has decided.
+ *
+ * Stacked, labelled, and left alone: this is the one place on the site asking a visitor
+ * to type more than an address, so the fields get room rather than being packed into the
+ * single line the compact capture uses. The button takes its own width here because a
+ * form that asks three questions and then hides its answer button beside the last one
+ * reads as an afterthought.
+ */
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.detail__label {
+  font-size: var(--lu-fs-label);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--lu-gold-deep);
+}
+
+.detail__hint {
+  font-size: 12px;
+  line-height: 1.5;
+  max-width: var(--lu-measure);
+  color: var(--lu-muted-2);
+}
+
+/* The select keeps the field styling but needs its own affordance and room for the
+   chevron the platform draws. */
+.detail__select {
+  appearance: none;
+  padding-right: 40px;
+  cursor: pointer;
+  background-image: linear-gradient(
+      45deg,
+      transparent 50%,
+      var(--lu-gold-deep) 50%,
+      var(--lu-gold-deep) 58%,
+      transparent 58%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 42%,
+      var(--lu-gold-deep) 42%,
+      var(--lu-gold-deep) 50%,
+      transparent 50%
+    );
+  background-position: right 18px center, right 11px center;
+  background-size: 7px 7px;
+  background-repeat: no-repeat;
+}
+
+/* On plum — the notify panels. */
+.form--onPlum .detail__label {
+  color: var(--lu-gold);
+}
+
+.form--onPlum .detail__hint {
+  color: var(--lu-cream-faint);
+}

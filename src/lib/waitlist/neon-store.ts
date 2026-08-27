@@ -34,6 +34,9 @@ interface Row {
   confirmed_referrals: number;
   founding: boolean;
   unsubscribed_at: string | Date | null;
+  /** Added after the list opened, so null on every entry that predates the fuller form. */
+  name: string | null;
+  product_interest: string | null;
   /** Present on every read: how many entries exist at or before this one. */
   rank?: number;
 }
@@ -56,8 +59,24 @@ function toEntry(row: Row): WaitlistEntry {
     confirmedReferrals: row.confirmed_referrals,
     founding: row.founding,
     unsubscribedAt: row.unsubscribed_at ? new Date(row.unsubscribed_at).toISOString() : null,
+    ...(row.name ? { name: row.name } : {}),
+    ...(row.product_interest ? { productInterest: row.product_interest } : {}),
   };
 }
+
+/**
+ * The columns this version writes, added if they are not already there.
+ *
+ * There is no migration runner in this project and the table was created by hand, so the
+ * schema change ships with the code that needs it. `IF NOT EXISTS` makes it idempotent and
+ * the promise is memoised, so this costs one statement per process rather than one per
+ * signup. Both columns are nullable because every entry that predates the fuller form has
+ * neither, and that is not a defect to be backfilled — it is what those people gave us.
+ *
+ * If the role cannot run DDL this throws, and it should: a signup that silently drops the
+ * name is worse than one that fails loudly while somebody is watching the deploy.
+ */
+let schemaReady: Promise<void> | undefined;
 
 /** Short, unambiguous, no vowels — a referral code gets read aloud and retyped. */
 function makeReferralCode(): string {
@@ -69,6 +88,13 @@ const normalise = (email: string) => email.trim().toLowerCase();
 
 export function createNeonWaitlistStore(connectionString: string): WaitlistStore {
   const sql = neon(connectionString);
+
+  /** See the note above `schemaReady`. Closes over this connection's `sql`. */
+  const ensureSchema = (): Promise<void> =>
+    (schemaReady ??= (async () => {
+      await sql`ALTER TABLE waitlist_entry ADD COLUMN IF NOT EXISTS name text`;
+      await sql`ALTER TABLE waitlist_entry ADD COLUMN IF NOT EXISTS product_interest text`;
+    })());
 
   return {
     async count() {
@@ -96,9 +122,12 @@ export function createNeonWaitlistStore(connectionString: string): WaitlistStore
       `;
     },
 
-    async signup(email, referredBy): Promise<SignupResult> {
+    async signup(email, referredBy, details): Promise<SignupResult> {
       const address = normalise(email);
       const foundingTotal = site.waitlist.foundingTotal;
+
+      // The insert below names columns this deployment may be the first to need.
+      await ensureSchema();
 
       // Look first. An identity column advances even when ON CONFLICT DO NOTHING discards
       // the row, so going straight to INSERT would burn a number on every repeat signup
@@ -115,8 +144,13 @@ export function createNeonWaitlistStore(connectionString: string): WaitlistStore
 
       // ON CONFLICT still guards the race between the lookup above and this insert.
       const inserted = (await sql`
-        INSERT INTO waitlist_entry (email, referral_code)
-        VALUES (${address}, ${makeReferralCode()})
+        INSERT INTO waitlist_entry (email, referral_code, name, product_interest)
+        VALUES (
+          ${address},
+          ${makeReferralCode()},
+          ${details?.name?.trim() || null},
+          ${details?.productInterest || null}
+        )
         ON CONFLICT (lower(email)) DO NOTHING
         RETURNING *
       `) as Row[];

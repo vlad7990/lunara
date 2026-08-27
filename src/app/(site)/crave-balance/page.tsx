@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import { Band } from "@/components/Band";
 import { BatchLookup } from "@/components/coa/BatchLookup";
+import { LaunchNotice } from "@/components/LaunchNotice";
 import { WarningSet } from "@/components/compliance";
 import { DropInSlot } from "@/components/DropInSlot";
 import { IconCalendar, IconClock, IconGlass, IconShieldCheck } from "@/components/Icon";
@@ -134,6 +135,8 @@ export default async function ProductPage() {
                   Manufacturing lead time is twelve to twenty weeks. When the first run lands, the
                   Founding 500 get 48 hours before anyone else.
                 </p>
+
+                <LaunchNotice tone="onPlum" />
               </div>
 
               <WaitlistForm

@@ -73,7 +73,7 @@ export const fileWaitlistStore: WaitlistStore = {
     });
   },
 
-  async signup(email, referredBy): Promise<SignupResult> {
+  async signup(email, referredBy, details): Promise<SignupResult> {
     return withLock(async () => {
       const entries = await readAll();
       const wanted = normalise(email);
@@ -90,6 +90,9 @@ export const fileWaitlistStore: WaitlistStore = {
         confirmedReferrals: 0,
         founding: position <= site.waitlist.foundingTotal,
         unsubscribedAt: null,
+        // Omitted rather than stored empty: an entry that gave no name has no name.
+        ...(details?.name?.trim() ? { name: details.name.trim() } : {}),
+        ...(details?.productInterest ? { productInterest: details.productInterest } : {}),
       };
 
       entries.push(entry);

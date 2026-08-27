@@ -114,13 +114,20 @@
     ],
     "form": {
       "fields": [
-        "email"
+        "name",
+        "email",
+        "productInterest"
       ],
       "submitLabel": "Claim a place",
-      "microcopy": "One field, one button, no quiz. Unsubscribe from any email.",
+      "microcopy": "Three fields, then you are on the list. Unsubscribe from any email.",
       "success": "You're on the list. The full Dose Card is in your inbox within the hour.",
-      "noQuiz": true
-    }
+      "noQuiz": false,
+      "nameLabel": "First name",
+      "nameHint": "So we can put it on the first box insert, as promised.",
+      "productLabel": "Which one are you here for?",
+      "bothLabel": "Both"
+    },
+    "launchDate": "2026-10-26"
   },
   "commerce": {
     "shippingFreeOver": 50,

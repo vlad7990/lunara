@@ -1,0 +1,43 @@
+/**
+ * A date and a count, set the way this site sets dates and counts: the figures in the
+ * display serif, the label in the uppercase micro-label, and no urgency treatment at all.
+ */
+
+.notice {
+  font-size: var(--lu-fs-sm);
+  line-height: 1.6;
+  max-width: var(--lu-measure);
+  color: var(--lu-body-2);
+}
+
+.notice__label {
+  font-size: var(--lu-fs-label);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--lu-gold-deep);
+}
+
+/* Both figures take the display serif, because they are figures. Tabular so the count
+   does not shift the sentence as it ticks down through a digit. */
+.notice__date,
+.notice__days {
+  font-family: var(--lu-font-display);
+  font-size: 19px;
+  letter-spacing: var(--lu-track-display-sm);
+  font-variant-numeric: tabular-nums;
+  color: var(--lu-ink);
+}
+
+.notice--onPlum {
+  color: var(--lu-cream-body);
+}
+
+.notice--onPlum .notice__label {
+  color: var(--lu-gold);
+}
+
+.notice--onPlum .notice__date,
+.notice--onPlum .notice__days {
+  color: var(--lu-cream);
+}

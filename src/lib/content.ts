@@ -265,6 +265,30 @@ export function formatLotDate(iso: string | null): string {
   }).format(new Date(Date.UTC(year, month - 1, day)));
 }
 
+/**
+ * The launch, as a date rather than as a number of days.
+ *
+ * "Launching in 60 days" is true for exactly one day and wrong every day after, which is
+ * the same class of hand-typed countable fact as a retyped dose. The date is stored once
+ * and the countdown is derived from it, so the site cannot drift out of step with itself.
+ *
+ * Computed in UTC against the date part only, like `formatLotDate`, so a visitor's time
+ * zone cannot make the site claim a different number of days than the one it printed.
+ */
+export const launchDate: string = siteJson.waitlist.launchDate;
+
+export function formatLaunchDate(): string {
+  return formatLotDate(launchDate);
+}
+
+/** Whole days from today to launch. Never negative: past the date, the answer is zero. */
+export function daysUntilLaunch(now: Date = new Date()): number {
+  const [year, month, day] = launchDate.split("-").map(Number);
+  const target = Date.UTC(year, month - 1, day);
+  const today = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+  return Math.max(0, Math.round((target - today) / 86_400_000));
+}
+
 export const dosesAreFinal: boolean = productJson.dosesAreFinal;
 export const doseDisclaimer: string = productJson.doseDisclaimer;
 
