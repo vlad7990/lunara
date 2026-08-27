@@ -6,7 +6,9 @@ import { BatchLookup } from "@/components/coa/BatchLookup";
 import { WarningSet } from "@/components/compliance";
 import { DropInSlot } from "@/components/DropInSlot";
 import { IconCalendar, IconClock, IconGlass, IconShieldCheck } from "@/components/Icon";
+import { SparkDivider } from "@/components/Ornament";
 import { BuyPanel } from "@/components/product/BuyPanel";
+import { FormulaMark } from "@/components/product/formulaMarks";
 import { SupplementFacts } from "@/components/product/SupplementFacts";
 import { WaitlistForm } from "@/components/waitlist/WaitlistForm";
 import { MAX_QTY, formatCents, unitCentsFor } from "@/lib/bag";
@@ -209,15 +211,25 @@ export default async function ProductPage() {
         <div className={styles.rationale__grid}>
           {dosedIngredients.map((ingredient) => (
             <article key={ingredient.name} className={styles.cell}>
+              <span className={styles.cell__mark}>
+                <FormulaMark name={ingredient.name} size={26} />
+              </span>
               <div className={styles.cell__head}>
                 <h3 className={styles.cell__name}>{ingredient.name}</h3>
                 <p className={styles.cell__dose}>{formatDose(ingredient)}</p>
               </div>
+              <SparkDivider align="start" className={styles.cell__rule} />
               <p className={styles.cell__body}>{ingredient.long}</p>
             </article>
           ))}
 
           <article className={`${styles.cell} ${styles["cell--absent"]}`}>
+            {/* No ingredient, so no mark: this reserves the height one would take, so the
+                heading lines up with the card beside it. */}
+            <span
+              className={`${styles.cell__mark} ${styles["cell__mark--empty"]}`}
+              aria-hidden="true"
+            />
             <h3 className={styles.cell__name}>And what isn&rsquo;t here</h3>
             <p className={styles.cell__body}>
               {excluded.map((item) => `No ${item.name.toLowerCase()}.`).join(" ")} No

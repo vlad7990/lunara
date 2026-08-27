@@ -336,3 +336,7 @@
     padding: 24px 22px 26px;
   }
 }
+
+.cell__rule {
+  margin: 10px 0 2px;
+}

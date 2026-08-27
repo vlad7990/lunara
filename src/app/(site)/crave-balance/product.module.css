@@ -265,11 +265,13 @@
   color: var(--lu-muted);
 }
 
+/* Two wide, like the printed formula card. Five ingredients plus the "what isn't here"
+   card is six, which fills three rows exactly, so the grid never ends on a blank cell. */
 .rationale__grid {
   border-radius: var(--lu-radius-card);
   overflow: hidden;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1px;
   background: var(--lu-hairline);
   border: 1px solid var(--lu-hairline);
@@ -285,6 +287,17 @@
 
 .cell--absent {
   background: var(--lu-chalk);
+}
+
+/*
+ * The absent card names no ingredient, so it has no mark to draw. It still needs the space
+ * one would occupy, or its heading sits a mark's worth above its neighbour and the row
+ * reads as misaligned. An invisible mark reserves that height through the same box as a
+ * real one, which survives any change to the mark's size or margin. Padding arithmetic
+ * here would not: it has to guess at the head wrapper too, and it guessed wrong by 20px.
+ */
+.cell__mark--empty {
+  border-color: transparent;
 }
 
 .cell__head {
@@ -414,4 +427,21 @@
     padding: 20px;
     gap: 16px;
   }
+}
+
+/* The mark the printed card sets above each ingredient name. */
+.cell__mark {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--lu-radius-pill);
+  border: 1px solid var(--lu-gold-border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lu-gold-deep);
+  margin-bottom: 14px;
+}
+
+.cell__rule {
+  margin: 12px 0 4px;
 }

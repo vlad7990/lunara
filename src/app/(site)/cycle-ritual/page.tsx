@@ -3,15 +3,9 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import { WarningSet } from "@/components/compliance";
-import {
-  IconCalendar,
-  IconClock,
-  IconGinger,
-  IconLeaf,
-  IconMantle,
-  IconSpark,
-  type IconProps,
-} from "@/components/Icon";
+import { IconCalendar, IconClock, IconSpark } from "@/components/Icon";
+import { SparkDivider } from "@/components/Ornament";
+import { FormulaMark } from "@/components/product/formulaMarks";
 import { WaitlistForm } from "@/components/waitlist/WaitlistForm";
 import { getCatalogueProduct } from "@/lib/content";
 import { resolveSiteMode } from "@/lib/mode";
@@ -24,14 +18,6 @@ export const metadata: Metadata = {
   title: "Cycle Ritual",
   description:
     "Lady's mantle, magnesium bisglycinate, ginger and vitamin B6, for menstrual comfort and the days around it. Every milligram published.",
-};
-
-/** A mark per ingredient, keyed by name so the record stays the source of order. */
-const MARKS: Record<string, (props: IconProps) => React.ReactElement> = {
-  "Lady's mantle 5:1": IconMantle,
-  "Magnesium bisglycinate": IconSpark,
-  "Ginger extract": IconGinger,
-  "Vitamin B6 (P-5-P)": IconLeaf,
 };
 
 const STEPS = [
@@ -126,27 +112,25 @@ export default async function CycleRitualPage() {
           </div>
 
           <div className={styles.formula__grid}>
-            {cycle.ingredients?.map((ingredient) => {
-              const Mark = MARKS[ingredient.name] ?? IconSpark;
-              return (
-                <article key={ingredient.name} className={styles.cell}>
-                  <span className={styles.cell__mark}>
-                    <Mark size={26} strokeWidth={1.4} />
-                  </span>
-                  <h3 className={styles.cell__name}>{ingredient.name}</h3>
-                  <p className={styles.cell__dose}>
-                    {ingredient.dose} {ingredient.unit}
-                    {ingredient.qualifier ? (
-                      <span className={styles.cell__qualifier}> · {ingredient.qualifier}</span>
-                    ) : null}
-                  </p>
-                  <p className={styles.cell__body}>{ingredient.long}</p>
-                  {ingredient.evidenceNote ? (
-                    <p className={styles.cell__evidence}>{ingredient.evidenceNote}</p>
+            {cycle.ingredients?.map((ingredient) => (
+              <article key={ingredient.name} className={styles.cell}>
+                <span className={styles.cell__mark}>
+                  <FormulaMark name={ingredient.name} size={26} />
+                </span>
+                <h3 className={styles.cell__name}>{ingredient.name}</h3>
+                <p className={styles.cell__dose}>
+                  {ingredient.dose} {ingredient.unit}
+                  {ingredient.qualifier ? (
+                    <span className={styles.cell__qualifier}> · {ingredient.qualifier}</span>
                   ) : null}
-                </article>
-              );
-            })}
+                </p>
+                <SparkDivider align="start" className={styles.cell__rule} />
+                <p className={styles.cell__body}>{ingredient.long}</p>
+                {ingredient.evidenceNote ? (
+                  <p className={styles.cell__evidence}>{ingredient.evidenceNote}</p>
+                ) : null}
+              </article>
+            ))}
           </div>
 
           {cycle.footnote ? <p className={styles.formula__foot}>{cycle.footnote}</p> : null}
