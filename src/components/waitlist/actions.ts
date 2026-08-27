@@ -6,6 +6,7 @@ import { renderWelcomeEmail } from "@/emails/welcome";
 import { mailer, siteUrl } from "@/lib/email";
 import { site } from "@/lib/content";
 import { isValidEmail, waitlist, type WaitlistEntry } from "@/lib/waitlist";
+import { rememberMembership } from "@/lib/waitlist/membership";
 
 import type { WaitlistFormState } from "./state";
 
@@ -60,6 +61,17 @@ export async function joinWaitlist(
     const { entry, created } = await waitlist.signup(email, referredBy);
 
     if (created) await sendWelcome(entry);
+
+    /* Remember the place before revalidating, so a refresh — or a return visit weeks
+       later — restores the card instead of showing an empty form to somebody who has
+       already joined. No provider is wired, so this cookie is currently the only record
+       the visitor keeps. */
+    await rememberMembership({
+      position: entry.position,
+      referralCode: entry.referralCode,
+      founding: entry.founding,
+    });
+
     revalidatePath("/", "layout");
 
     return {

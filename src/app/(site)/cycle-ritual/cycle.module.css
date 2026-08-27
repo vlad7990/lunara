@@ -101,6 +101,11 @@
   max-width: 520px;
 }
 
+/* Store mode only: the way out, for someone who came to buy and cannot buy this one. */
+.notSale__alt {
+  margin-top: -4px;
+}
+
 /* ------------------------------------------------------------ benefits */
 
 .benefits {

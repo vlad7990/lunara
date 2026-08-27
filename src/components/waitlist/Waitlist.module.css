@@ -21,29 +21,6 @@
   min-width: 0;
 }
 
-.confirmation {
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--lu-plum-mid);
-  font-weight: 600;
-}
-
-.position {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 18px;
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--lu-body-2);
-  font-weight: 400;
-  margin-top: 6px;
-}
-
-.position strong {
-  color: var(--lu-ink);
-  font-weight: 600;
-}
-
 .error {
   font-size: 13px;
   line-height: 1.5;
@@ -60,18 +37,6 @@
 /* On plum — the open-formula sidebar card and the product notify panel. */
 .form--onPlum .microcopy {
   color: var(--lu-cream-faint);
-}
-
-.form--onPlum .confirmation {
-  color: var(--lu-cream);
-}
-
-.form--onPlum .position {
-  color: var(--lu-cream-dim);
-}
-
-.form--onPlum .position strong {
-  color: var(--lu-cream);
 }
 
 .form--onPlum .error {

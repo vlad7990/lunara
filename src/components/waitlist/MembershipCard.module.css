@@ -1,0 +1,162 @@
+/**
+ * The dose card, carrying a person instead of a formula.
+ *
+ * Deliberately the same construction as `ProductSection`'s dose card: an accent header
+ * bar, a hairline-bordered card on the card surface, and the number set in the display
+ * serif. That is not decoration — it is the argument. This site sets every number that
+ * matters in Cormorant, and a waitlist position is a number that matters.
+ */
+
+.card {
+  border: 1px solid var(--lu-gold-border);
+  border-radius: var(--lu-radius-card);
+  background: var(--lu-card);
+  overflow: hidden;
+}
+
+/* The card takes focus on submit; the ring is the global one, just pulled inside so it
+   does not sit on the rounded corner. */
+.card:focus-visible {
+  outline: 2px solid var(--lu-gold-deep);
+  outline-offset: -2px;
+}
+
+.card__head {
+  padding: 12px 22px;
+  background: var(--lu-plum);
+  font-size: var(--lu-fs-label);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--lu-gold);
+  font-weight: 700;
+}
+
+.card__body {
+  padding: 22px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ------------------------------------------------------------- the place */
+
+.place {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+/* The same treatment a dose gets, at the same weight. Tabular figures because the
+   number changes per visitor and must not shift the label beside it. */
+.place__value {
+  font-family: var(--lu-font-display);
+  font-weight: 400;
+  font-size: 54px;
+  line-height: 1;
+  letter-spacing: var(--lu-track-display-xl);
+  font-variant-numeric: tabular-nums;
+  color: var(--lu-plum);
+}
+
+.place__label {
+  font-size: var(--lu-fs-label);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--lu-gold-deep);
+}
+
+.note {
+  font-size: var(--lu-fs-sm);
+  line-height: 1.6;
+  max-width: var(--lu-measure);
+  color: var(--lu-body-2);
+}
+
+/* ---------------------------------------------------------- referral link */
+
+.referral {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 18px;
+  border-top: 1px solid var(--lu-rule);
+}
+
+.referral__label {
+  font-size: var(--lu-fs-label);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--lu-gold-deep);
+}
+
+.referral__row {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+}
+
+/* The link is the payload, so it reads as a field rather than as running text —
+   selectable, and obviously a value someone is meant to take away. */
+.referral__url {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  min-height: 46px;
+  padding: 0 14px;
+  border: 1px solid var(--lu-hairline-strong);
+  border-radius: var(--lu-radius-field);
+  background: var(--lu-chalk);
+  font-size: var(--lu-fs-sm);
+  color: var(--lu-ink);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.referral__copy {
+  flex: 0 0 auto;
+  min-height: 46px;
+  padding: 0 18px;
+  border: 1px solid var(--lu-plum);
+  border-radius: var(--lu-radius-field);
+  background: var(--lu-plum);
+  color: var(--lu-cream-2);
+  font-family: inherit;
+  font-size: var(--lu-fs-label);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  /* Colour only. */
+  transition: background-color var(--lu-transition), border-color var(--lu-transition),
+    color var(--lu-transition);
+}
+
+.referral__copy:hover {
+  background: var(--lu-plum-hover);
+  border-color: var(--lu-plum-hover);
+}
+
+.referral__note {
+  font-size: 12px;
+  line-height: 1.5;
+  max-width: var(--lu-measure);
+  color: var(--lu-muted-2);
+}
+
+@media (max-width: 640px) {
+  .place__value {
+    font-size: 44px;
+  }
+
+  /* The link and its control stop competing for one line. */
+  .referral__row {
+    flex-direction: column;
+  }
+
+  .referral__copy {
+    width: 100%;
+  }
+}

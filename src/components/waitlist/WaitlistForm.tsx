@@ -6,6 +6,7 @@ import { useFormStatus } from "react-dom";
 import { site } from "@/lib/content";
 
 import { joinWaitlist } from "./actions";
+import { MembershipCard } from "./MembershipCard";
 import { initialWaitlistState } from "./state";
 import styles from "./Waitlist.module.css";
 
@@ -46,6 +47,30 @@ export function WaitlistForm({
   const [state, formAction] = useActionState(joinWaitlist, initialWaitlistState);
   const fieldId = useId();
 
+  /*
+   * On success the form is replaced, not appended to.
+   *
+   * It used to stay on screen — empty field, live "Claim a place" button — with the
+   * confirmation added underneath in the same slot and at the same size as the error
+   * message. That reads as "nothing happened, try again", which is the opposite of what
+   * did happen, and it invited a second submit.
+   */
+  if (state.status === "success" && state.position && state.referralCode) {
+    return (
+      <div role="status" aria-live="polite" className={className}>
+        <MembershipCard
+          announce
+          membership={{
+            position: state.position,
+            referralCode: state.referralCode,
+            founding: state.founding ?? false,
+          }}
+          message={state.message}
+        />
+      </div>
+    );
+  }
+
   return (
     <form
       id={id}
@@ -81,20 +106,6 @@ export function WaitlistForm({
       </div>
 
       <div id={`${fieldId}-status`} role="status" aria-live="polite">
-        {state.status === "success" ? (
-          <>
-            <p className={styles.confirmation}>{state.message}</p>
-            <p className={styles.position}>
-              <span>
-                Your place: <strong>{state.position}</strong>
-                {state.founding ? " — inside the Founding 500" : ""}
-              </span>
-              <span>
-                Referral code: <strong>{state.referralCode}</strong>
-              </span>
-            </p>
-          </>
-        ) : null}
         {state.status === "error" ? <p className={styles.error}>{state.message}</p> : null}
       </div>
 

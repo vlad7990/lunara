@@ -8,6 +8,7 @@ import { DropInSlot } from "@/components/DropInSlot";
 import { IconDocumentCheck, IconSpark } from "@/components/Icon";
 import { DoseStrip } from "@/components/product/DoseStrip";
 import { FoundingProgress } from "@/components/waitlist/FoundingProgress";
+import { MembershipCard } from "@/components/waitlist/MembershipCard";
 import { WaitlistForm } from "@/components/waitlist/WaitlistForm";
 import {
   articles,
@@ -19,6 +20,7 @@ import {
   waitlistTiers,
 } from "@/lib/content";
 import { resolveSiteMode } from "@/lib/mode";
+import { readMembership } from "@/lib/waitlist/membership";
 
 import styles from "./join.module.css";
 
@@ -41,7 +43,11 @@ export default async function JoinPage({
 }: {
   searchParams: Promise<{ ref?: string }>;
 }) {
-  const [mode, { ref }] = await Promise.all([resolveSiteMode(), searchParams]);
+  const [mode, { ref }, membership] = await Promise.all([
+    resolveSiteMode(),
+    searchParams,
+    readMembership(),
+  ]);
   const isStore = mode === "store";
 
   // A referral link is `/?ref=CODE`. Three confirmed referrals promote the referrer into
@@ -118,7 +124,16 @@ export default async function JoinPage({
                 rejected, and why.
               </p>
 
-              <WaitlistForm id="join" referredBy={referredBy} />
+              {/* Someone who has already joined gets their place back, not an empty
+                  field. Resolved server-side so the card is in the first paint. */}
+              {membership ? (
+                <MembershipCard
+                  membership={membership}
+                  message="You are already on the list. This is your place — it does not move."
+                />
+              ) : (
+                <WaitlistForm id="join" referredBy={referredBy} />
+              )}
               <FoundingProgress />
             </>
           )}

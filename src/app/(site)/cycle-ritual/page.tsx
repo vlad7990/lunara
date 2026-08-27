@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Band } from "@/components/Band";
@@ -33,6 +34,7 @@ const STEPS = [
 export default async function CycleRitualPage() {
   const mode = await resolveSiteMode();
   const cycle = getCatalogueProduct("cycle-ritual");
+  const crave = getCatalogueProduct("crave-balance");
   if (!cycle) notFound();
 
   return (
@@ -76,27 +78,41 @@ export default async function CycleRitualPage() {
             </section>
           ) : null}
 
-          {mode === "store" ? null : (
-            <>
-              <div className={styles.notSale}>
-                <p className={styles.notSale__label}>Not on sale yet</p>
-                <h2 className={styles.notSale__title}>
-                  This page exists so you can read the label before we can sell it to you.
-                </h2>
-                <p className={styles.notSale__body}>
-                  {cycle.name} follows {" "}
-                  {getCatalogueProduct("crave-balance")?.name} into production. Everyone on the
-                  list hears first.
-                </p>
-              </div>
+          {/*
+            This panel is not gated on the mode, and that is the fix rather than an
+            oversight.
 
-              <WaitlistForm
-                submitLabel="Notify me"
-                showMicrocopy={false}
-                className={styles.notify}
-              />
-            </>
-          )}
+            It used to render only in waitlist mode. Cycle Ritual has no SKU in either
+            mode, so switching the site to store removed the panel and the notify field
+            and put nothing in their place: the column simply stopped, on a page the nav
+            links to, the home page devotes a section to, and the announcement bar
+            advertises free shipping on. A visitor who wanted this product — plausibly
+            the higher-intent one — got a description, a warning set, and no action.
+
+            "Not on sale yet" is a fact about the product, not a commerce surface, so it
+            is true in both modes and reads in both. Only the way out differs.
+          */}
+          <div className={styles.notSale}>
+            <p className={styles.notSale__label}>Not on sale yet</p>
+            <h2 className={styles.notSale__title}>
+              This page exists so you can read the label before we can sell it to you.
+            </h2>
+            <p className={styles.notSale__body}>
+              {cycle.name} follows {crave?.name} into production. Everyone on the list hears
+              first.
+            </p>
+          </div>
+
+          <WaitlistForm submitLabel="Notify me" showMicrocopy={false} className={styles.notify} />
+
+          {/* In store mode there is somewhere to send them, so send them. */}
+          {mode === "store" && crave ? (
+            <p className={styles.notSale__alt}>
+              <Link href={`/${crave.slug}`} className="lu-moreLink">
+                Shop {crave.name}
+              </Link>
+            </p>
+          ) : null}
         </div>
       </section>
 
