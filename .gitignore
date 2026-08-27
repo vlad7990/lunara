@@ -54,3 +54,6 @@ next-env.d.ts
 
 # Neon CLI workspace link (org/project/branch pointer)
 .neon
+
+# Session handoff notes (scaffolding, not project documentation)
+CONTINUATION.md
