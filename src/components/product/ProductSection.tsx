@@ -67,22 +67,39 @@ export function ProductSection({
         it on the photograph's side satisfies that by construction rather than by hoping
         the copy column stays short. It is also where it belongs: the light in the
         packshots comes from behind the pack.
+
+        Top on both sides rather than alternating. The figure column gained a caption
+        under the packshot for products whose photograph needs explaining, and a cast
+        anchored to the bottom of that column landed behind it — a glyph audit caught
+        1,099 pixels of it. The top of the column is the photograph in every case, and a
+        photograph is not type.
       */}
       <span aria-hidden="true" className={styles.artClip}>
-        <SectionArt position={reversed ? "bottom-right" : "top-left"} />
+        <SectionArt position={reversed ? "top-right" : "top-left"} />
       </span>
 
       <div
         className={`lu-container ${styles.grid} ${reversed ? styles["grid--reversed"] : ""}`}
       >
-        <div className={styles.figure}>
-          <Image
-            src={product.image}
-            alt={`${product.name} pack`}
-            className={styles.image}
-            fill
-            sizes="(max-width: 900px) 100vw, 520px"
-          />
+        <div className={styles.figureCol}>
+          <div className={styles.figure}>
+            <Image
+              src={product.image}
+              alt={
+                product.imageNote
+                  ? `${product.name} pack. The carton shown is printed in Russian.`
+                  : `${product.name} pack`
+              }
+              className={styles.image}
+              fill
+              sizes="(max-width: 900px) 100vw, 520px"
+            />
+          </div>
+
+          {/* Says what the picture is when the picture is not simply the product. */}
+          {product.imageNote ? (
+            <p className={styles.figure__note}>{product.imageNote}</p>
+          ) : null}
         </div>
 
         <div className={styles.copy}>

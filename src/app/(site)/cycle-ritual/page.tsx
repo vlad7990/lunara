@@ -42,15 +42,22 @@ export default async function CycleRitualPage() {
     <div className={styles.page}>
       {/* --------------------------------------------------------- hero */}
       <section className={`lu-container ${styles.hero}`}>
-        <div className={styles.figure}>
-          <Image
-            src={packCycle}
-            alt={`${cycle.name} bottle and carton`}
-            className={styles.image}
-            fill
-            priority
-            sizes="(max-width: 900px) 100vw, 520px"
-          />
+        <div className={styles.figureCol}>
+          <div className={styles.figure}>
+            <Image
+              src={packCycle}
+              alt={`${cycle.name} bottle and carton. The carton shown is printed in Russian.`}
+              className={styles.image}
+              fill
+              priority
+              sizes="(max-width: 900px) 100vw, 520px"
+            />
+          </div>
+
+          {/* The pack in the picture carries three lines a reader here cannot read, on a
+              page whose argument is that you should read the label. Naming that is the
+              same habit as the unshot photography slots and the draft Facts panel. */}
+          {cycle.imageNote ? <p className={styles.figure__note}>{cycle.imageNote}</p> : null}
         </div>
 
         <div className={styles.buy}>

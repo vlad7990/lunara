@@ -156,6 +156,16 @@ keep it in step with `tokens.css`.
    design copy and each page carries a standing note saying so.
 3. **Approved-claims list** wired as the source for every product-page string.
 4. **Photography.** Every unshot frame is a `<DropInSlot>` holding its final aspect ratio.
+
+   One frame *is* shot and still needs redoing: `pack-cycle.png` was photographed from the
+   Russian-market carton, so the pack carries three lines — женская поддержка цикла,
+   манжетка · магний · имбирь, 90 веганских капсул — that a reader here cannot read. It is
+   the hero of `/cycle-ritual` and the packshot in the home page's Cycle Ritual section, on
+   a site whose argument is that you should read the label. The real fix is a photograph of
+   the English carton; until there is one, `products.json` carries an `imageNote` naming
+   what the picture is, and the alt text says the carton is printed in Russian rather than
+   describing a label that is not there. `pack-plum.png` and `pack-green.png` are English
+   and need nothing.
 5. **Payments.** Store mode has a working bag and a gated checkout; no processor is wired.
    Also **a sending domain** — without one nobody on the list can be emailed.
 6. **Cycle Ritual commerce.** It has a catalogue record and a product page, but no SKU,

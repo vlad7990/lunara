@@ -66,8 +66,15 @@
   grid-template-columns: 1fr 520px;
 }
 
-.grid--reversed .figure {
+.grid--reversed .figureCol {
   order: 2;
+}
+
+/* The figure and its note travel together as one grid item. */
+.figureCol {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .figure {
@@ -81,6 +88,14 @@
 
 .image {
   object-fit: cover;
+}
+
+/* Caption weight, not body weight: this explains the picture, it is not part of the pitch. */
+.figure__note {
+  font-size: 12px;
+  line-height: 1.55;
+  max-width: var(--lu-measure);
+  color: var(--lu-muted-2);
 }
 
 .copy {
@@ -303,11 +318,11 @@
   }
 
   /* Pack first on every product once stacked: alternating order reads as a bug. */
-  .grid--reversed .figure {
+  .grid--reversed .figureCol {
     order: 0;
   }
 
-  .figure {
+  .figureCol {
     max-width: 420px;
   }
 }

@@ -74,6 +74,15 @@ export interface CatalogueProduct {
   servings: number;
   servingSize: string;
   image: string;
+  /**
+   * What the packshot is, when it is not simply the product.
+   *
+   * The Cycle Ritual carton was photographed in its Russian print, so the pack in the
+   * picture carries three lines a reader here cannot read. On a site whose argument is
+   * "read the label", that is worth naming rather than hoping nobody looks — the same
+   * habit as the unshot photography slots and the draft Supplement Facts panel.
+   */
+  imageNote?: string;
   lede: string;
   /** Why this product is a powder, or a capsule. The format is a decision, not a default. */
   whyThisFormat: string;
