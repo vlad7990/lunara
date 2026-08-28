@@ -7,7 +7,10 @@ import { nav } from "@/lib/content";
 
 import styles from "./Shell.module.css";
 
-/** The six centre links. Only the active-page marker needs the client. */
+/**
+ * The centre links, in the order `site.json` lists them — the whole list, in both modes.
+ * Only the active-page marker needs the client.
+ */
 export function NavLinks() {
   const pathname = usePathname();
 

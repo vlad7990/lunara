@@ -2,21 +2,24 @@
 
 import { useState, type ReactNode } from "react";
 
+import { spellCountCapital } from "@/lib/content";
+
 import styles from "./shop.module.css";
 
 /**
- * The shop filter is client-side only — three buttons, no URL change, no refetch. The cards
- * themselves are rendered on the server (they carry prices and mode-dependent CTAs) and
- * passed in; this component only decides which of the two groups is on screen.
+ * The shop filter is client-side only — a button per filter, no URL change, no refetch. The
+ * cards themselves are rendered on the server (they carry prices and mode-dependent CTAs)
+ * and passed in; this component only decides which of the two groups is on screen.
  */
 
 type Filter = "all" | "formats" | "bundles";
 
-const NOTES: Record<Filter, string> = {
-  all: "Four ways to buy one formula.",
+/** The "all" note counts the shop, so it takes the same `totalCount` the chip is labelled with. */
+const notesFor = (totalCount: number): Record<Filter, string> => ({
+  all: `${spellCountCapital(totalCount)} ways to buy one formula.`,
   formats: "Same powder, same dose — pick where you take it.",
   bundles: "Both priced for the eight-to-twelve week test.",
-};
+});
 
 export function ShopFilter({
   formatCards,
@@ -28,6 +31,7 @@ export function ShopFilter({
   totalCount: number;
 }) {
   const [filter, setFilter] = useState<Filter>("all");
+  const notes = notesFor(totalCount);
 
   const options: { id: Filter; label: string }[] = [
     { id: "all", label: `All · ${totalCount}` },
@@ -52,7 +56,7 @@ export function ShopFilter({
           ))}
         </div>
         <p className={styles.filter__note} aria-live="polite">
-          {NOTES[filter]}
+          {notes[filter]}
         </p>
       </div>
 

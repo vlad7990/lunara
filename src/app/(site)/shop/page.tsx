@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 /**
  * What we do not sell, and why.
  *
- * This section is doing positioning work — a four-item shop is the harder choice, not an
+ * This section is doing positioning work — a shop this short is the harder choice, not an
  * unfinished one — so it stays even though nothing on it is for sale.
  */
 const NOT_SOLD = [

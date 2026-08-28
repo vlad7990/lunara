@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "Proprietary blends exist so you can’t check the dose. We started from the opposite end: print everything, then live with it.",
 };
 
-/** The four promises, in the order they cost us something. */
+/** The promises, in the order they cost us something. The heading counts them. */
 const PROMISES = [
   {
     title: "Every milligram, in public",
@@ -91,13 +91,13 @@ export default function AboutPage() {
         />
       </section>
 
-      {/* ------------------------------------------------- four promises */}
+      {/* ----------------------------------------------------- promises */}
       <Band tone="plum" labelledBy="promises-title">
         <div className={`lu-container ${styles.promises}`}>
           <div className={styles.promises__head}>
             <p className="lu-label lu-label--wide lu-label--onPlum">What we committed to</p>
             <h2 id="promises-title" className={styles.promises__title}>
-              Four promises, in the order they cost us something.
+              {`${spellCountCapital(PROMISES.length)} promises, in the order they cost us something.`}
             </h2>
           </div>
 

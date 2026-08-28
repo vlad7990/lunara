@@ -6,7 +6,14 @@ import { BatchLookup } from "@/components/coa/BatchLookup";
 import { IconDocumentCheck, IconSpark } from "@/components/Icon";
 import { ProductSection } from "@/components/product/ProductSection";
 import { FoundingProgress } from "@/components/waitlist/FoundingProgress";
-import { articles, catalogue, changeLog, formatLotDate, site } from "@/lib/content";
+import {
+  articles,
+  catalogue,
+  changeLog,
+  formatLotDate,
+  site,
+  spellCountCapital,
+} from "@/lib/content";
 import { resolveSiteMode } from "@/lib/mode";
 
 import styles from "./home.module.css";
@@ -68,7 +75,8 @@ export default async function HomePage() {
           </p>
 
           <h1 className={`lu-h1 ${styles.hero__title}`}>
-            Two formulas.
+            {/* The catalogue is the count: a third formula must not need an edit here. */}
+            {`${spellCountCapital(catalogue.length)} formulas.`}
             <br />
             <em>Every milligram published.</em>
           </h1>

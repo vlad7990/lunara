@@ -51,7 +51,7 @@ const STEP_WORDS = ["Step one", "Step two", "Step three"];
  */
 const RATIONALE_LABEL = `${spellCountCapital(dosedIngredients.length)} ingredients, ${spellCount(dosedIngredients.length)} reasons`;
 
-/** The four commitments in the "what we publish" card. */
+/** The commitments in the "what we publish" card. */
 const COMMITMENTS = [
   "Full dose disclosure, no blends",
   "Per-lot COA at a printed URL",
