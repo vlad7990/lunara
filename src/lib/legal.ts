@@ -1,9 +1,9 @@
 /**
- * The six policies.
+ * The policies. `policies.length` is the count — nothing should retype it.
  *
  * ⚠ Everything here is DESIGN COPY. It is correct in tone, length and structure, and it has
- * not been reviewed by counsel. All six need drafting or review before launch — see
- * `content/compliance.json → blocking`.
+ * not been reviewed by counsel. Every one of them needs drafting or review before launch —
+ * see `content/compliance.json → blocking`.
  *
  * Each policy ships as its own route so it has its own URL for compliance links and consent
  * records. The design shows them on one page with a sticky index; that index is preserved as

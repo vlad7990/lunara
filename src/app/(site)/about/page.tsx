@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { Band } from "@/components/Band";
 
-import { product } from "@/lib/content";
+import { articles, product, spellCountCapital } from "@/lib/content";
 
 import styles from "./about.module.css";
 
@@ -45,7 +45,9 @@ const PLAN = [
   {
     when: "Weeks 5–8",
     title: "The open formula series",
-    body: "One decision published a week. Six articles, each a credibility deposit rather than a promotion.",
+    /* The plan counts the whole series, not just the live pieces: it describes what we
+       committed to write, and the weeks are how long it takes. */
+    body: `One decision published a week. ${spellCountCapital(articles.length)} articles, each a credibility deposit rather than a promotion.`,
   },
   {
     when: "Weeks 9–12",

@@ -63,7 +63,7 @@
     "store:/shop": "Free US shipping over $50 · shipping from lot CB-2026-0412",
     "waitlist:/crave-balance": "Not for sale yet — this is the label we intend to print. Founding 500 still open.",
     "store:/crave-balance": "Free US shipping over $50 · current lot CB-2026-0412, report online",
-    "any:/open-formula": "Six formulation decisions, published in full — including the ones that cost us money.",
+    "any:/open-formula": "{publishedCount} formulation decisions, published in full — including the ones that cost us money.",
     "any:/lot": "A lab report for every lot, published unedited, at the URL printed on your pack.",
     "any:/faq": "If the honest answer is \"ask your doctor\", that is the answer we give.",
     "any:/about": "A supplement company that publishes its own change log.",

@@ -35,7 +35,7 @@
   ],
   "blocking": [
     "Supplement Facts panel must be produced by the contract manufacturer and cleared by counsel. The panel in the designs is a layout draft.",
-    "All six policies drafted or reviewed by counsel, split into one route each with its own consent record.",
+    "All {policyCount} policies drafted or reviewed by counsel, split into one route each with its own consent record.",
     "Approved-claims list wired as the source of every product-page string."
   ]
 }

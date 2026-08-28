@@ -24,6 +24,7 @@ import {
   getFormat,
   product,
   spellCount,
+  spellCountCapital,
 } from "@/lib/content";
 import { resolveSiteMode } from "@/lib/mode";
 
@@ -48,8 +49,7 @@ const STEP_WORDS = ["Step one", "Step two", "Step three"];
  * the label used to read "six" — counting the inositol ratio row, which is a fact about the
  * formula and has no dose of its own.
  */
-const dosedCount = spellCount(dosedIngredients.length);
-const RATIONALE_LABEL = `${dosedCount[0].toUpperCase()}${dosedCount.slice(1)} ingredients, ${dosedCount} reasons`;
+const RATIONALE_LABEL = `${spellCountCapital(dosedIngredients.length)} ingredients, ${spellCount(dosedIngredients.length)} reasons`;
 
 /** The four commitments in the "what we publish" card. */
 const COMMITMENTS = [

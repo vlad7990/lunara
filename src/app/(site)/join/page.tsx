@@ -18,6 +18,8 @@ import {
   getFormat,
   lots,
   product,
+  publishedArticles,
+  spellCountCapital,
   waitlistTiers,
 } from "@/lib/content";
 import { resolveSiteMode } from "@/lib/mode";
@@ -279,8 +281,10 @@ export default async function JoinPage({
               <p className="lu-label lu-label--wide" style={{ marginBottom: "10px" }}>
                 The open formula series
               </p>
+              {/* The grid below lists the whole series; this heading counts only what is
+                  live, because it claims the decisions have been published. */}
               <h2 id="series-title" className="lu-h2">
-                Six decisions, published in full
+                {`${spellCountCapital(publishedArticles.length)} decisions, published in full`}
               </h2>
             </div>
             <Link href="/open-formula" className="lu-moreLink">

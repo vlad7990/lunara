@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { compliance, formatLotDate, site } from "@/lib/content";
+import { compliance, formatLotDate, site, spellCount } from "@/lib/content";
 import { LAST_UPDATED, policies, type Policy } from "@/lib/legal";
 
 import styles from "./Legal.module.css";
@@ -8,10 +8,17 @@ import styles from "./Legal.module.css";
 /**
  * One policy, one route.
  *
- * The design shows all six on a single page behind a sticky index. Shipping them separately
+ * The design shows them all on a single page behind a sticky index. Shipping them separately
  * gives each policy a URL that a compliance link or a consent record can point at, and the
  * index becomes the cross-link between them.
  */
+
+/**
+ * The standing counsel note counts the policies it is waiting on. `{policyCount}` is
+ * substituted here rather than typed into `compliance.json`, so adding a seventh policy
+ * cannot leave the notice claiming six.
+ */
+const BLOCKING_NOTE = compliance.blocking[1].replace("{policyCount}", spellCount(policies.length));
 /** Renders a paragraph, turning the `{email}` placeholder into a real mailto link. */
 function Paragraph({ text }: { text: string }) {
   const parts = text.split("{email}");
@@ -99,7 +106,7 @@ export function PolicyPage({ policy }: { policy: Policy }) {
           <aside className={styles.notice}>
             <h2 className={styles.notice__label}>Not yet reviewed by counsel</h2>
             <p className={styles.notice__body}>
-              {compliance.blocking[1]} Everything on this page is design copy written to show
+              {BLOCKING_NOTE} Everything on this page is design copy written to show
               tone, length and structure. It is not legal advice and it is not launch-ready.
             </p>
           </aside>

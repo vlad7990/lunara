@@ -227,6 +227,16 @@ export const directions: Direction[] = productJson.directions;
 export const articles: Article[] = articlesJson.series;
 export const changeLog: ChangeLogEntry[] = articlesJson.changeLog;
 
+/**
+ * The pieces that are actually readable today.
+ *
+ * The index lists the whole series, unpublished entries included, because the plan is part
+ * of the promise. Any copy that claims something has been *published* counts these instead:
+ * six decisions published in full, when two of them are not out yet, is a claim we would
+ * have to withdraw.
+ */
+export const publishedArticles: Article[] = articles.filter((a) => a.published);
+
 export const faqGroups: FaqGroup[] = faqJson.groups;
 
 export const lots: Lot[] = lotsJson.lots;
@@ -364,17 +374,30 @@ export function spellCount(value: number): string {
     : value.toLocaleString("en-US");
 }
 
+/** `spellCount` where the count opens a sentence or a heading. */
+export function spellCountCapital(value: number): string {
+  const word = spellCount(value);
+  return `${word.charAt(0).toUpperCase()}${word.slice(1)}`;
+}
+
 /**
  * Announcement copy is keyed `mode:route`, with `any:route` covering both modes.
  *
  * Nested routes inherit their parent's line — `/lot/CB-2026-0412` reads the `/lot` copy,
  * `/checkout` reads `/bag` — and anything unkeyed falls back to the home line so no page
  * ever ships with an empty bar.
+ *
+ * `{publishedCount}` is substituted with the number of open formula pieces that are live,
+ * spelled out. The bar is the one place the series is counted to a visitor who has not
+ * reached the index yet, so the count has to move when a piece ships.
  */
 export function announcementFor(mode: SiteMode, pathname: string): string {
   const announcements = siteJson.announcements as Record<string, string>;
   const lookup = (route: string) =>
     announcements[`${mode}:${route}`] ?? announcements[`any:${route}`];
+
+  const resolve = (line: string) =>
+    line.replace("{publishedCount}", spellCountCapital(publishedArticles.length));
 
   const route = pathname === "/checkout" ? "/bag" : pathname;
   const segments = route.split("/").filter(Boolean);
@@ -382,10 +405,10 @@ export function announcementFor(mode: SiteMode, pathname: string): string {
   for (let depth = segments.length; depth > 0; depth -= 1) {
     const candidate = `/${segments.slice(0, depth).join("/")}`;
     const found = lookup(candidate);
-    if (found) return found;
+    if (found) return resolve(found);
   }
 
-  return lookup("/")!;
+  return resolve(lookup("/")!);
 }
 
 /** FAQ groups flatten differently per mode; the ordering group is mode-scoped. */
