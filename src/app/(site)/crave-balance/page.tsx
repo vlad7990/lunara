@@ -23,6 +23,7 @@ import {
   formatPrice,
   getFormat,
   product,
+  spellCount,
 } from "@/lib/content";
 import { resolveSiteMode } from "@/lib/mode";
 
@@ -40,6 +41,15 @@ export const metadata: Metadata = {
 const STEP_ICONS = [IconGlass, IconClock, IconCalendar];
 
 const STEP_WORDS = ["Step one", "Step two", "Step three"];
+
+/**
+ * The rationale label counts the dosed ingredients, and only those: the grid's last cell is
+ * about what was left out, which is a decision rather than an ingredient. Derived, because
+ * the label used to read "six" — counting the inositol ratio row, which is a fact about the
+ * formula and has no dose of its own.
+ */
+const dosedCount = spellCount(dosedIngredients.length);
+const RATIONALE_LABEL = `${dosedCount[0].toUpperCase()}${dosedCount.slice(1)} ingredients, ${dosedCount} reasons`;
 
 /** The four commitments in the "what we publish" card. */
 const COMMITMENTS = [
@@ -202,7 +212,7 @@ export default async function ProductPage() {
       <section className={`lu-container ${styles.rationale}`} aria-labelledby="rationale-title">
         <div className={styles.rationale__head}>
           <p className={`lu-label lu-label--wide ${styles.rationale__label}`}>
-            Six ingredients, six reasons
+            {RATIONALE_LABEL}
           </p>
           <h2 id="rationale-title" className={styles.rationale__title}>
             Nothing here is decoration

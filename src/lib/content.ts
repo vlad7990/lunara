@@ -335,6 +335,35 @@ export const scoopSize: string =
 /** The five dosed ingredients — the ratio row is a fact about the formula, not a dose. */
 export const dosedIngredients: Ingredient[] = ingredients.filter((i) => i.unit !== null);
 
+const COUNT_WORDS: readonly string[] = [
+  "zero",
+  "one",
+  "two",
+  "three",
+  "four",
+  "five",
+  "six",
+  "seven",
+  "eight",
+  "nine",
+  "ten",
+];
+
+/**
+ * Spells a small count for prose, so a countable fact can be derived rather than typed.
+ * A label reading "Five ingredients" beside a grid of five is one edit away from lying,
+ * and the pack copy is exactly where that must not happen.
+ *
+ * Sentence case, because everything but the wordmark and the micro-labels is — and the
+ * micro-labels are uppercased by CSS, not by the copy. Past ten it returns digits, which
+ * is how a count that large should set anyway.
+ */
+export function spellCount(value: number): string {
+  return Number.isInteger(value) && value >= 0 && value < COUNT_WORDS.length
+    ? COUNT_WORDS[value]
+    : value.toLocaleString("en-US");
+}
+
 /**
  * Announcement copy is keyed `mode:route`, with `any:route` covering both modes.
  *
