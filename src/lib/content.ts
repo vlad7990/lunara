@@ -228,6 +228,17 @@ export function getCatalogueProduct(slug: string): CatalogueProduct | undefined 
 
 export const formats: Format[] = productJson.formats as Format[];
 
+/**
+ * The catalogue split by how you take it. Copy that says "one formula in two formats, and
+ * one in capsules" is counting these, and a third product should move that line by itself.
+ */
+export const powderProducts: CatalogueProduct[] = catalogue.filter(
+  (p) => p.format.toLowerCase() === "powder",
+);
+export const capsuleProducts: CatalogueProduct[] = catalogue.filter(
+  (p) => p.format.toLowerCase() === "capsules",
+);
+
 /** The ways to actually take it: the jar and the sticks. */
 export const takeFormats: Format[] = formats.filter((f) => f.kind === "format");
 

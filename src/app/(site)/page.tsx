@@ -8,11 +8,15 @@ import { ProductSection } from "@/components/product/ProductSection";
 import { FoundingProgress } from "@/components/waitlist/FoundingProgress";
 import {
   articles,
+  capsuleProducts,
   catalogue,
   changeLog,
   formatLotDate,
+  powderProducts,
   site,
+  spellCount,
   spellCountCapital,
+  takeFormats,
 } from "@/lib/content";
 import { resolveSiteMode } from "@/lib/mode";
 
@@ -251,7 +255,11 @@ export default async function HomePage() {
         <section className={styles.join} aria-labelledby="join-title">
           <h2 id="join-title" className={styles.join__title}>
             {mode === "store"
-              ? "One formula in two formats, and one in capsules."
+              ? `${spellCountCapital(powderProducts.length)} ${
+                  powderProducts.length === 1 ? "formula" : "formulas"
+                } in ${spellCount(takeFormats.length)} formats, and ${spellCount(
+                  capsuleProducts.length,
+                )} in capsules.`
               : "The formulas are public. Nothing is for sale yet."}
           </h2>
           <p className={styles.join__body}>

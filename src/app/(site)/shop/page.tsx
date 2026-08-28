@@ -14,8 +14,10 @@ import {
   getFormat,
   lots,
   offerFormats,
+  powderProducts,
   product,
   scoopSize,
+  spellCount,
   spellCountCapital,
   takeFormats,
 } from "@/lib/content";
@@ -28,8 +30,12 @@ import packPlum from "@public/assets/pack-plum.png";
 
 export const metadata: Metadata = {
   title: "Shop",
-  description:
-    "One formula in two formats, plus a subscription and a single bundle. The jar and the sticks contain the same powder at the same dose.",
+  /* The formats are counted, not typed — a search result is the one place a stale number
+     outlives the deploy that caused it. What follows names the offers rather than counting
+     them, which is why only the one number is derived. */
+  description: `${spellCountCapital(powderProducts.length)} ${
+    powderProducts.length === 1 ? "formula" : "formulas"
+  } in ${spellCount(takeFormats.length)} formats, plus a subscription and a single bundle. The jar and the sticks contain the same powder at the same dose.`,
 };
 
 /**
