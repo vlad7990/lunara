@@ -13,8 +13,11 @@ import {
   formats,
   getFormat,
   lots,
+  offerFormats,
   product,
   scoopSize,
+  spellCountCapital,
+  takeFormats,
 } from "@/lib/content";
 import { resolveSiteMode } from "@/lib/mode";
 
@@ -258,7 +261,8 @@ export default async function ShopPage() {
           <h1 className="lu-h1">
             One formula.
             <br />
-            <em>Two ways to take it.</em>
+            {/* The formats, not the offers: the subscription is the jar on other terms. */}
+            <em>{`${spellCountCapital(takeFormats.length)} ways to take it.`}</em>
           </h1>
           <p className={styles.head__lede}>
             There is no range here and there won&rsquo;t be one soon. The jar and the sticks
@@ -279,6 +283,7 @@ export default async function ShopPage() {
         formatCards={formatCards}
         bundleCards={bundleCards}
         totalCount={formats.length}
+        offerCount={offerFormats.length}
       />
 
       {/* ------------------------------------------------------- comparison */}

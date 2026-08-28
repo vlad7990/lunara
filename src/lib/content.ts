@@ -35,8 +35,16 @@ export interface FooterGroup {
   links: string[];
 }
 
+/**
+ * A format is a way to take the powder; an offer is the same jar on different terms.
+ * The distinction is in the data because copy counts the two groups separately — "two ways
+ * to take it" must not start counting the subscription.
+ */
+export type FormatKind = "format" | "offer";
+
 export interface Format {
   sku: string;
+  kind: FormatKind;
   name: string;
   price: number;
   foundingPrice?: number;
@@ -218,7 +226,13 @@ export function getCatalogueProduct(slug: string): CatalogueProduct | undefined 
   return catalogue.find((entry) => entry.slug === slug);
 }
 
-export const formats: Format[] = productJson.formats;
+export const formats: Format[] = productJson.formats as Format[];
+
+/** The ways to actually take it: the jar and the sticks. */
+export const takeFormats: Format[] = formats.filter((f) => f.kind === "format");
+
+/** The subscription and the bundle — same powder, different terms. */
+export const offerFormats: Format[] = formats.filter((f) => f.kind === "offer");
 export const ingredients: Ingredient[] = productJson.ingredients;
 export const excluded: Excluded[] = productJson.excluded;
 export const supplementFacts = productJson.supplementFacts;
@@ -372,6 +386,14 @@ export function spellCount(value: number): string {
   return Number.isInteger(value) && value >= 0 && value < COUNT_WORDS.length
     ? COUNT_WORDS[value]
     : value.toLocaleString("en-US");
+}
+
+/**
+ * Quantifies a whole group. "Both" is only English for two, so copy that says it has to ask
+ * rather than assume the group will always be that size.
+ */
+export function quantifyAll(count: number): string {
+  return count === 2 ? "Both" : `All ${spellCount(count)}`;
 }
 
 /** `spellCount` where the count opens a sentence or a heading. */

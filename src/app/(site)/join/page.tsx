@@ -20,6 +20,7 @@ import {
   product,
   publishedArticles,
   spellCountCapital,
+  takeFormats,
   waitlistTiers,
 } from "@/lib/content";
 import { resolveSiteMode } from "@/lib/mode";
@@ -163,7 +164,7 @@ export default async function JoinPage({
         <section className={`lu-container ${styles.formats}`} aria-labelledby="formats-title">
           <div className="lu-sectionHead">
             <h2 id="formats-title" className="lu-h2">
-              One product. Two ways to take it.
+              {`One product. ${spellCountCapital(takeFormats.length)} ways to take it.`}
             </h2>
             <Link href="/shop" className="lu-moreLink">
               All formats

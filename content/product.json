@@ -12,6 +12,7 @@
   "formats": [
     {
       "sku": "CB-JAR-30",
+      "kind": "format",
       "name": "Crave Balance · jar",
       "price": 54,
       "foundingPrice": 37.8,
@@ -23,6 +24,7 @@
     },
     {
       "sku": "CB-STK-30",
+      "kind": "format",
       "name": "Crave Balance · sticks",
       "price": 58,
       "foundingPrice": 40.6,
@@ -34,6 +36,7 @@
     },
     {
       "sku": "CB-JAR-SUB",
+      "kind": "offer",
       "name": "Crave Balance · subscription",
       "price": 45.9,
       "listPrice": 54,
@@ -43,6 +46,7 @@
     },
     {
       "sku": "CB-JAR-60",
+      "kind": "offer",
       "name": "Two jars, sixty days",
       "price": 94,
       "listPrice": 108,

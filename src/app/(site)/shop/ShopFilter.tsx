@@ -2,7 +2,7 @@
 
 import { useState, type ReactNode } from "react";
 
-import { spellCountCapital } from "@/lib/content";
+import { quantifyAll, spellCountCapital } from "@/lib/content";
 
 import styles from "./shop.module.css";
 
@@ -14,24 +14,30 @@ import styles from "./shop.module.css";
 
 type Filter = "all" | "formats" | "bundles";
 
-/** The "all" note counts the shop, so it takes the same `totalCount` the chip is labelled with. */
-const notesFor = (totalCount: number): Record<Filter, string> => ({
+/**
+ * Each note counts the group it sits under: the "all" note takes the same `totalCount` the
+ * chip is labelled with, and the bundles note quantifies the offers rather than saying
+ * "both" and hoping there are never three.
+ */
+const notesFor = (totalCount: number, offerCount: number): Record<Filter, string> => ({
   all: `${spellCountCapital(totalCount)} ways to buy one formula.`,
   formats: "Same powder, same dose — pick where you take it.",
-  bundles: "Both priced for the eight-to-twelve week test.",
+  bundles: `${quantifyAll(offerCount)} priced for the eight-to-twelve week test.`,
 });
 
 export function ShopFilter({
   formatCards,
   bundleCards,
   totalCount,
+  offerCount,
 }: {
   formatCards: ReactNode;
   bundleCards: ReactNode;
   totalCount: number;
+  offerCount: number;
 }) {
   const [filter, setFilter] = useState<Filter>("all");
-  const notes = notesFor(totalCount);
+  const notes = notesFor(totalCount, offerCount);
 
   const options: { id: Filter; label: string }[] = [
     { id: "all", label: `All · ${totalCount}` },
